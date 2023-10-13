@@ -43,7 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin();
+                //Go to landing page after login
+                .formLogin().defaultSuccessUrl("/landing_page", true);
     }
 
 
