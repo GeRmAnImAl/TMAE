@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface AppUserRepository extends JpaRepository<AppUser, Long> {
     /**
      * Retrieves an AppUser by a specific username.
+     *
      * @param id Long representing the AppUser in the database.
      * @return an AppUser Object.
      */

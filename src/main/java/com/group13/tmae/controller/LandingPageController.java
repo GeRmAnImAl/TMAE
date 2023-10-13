@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class LandingPageController {
 
     @GetMapping("/landing_page")
-    public String showLandingPage(){
+    public String showLandingPage() {
         return "landing_page";
     }
 }

@@ -17,6 +17,7 @@ public class CustomAuthenticationSuccessHandler {
 
     /**
      * Constructs a new CustomAuthenticationSuccessHandler.
+     *
      * @param appUserRepository the user repository used to fetch user details.
      */
     @Autowired
@@ -27,10 +28,11 @@ public class CustomAuthenticationSuccessHandler {
     /**
      * Handles the behavior after a successful authentication. Redirects users
      * to specific pages based on whether it's their first time logging in.
-     * @param request the servlet request.
-     * @param response the servlet response.
+     *
+     * @param request        the servlet request.
+     * @param response       the servlet response.
      * @param authentication the current authentication object.
-     * @throws IOException in case of IO errors.
+     * @throws IOException      in case of IO errors.
      * @throws ServletException in case of servlet errors.
      */
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,

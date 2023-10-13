@@ -11,9 +11,9 @@ public interface AthleteService {
 
     List<Athlete> getAllAthletes();
 
-    Athlete getEmployeeById(Long id);
+    Athlete getAthleteById(Long id);
 
-    Athlete updateAthlete(Long id);
+    Athlete updateAthlete(Athlete athlete);
 
     void deleteAthlete(Long id);
 

@@ -1,12 +1,13 @@
 package com.group13.tmae.model;
 
 import javax.persistence.*;
+
 import org.springframework.lang.NonNull;
 
 import java.io.Serializable;
 
 @Entity
-@Table(name="athletes")
+@Table(name = "athletes")
 public class Athlete implements Serializable {
 
     @Id
@@ -35,6 +36,14 @@ public class Athlete implements Serializable {
         this.wins = wins;
         this.losses = losses;
         this.ties = ties;
+    }
+
+    public Athlete() {
+        this.firstName = "";
+        this.lastName = "";
+        this.wins = 0;
+        this.losses = 0;
+        this.ties = 0;
     }
 
     @NonNull
