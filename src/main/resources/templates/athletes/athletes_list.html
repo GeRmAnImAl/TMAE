@@ -25,6 +25,16 @@
                 <th scope="col">Ties</th>
             </tr>
             </thead>>
+            <tbody>
+                <tr th:each="athlete : ${listAthletes}">
+                    <th th:text="${athlete.getAthleteID()}"></th>
+                    <th th:text="${athlete.getFirstName()}"></th>
+                    <th th:text="${athlete.getLastName()}"></th>
+                    <th th:text="${athlete.getWins()}"></th>
+                    <th th:text="${athlete.getLosses()}"></th>
+                    <th th:text="${athlete.getTies()}"></th>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>
