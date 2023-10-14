@@ -24,6 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.authenticationSuccessHandler = authenticationSuccessHandler;
     }
 
+    //This is commented out until we actually start creating new users and storing passwords.
    /* @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());

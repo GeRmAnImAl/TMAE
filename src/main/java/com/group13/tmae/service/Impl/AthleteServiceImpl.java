@@ -1,7 +1,8 @@
-package com.group13.tmae.service.athleteService;
+package com.group13.tmae.service.Impl;
 
 import com.group13.tmae.model.Athlete;
 import com.group13.tmae.repository.AthleteRepository;
+import com.group13.tmae.service.AthleteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

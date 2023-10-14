@@ -1,4 +1,4 @@
-package com.group13.tmae.service.athleteService;
+package com.group13.tmae.service;
 
 import com.group13.tmae.model.Athlete;
 import org.springframework.data.domain.Page;
