@@ -1,14 +1,5 @@
-#landing-page {
-    background-image: url("backgrounds/background1.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom center;
-}
-#athletes-list{
-    background-image: url("backgrounds/background2.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+/* ---------- Shared Elements ---------- */
+
 .background{
     background-color: #7F39FB;
     margin: 0;
@@ -43,6 +34,29 @@
     text-shadow: 3px 3px 3px black;
 }
 
+.table{
+    background: white;
+    font-size: x-large;
+    box-shadow: 3px 3px 5px black;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+.striped-table:nth-child(even){
+    background-color: #E1C8FF;
+}
+
+/* ---------- Landing Page Elements ---------- */
+
+#landing-page {
+    background-image: url("backgrounds/background1.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+}
+
 #cards-container {
     background-color: #00C4B4;
     height: 50%;
@@ -53,25 +67,7 @@
     padding: 3%;
 }
 
-#athletes-list-table-container{
-    background-color: #00C4B4;
-    height: 50%;
-    width: 50%;
-    border-radius: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 3%;
-}
-
-.container-label{
-    font-size: xx-large;
-    color: white;
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin-top: 0;
-}
-
-.grid {
+.landing-page-grid {
     width: 100%;
     height: 100%;
     display: grid;
@@ -113,16 +109,29 @@
     margin-top: 0;
     margin-bottom: 0;
 }
-.table{
-    background: white;
-    font-size: x-large;
-    box-shadow: 3px 3px 5px black;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: collapse;
+
+/* ---------- Athlete List Elements ---------- */
+
+#athletes-list{
+    background-image: url("backgrounds/background2.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.striped-table:nth-child(even){
-    background-color: #E1C8FF;
+#athletes-list-table-container{
+    background-color: #00C4B4;
+    height: 50%;
+    width: 50%;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+}
+
+.athletes-list-container-label{
+    font-size: xx-large;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin-top: 0;
 }
