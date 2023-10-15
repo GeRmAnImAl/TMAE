@@ -12,41 +12,85 @@ import org.springframework.data.domain.Page;
 
 import java.util.List;
 
+/**
+ * Implementation of the AthleteService interface that provides
+ * functionality for managing athlete-related operations.
+ */
 @Service
 public class AthleteServiceImpl implements AthleteService {
 
+    /**
+     * Autowired AthleteRepository instance for database interaction.
+     */
     @Autowired
     private AthleteRepository athleteRepository;
 
+    /**
+     * Creates a new athlete in the database.
+     *
+     * @param athlete The Athlete object to be created.
+     * @return The created Athlete object.
+     */
     @Override
     public Athlete createAthlete(Athlete athlete) {
         return this.athleteRepository.save(athlete);
     }
 
+    /**
+     * Retrieves a list of all athletes from the database.
+     *
+     * @return List of Athlete objects.
+     */
     @Override
     public List<Athlete> getAllAthletes() {
         return this.athleteRepository.findAll();
     }
 
+    /**
+     * Retrieves an athlete by their unique identifier from the database.
+     *
+     * @param id The unique identifier of the Athlete.
+     * @return The Athlete object with the specified ID, or null if not found.
+     */
     @Override
     public Athlete getAthleteById(Long id) {
         return this.athleteRepository.findById(id).orElse(null);
     }
 
+    /**
+     * Updates an existing athlete in the database.
+     *
+     * @param athlete The Athlete object to be updated.
+     * @return The updated Athlete object.
+     */
     @Override
     public Athlete updateAthlete(Athlete athlete) {
         return this.athleteRepository.save(athlete);
     }
 
+    /**
+     * Deletes an athlete by their unique identifier from the database.
+     *
+     * @param id The unique identifier of the Athlete to be deleted.
+     */
     @Override
     public void deleteAthlete(Long id) {
         this.athleteRepository.deleteById(id);
     }
 
+    /**
+     * Retrieves a paginated list of athletes from the database, sorted based on the specified criteria.
+     *
+     * @param pageNo         The page number to be retrieved.
+     * @param pageSize       The number of items per page.
+     * @param sortField      The field by which the results should be sorted.
+     * @param sortDirection  The sorting direction, either "asc" (ascending) or "desc" (descending).
+     * @return A Page object containing the paginated list of Athlete objects.
+     */
     @Override
     public Page<Athlete> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
-        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
-                Sort.by(sortField).descending();
+        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ?
+                Sort.by(sortField).ascending() : Sort.by(sortField).descending();
 
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
 
