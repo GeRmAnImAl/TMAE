@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -8,7 +8,7 @@
     <style>
         body{
             background-color: #7F39FB;
-            background-image: url("backgrounds/background1.svg");
+            background-image: url("/backgrounds/background1.svg");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: bottom center;
@@ -28,16 +28,16 @@
             color: white;
             text-align: center;
             margin: 0;
-            text-shadow: 4px 4px black;
+            text-shadow: 4px 4px 4px black;
         }
         #headerText{
             margin: 0;
         }
         #page-welcome{
-            font-size: xx-large;
+            font-size: xxx-large;
             color: white;
             text-align: center;
-            text-shadow: 3px 3px black;
+            text-shadow: 3px 3px 3px black;
         }
         #cards-container{
             background-color: #00C4B4;
@@ -55,20 +55,32 @@
             grid-template-columns: 33.3% 33.3% 33.3%;
             grid-template-rows: 33.3% 33.3% 33.3%;
         }
-        .card{
+        .landing-page-button{
+            display: block;
             background-color: #BB86FC;
             margin:5%;
             padding: 3%;
             border-radius: 20px;
             box-shadow: 3px 3px 5px black;
-        }
-        .card-title{
-            display: block;
-            font-size: x-large;
+            text-decoration: none;
             color: white;
-            text-shadow: 2px 2px black;
+            text-shadow: 2px 2px 4px black;
             text-align: center;
+            transition-duration: 0.2s;
+        }
+        .landing-page-button:hover{
+            background-color: #D2AEFE;
+        }
+        .landing-page-button:active{
+            background-color: #9540FC;
+            box-shadow: inset 2px 2px 4px black;
+        }
+        .landing-page-button-title{
+            font-size: xx-large;
             margin-top: 3%;
+        }
+        .landing-page-button-description{
+            font-size: x-large;
         }
     </style>
 </head>
@@ -81,26 +93,34 @@
     <h1 id="page-welcome">Welcome to the Tournament Management and Athlete Empowerment App!</h1>
     <div id="cards-container">
         <div class="grid">
-            <div class="card">
-                    <h5 class="card-title">Athletes</h5>
-                    <p class="card-text">See a List of Athletes</p>
-                    <a class="btn btn-primary" href="/athletes/athletes_list">View Athletes</a>
-            </div>
-            <div class="card">
-                    <h5 class="card-title">Placeholder</h5>
-                    <p class="card-text">See a List of Athletes</p>
-                    <a class="btn btn-primary" href="/athletes/athletes_list">View Athletes</a>
-            </div>
-            <div class="card">
-                    <h5 class="card-title">Placeholder</h5>
-                    <p class="card-text">See a List of Athletes</p>
-                    <a class="btn btn-primary" href="/athletes/athletes_list">View Athletes</a>
-            </div>
-            <div class="card">
-                    <h5 class="card-title">Placeholder</h5>
-                    <p class="card-text">See a List of Athletes</p>
-                    <a class="btn btn-primary" href="/athletes/athletes_list">View Athletes</a>
-            </div>
+            <a class="landing-page-button" href="/athletes/athletes_list">
+                <h4 class="landing landing-page-button-title">Athletes</h4>
+                <p class="landing-page-button-description">Click to see a list of Athletes</p>
+            </a>
+            <a class="landing-page-button" href="/athletes/athletes_list">
+                <h4 class="landing landing-page-button-title">Placeholder</h4>
+                <p class="landing-page-button-description">This will take you somewhere</p>
+            </a>
+            <a class="landing-page-button" href="/athletes/athletes_list">
+                <h4 class="landing landing-page-button-title">Placeholder</h4>
+                <p class="landing-page-button-description">This will take you somewhere</p>
+            </a>
+            <a class="landing-page-button" href="/athletes/athletes_list">
+                <h4 class="landing landing-page-button-title">Placeholder</h4>
+                <p class="landing-page-button-description">This will take you somewhere</p>
+            </a>
+            <a class="landing-page-button" href="/athletes/athletes_list">
+                <h4 class="landing landing-page-button-title">Placeholder</h4>
+                <p class="landing-page-button-description">This will take you somewhere</p>
+            </a>
+            <a class="landing-page-button" href="/athletes/athletes_list">
+                <h4 class="landing landing-page-button-title">Placeholder</h4>
+                <p class="landing-page-button-description">This will take you somewhere</p>
+            </a>
+            <a class="landing-page-button" href="/athletes/athletes_list">
+                <h4 class="landing landing-page-button-title">Placeholder</h4>
+                <p class="landing-page-button-description">This will take you somewhere</p>
+            </a>
         </div>
     </div>
 </div>
