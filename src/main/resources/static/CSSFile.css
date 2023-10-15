@@ -1,9 +1,16 @@
 #landing-page {
-    background-color: #7F39FB;
     background-image: url("backgrounds/background1.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom center;
+}
+#athletes-list{
+    background-image: url("backgrounds/background2.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.background{
+    background-color: #7F39FB;
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -29,7 +36,7 @@
     margin: 0;
 }
 
-#page-welcome {
+.page-description {
     font-size: xxx-large;
     color: white;
     text-align: center;
@@ -44,6 +51,24 @@
     margin-left: auto;
     margin-right: auto;
     padding: 3%;
+}
+
+#athletes-list-table-container{
+    background-color: #00C4B4;
+    height: 50%;
+    width: 50%;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+}
+
+.container-label{
+    font-size: xx-large;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin-top: 0;
 }
 
 .grid {
@@ -87,4 +112,17 @@
     font-size: x-large;
     margin-top: 0;
     margin-bottom: 0;
+}
+.table{
+    background: white;
+    font-size: x-large;
+    box-shadow: 3px 3px 5px black;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+.striped-table:nth-child(even){
+    background-color: #E1C8FF;
 }

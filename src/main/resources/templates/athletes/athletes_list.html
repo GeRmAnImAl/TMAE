@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Athlete List</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/CSSFile.css">
 </head>
-<body>
+<body class="background" id="athletes-list">
 <div class="container">
-    <h1 class="mt-5">Here are the Athletes Currently in the Database</h1>
+    <div class="header">
+        <h1 class="headerText">TMAE</h1>
+    </div>
+    <h1 class="page-description">Here are the Athletes Currently in the Database</h1>
 
-    <div>
-        <h2 class="my-4">Athletes</h2>
+    <div id="athletes-list-table-container">
+        <h2 class="container-label">Athletes</h2>
 
-        <table style="border: solid" class="table table-striped">
+        <table style="border: solid" class="table">
             <thead>
-            <tr>
+            <tr class="table-header">
                 <th scope="col">Athlete ID</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
@@ -25,7 +28,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="athlete : ${listAthletes}">
+            <tr class="striped-table" th:each="athlete : ${listAthletes}">
                 <th th:text="${athlete.getAthleteID()}"></th>
                 <th th:text="${athlete.getFirstName()}"></th>
                 <th th:text="${athlete.getLastName()}"></th>
