@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <!-- Meta tags for character set and viewport -->
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Page title and linking to external CSS file -->
     <title>Athlete List</title>
     <link rel="stylesheet" href="/CSSFile.css">
 </head>
 <body class="background" id="athletes-list">
 <div class="container">
+    <!-- Header section -->
     <div class="header">
         <h1 class="headerText">TMAE</h1>
     </div>
+
+    <!-- Page description -->
     <h1 class="page-description">Here are the Athletes Currently in the Database</h1>
 
+    <!-- Athletes list container -->
     <div id="athletes-list-table-container">
-        <h2 class="container-label">Athletes</h2>
+        <!-- Container label -->
+        <h2 class="athletes-list-container-label">Athletes</h2>
 
+        <!-- Table for displaying athlete data -->
         <table style="border: solid" class="table">
             <thead>
+            <!-- Table header -->
             <tr class="table-header">
                 <th scope="col">Athlete ID</th>
                 <th scope="col">First Name</th>
@@ -28,6 +38,7 @@
             </tr>
             </thead>
             <tbody>
+            <!-- Iterate over the list of athletes and display each row -->
             <tr class="striped-table" th:each="athlete : ${listAthletes}">
                 <th th:text="${athlete.getAthleteID()}"></th>
                 <th th:text="${athlete.getFirstName()}"></th>
