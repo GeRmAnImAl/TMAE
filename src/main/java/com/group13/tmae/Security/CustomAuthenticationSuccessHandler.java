@@ -1,9 +1,8 @@
 package com.group13.tmae.Security;
 
-import com.group13.tmae.repository.AppUserRepository;
+import com.group13.tmae.repository.AthleteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -13,21 +12,20 @@ import java.io.IOException;
 
 @Component
 public class CustomAuthenticationSuccessHandler {
-    private AppUserRepository appUserRepository;
+    private AthleteRepository athleteRepository;
 
     /**
      * Constructs a new CustomAuthenticationSuccessHandler.
      *
-     * @param appUserRepository the user repository used to fetch user details.
+     * @param athleteRepository the user repository used to fetch user details.
      */
     @Autowired
-    public CustomAuthenticationSuccessHandler(AppUserRepository appUserRepository) {
-        this.appUserRepository = appUserRepository;
+    public CustomAuthenticationSuccessHandler(AthleteRepository athleteRepository) {
+        this.athleteRepository = athleteRepository;
     }
 
     /**
-     * Handles the behavior after a successful authentication. Redirects users
-     * to specific pages based on whether it's their first time logging in.
+     * Handles the behavior after a successful authentication.
      *
      * @param request        the servlet request.
      * @param response       the servlet response.
@@ -37,6 +35,6 @@ public class CustomAuthenticationSuccessHandler {
      */
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
-        response.sendRedirect(request.getContextPath() + "/"); // Replace "/" with your desired URL.
+        response.sendRedirect(request.getContextPath() + "/landing_page"); // Replace "/" with your desired URL.
     }
 }
