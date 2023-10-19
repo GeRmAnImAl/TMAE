@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <!-- Meta tags for character set and viewport -->
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <!-- Page title and linking to external CSS file -->
     <title>Tournament and Athlete Empowerment</title>
-    <link rel="stylesheet" href="../static/CSSFile.css">
+    <link rel="stylesheet" href="CSSFile.css">
 </head>
 <body id="login-page" class="background">
 <div class="header">
@@ -18,22 +15,18 @@
 <div id="login-box">
     <h2>Login</h2>
     <form id="login-form" action="/login" method="post">
-        <div>
+        <fieldset>
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
             <label class="login-form" for="username">Username</label>
-            <input class="login-form" id="username" type="text" placeholder="Enter Username" name="username" required>
+            <input class="login-form" id="username" type="text" placeholder="Enter Username" name="username" required autocomplete="username">
 
             <label class="login-form" for="password">Password</label>
-            <input class="login-form" id="password" type="password" placeholder="Enter Password" name="password" required>
-
-            <!-- CSRF Token -->
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <input class="login-form" id="password" type="password" placeholder="Enter Password" name="password" required autocomplete="current-password">
 
             <button type="submit">Login</button>
-        </div>
+        </fieldset>
     </form>
-
 </div>
 
 </body>
