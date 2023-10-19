@@ -48,6 +48,22 @@
     background-color: #E1C8FF;
 }
 
+/* ---------- Login Page Elements ---------- */
+
+#login-box{
+    background-color: #00C4B4;
+    height: 50%;
+    width: 30%;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+}
+
+#login-form, input, label{
+    display: block;
+}
+
 /* ---------- Landing Page Elements ---------- */
 
 #landing-page {

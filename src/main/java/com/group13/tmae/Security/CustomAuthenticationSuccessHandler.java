@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @Component
 public class CustomAuthenticationSuccessHandler {
-    private AthleteRepository athleteRepository;
+    private final AthleteRepository athleteRepository;
 
     /**
      * Constructs a new CustomAuthenticationSuccessHandler.
