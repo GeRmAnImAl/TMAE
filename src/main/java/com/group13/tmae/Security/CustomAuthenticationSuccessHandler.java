@@ -3,6 +3,7 @@ package com.group13.tmae.Security;
 import com.group13.tmae.repository.AthleteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -11,12 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-public class CustomAuthenticationSuccessHandler {
+public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     private final AthleteRepository athleteRepository;
 
     /**
      * Constructs a new CustomAuthenticationSuccessHandler.
-     *
      * @param athleteRepository the user repository used to fetch user details.
      */
     @Autowired
@@ -26,7 +26,6 @@ public class CustomAuthenticationSuccessHandler {
 
     /**
      * Handles the behavior after a successful authentication.
-     *
      * @param request        the servlet request.
      * @param response       the servlet response.
      * @param authentication the current authentication object.
