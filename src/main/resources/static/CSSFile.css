@@ -69,6 +69,12 @@
 
 /* ---------- Login Page Elements ---------- */
 
+#login-page{
+    background-image: url("backgrounds/login-background.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #login-box {
     background-color: #00C4B4;
     height: 50%;
@@ -77,6 +83,7 @@
     margin-left: auto;
     margin-right: auto;
     padding: 3%;
+    box-shadow: 5px 5px 5px black;
 }
 
 #login-form-form{
