@@ -1,6 +1,6 @@
 /* ---------- Shared Elements ---------- */
 
-.background{
+.background {
     background-color: #7F39FB;
     margin: 0;
     padding: 0;
@@ -34,7 +34,7 @@
     text-shadow: 3px 3px 3px black;
 }
 
-.table{
+.table {
     background: white;
     font-size: x-large;
     box-shadow: 3px 3px 5px black;
@@ -44,13 +44,32 @@
     border-collapse: collapse;
 }
 
-.striped-table:nth-child(even){
+.striped-table:nth-child(even) {
     background-color: #E1C8FF;
+}
+
+.button {
+    background-color: #BB86FC;
+    text-decoration: none;
+    color: white;
+    box-shadow: 3px 3px 5px black;
+    text-shadow: 2px 2px 4px black;
+    text-align: center;
+    transition-duration: 0.2s;
+}
+
+.button:hover {
+    background-color: #D2AEFE;
+}
+
+.button:active {
+    background-color: #9540FC;
+    box-shadow: inset 2px 2px 4px black;
 }
 
 /* ---------- Login Page Elements ---------- */
 
-#login-box{
+#login-box {
     background-color: #00C4B4;
     height: 50%;
     width: 30%;
@@ -60,8 +79,61 @@
     padding: 3%;
 }
 
-#login-form, input, label{
+#login-form-form{
     display: block;
+}
+
+#login-box-header{
+    font-size: xx-large;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin-top: 0;
+}
+
+.login-form-input-label{
+    margin-left: 5%;
+    font-size: x-large;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+#form-label-two{
+    display: block;
+    margin-top: 5%;
+}
+
+.login-form-input{
+    width: 100%;
+    font-size: x-large;
+    padding: 2% 2%;
+    border-radius: 40px;
+}
+
+#submit-login-button{
+    display: block;
+    height: 50px;
+    width: 70%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    font-size: large;
+}
+
+#cancel-login-button{
+    height: 35px;
+    width: 20%;
+    margin-left: 17%;
+    margin-top: 10%;
+    border-radius: 20px;
+    font-size: large;
+}
+
+#create-new-link{
+    font-size: x-large;
+    margin-left: 5%;
+    color: white;
 }
 
 /* ---------- Landing Page Elements ---------- */
@@ -93,25 +165,10 @@
 
 .landing-page-button {
     display: block;
-    background-color: #BB86FC;
     margin: 5%;
     padding: 3%;
     border-radius: 20px;
-    box-shadow: 3px 3px 5px black;
-    text-decoration: none;
-    color: white;
-    text-shadow: 2px 2px 4px black;
-    text-align: center;
-    transition-duration: 0.2s;
-}
 
-.landing-page-button:hover {
-    background-color: #D2AEFE;
-}
-
-.landing-page-button:active {
-    background-color: #9540FC;
-    box-shadow: inset 2px 2px 4px black;
 }
 
 .landing-page-button-title {
@@ -128,13 +185,13 @@
 
 /* ---------- Athlete List Elements ---------- */
 
-#athletes-list{
+#athletes-list {
     background-image: url("backgrounds/background2.svg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-#athletes-list-table-container{
+#athletes-list-table-container {
     background-color: #00C4B4;
     height: 50%;
     width: 50%;
@@ -144,7 +201,7 @@
     padding: 3%;
 }
 
-.athletes-list-container-label{
+.athletes-list-container-label {
     font-size: xx-large;
     color: white;
     text-align: center;
