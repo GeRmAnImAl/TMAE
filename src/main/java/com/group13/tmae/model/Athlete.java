@@ -87,16 +87,15 @@ public class Athlete implements Serializable {
      * @param losses    The number of losses experienced by the athlete.
      * @param ties      The number of ties (draws) in which the athlete has participated.
      */
-    public Athlete(String userName, String password, String firstName, String lastName, Integer wins, Integer losses,
-                   Integer ties, String affiliation, Integer age, Double weight, String address, String email,
-                   String phoneNumber) {
+    public Athlete(String userName, String password, String firstName, String lastName, String affiliation, Integer age,
+                   Double weight, String address, String email, String phoneNumber) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.wins = wins;
-        this.losses = losses;
-        this.ties = ties;
+        this.wins = 0;
+        this.losses = 0;
+        this.ties = 0;
         this.affiliation = affiliation;
         this.age = age;
         this.weight = weight;

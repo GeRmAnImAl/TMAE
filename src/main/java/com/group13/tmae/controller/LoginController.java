@@ -17,4 +17,9 @@ public class LoginController {
     public String redirectToLogin(){
         return "redirect:/login";
     }
+
+    @GetMapping("/sign_up")
+    public String showSignUpPage(){
+        return "sign_up";
+    }
 }
