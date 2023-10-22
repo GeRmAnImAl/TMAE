@@ -215,3 +215,15 @@
     text-shadow: 2px 2px 2px black;
     margin-top: 0;
 }
+
+/* ---------- Sign Up Page Elements ---------- */
+
+#sign-up-box{
+    background-color: #00C4B4;
+    height: 50%;
+    width: 50%;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+}

@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Tournament and Athlete Empowerment</title>
-  <link rel="stylesheet" href="/CSSFile.css">
+  <link rel="stylesheet" href="/static/CSSFile.css">
 </head>
 <body id="sign-up" class="background">
 <div class="header">
   <h1 class="headerText">TMAE</h1>
 </div>
 
-<h1 class="page-description">Tournament Management and Athlete Empowerment</h1>
+<h1 class="page-description">New Athlete Creation</h1>
 <div id="sign-up-box">
   <h2 id="sign-up-header">Sign Up</h2>
   <form id="sign-up-form" th:action="@{/athlete_profile/saveAthlete}" th:object="${athlete}" method="POST">
@@ -23,7 +23,7 @@
            autocomplete="userName">
 
     <label class="sign-up-form-input-label" id="form-label-two" for="password">Password</label>
-    <input class="login-form-input" id="password" type="password" placeholder="Enter A Password" name="password"
+    <input class="sign-up-form-input" id="password" type="password" placeholder="Enter A Password" name="password"
            required autocomplete="current-password">
 
     <label class="sign-up-form-input-label" for="firstName">First Name</label>
