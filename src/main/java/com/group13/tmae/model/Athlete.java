@@ -82,9 +82,6 @@ public class Athlete implements Serializable {
      *
      * @param firstName The first name of the athlete.
      * @param lastName  The last name of the athlete.
-     * @param wins      The number of wins achieved by the athlete.
-     * @param losses    The number of losses experienced by the athlete.
-     * @param ties      The number of ties (draws) in which the athlete has participated.
      */
     public Athlete(String userName, String password, String firstName, String lastName, String affiliation, Integer age,
                    Double weight, String address, String email, String phoneNumber) {
