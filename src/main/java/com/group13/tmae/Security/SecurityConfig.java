@@ -25,8 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.authenticationSuccessHandler = authenticationSuccessHandler;
     }
 
-    //This is commented out until we actually start creating new users and storing passwords.
-   /* @Override
+
+   @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
@@ -34,17 +34,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * Provides the BCryptPasswordEncoder for password encoding.
      * @return A BCryptPasswordEncoder instance.
-
+    */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }*/
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/resources/static/**").permitAll()
+                .antMatchers("/login", "/sign_up", "/athlete_profile/saveAthlete").permitAll()
+                .antMatchers("src/main/resources/static/**").permitAll()
                 .antMatchers("/").authenticated()
                 .anyRequest().authenticated()
                 .and()

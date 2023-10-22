@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 
@@ -24,6 +25,8 @@ public class AthleteServiceImpl implements AthleteService {
      */
     @Autowired
     private AthleteRepository athleteRepository;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     /**
      * Creates a new athlete in the database.
@@ -32,8 +35,9 @@ public class AthleteServiceImpl implements AthleteService {
      * @return The created Athlete object.
      */
     @Override
-    public Athlete createAthlete(Athlete athlete) {
-        return this.athleteRepository.save(athlete);
+    public void createAthlete(Athlete athlete) {
+        athlete.setPassword(passwordEncoder.encode(athlete.getPassword()));
+        this.athleteRepository.save(athlete);
     }
 
     /**
@@ -64,8 +68,8 @@ public class AthleteServiceImpl implements AthleteService {
      * @return The updated Athlete object.
      */
     @Override
-    public Athlete updateAthlete(Athlete athlete) {
-        return this.athleteRepository.save(athlete);
+    public void updateAthlete(Athlete athlete) {
+        this.athleteRepository.save(athlete);
     }
 
     /**

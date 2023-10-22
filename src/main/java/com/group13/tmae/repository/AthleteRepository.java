@@ -27,5 +27,7 @@ public interface AthleteRepository extends JpaRepository<Athlete, Long> {
     @Override
     Optional<Athlete> findById(Long id);
 
+    Optional<Athlete> findByUserName(String userName);
+
 }
 

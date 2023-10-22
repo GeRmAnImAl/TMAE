@@ -16,7 +16,7 @@ public interface AthleteService {
      * @param athlete The Athlete object to be created.
      * @return The created Athlete object.
      */
-    Athlete createAthlete(Athlete athlete);
+    void createAthlete(Athlete athlete);
 
     /**
      * Retrieves a list of all athletes.
@@ -39,7 +39,7 @@ public interface AthleteService {
      * @param athlete The Athlete object to be updated.
      * @return The updated Athlete object.
      */
-    Athlete updateAthlete(Athlete athlete);
+    void updateAthlete(Athlete athlete);
 
     /**
      * Deletes an athlete by their unique identifier.

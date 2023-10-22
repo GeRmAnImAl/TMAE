@@ -20,7 +20,6 @@ public class Athlete implements Serializable {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NonNull
     private Long athleteID;
 
     @Column(name = "userName")
