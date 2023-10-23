@@ -11,6 +11,10 @@
 .container {
     height: 100%;
     width: 100%;
+    max-width: 1920px;
+    max-height: 1080px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .header {
@@ -220,10 +224,48 @@
 
 #sign-up-box{
     background-color: #00C4B4;
-    height: 50%;
+    height: 100%;
     width: 50%;
     border-radius: 40px;
     margin-left: auto;
     margin-right: auto;
     padding: 3%;
+    box-shadow: 5px 5px 5px black;
 }
+
+#sign-up-header{
+    font-size: xx-large;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin-top: 0;
+}
+
+.sign-up-form-input-label, .sign-up-form-input{
+    display: block;
+}
+
+.sign-up-form-input-label{
+    margin-left: 5%;
+    font-size: x-large;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+.sign-up-form-input{
+    width: 60%;
+    font-size: x-large;
+    padding: 2% 2%;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#submit-sign-up-button, #cancel-sign-up-button{
+    height: 50px;
+    width: 30%;
+    margin-top: 2%;
+    border-radius: 25px;
+    font-size: large;
+}
+
