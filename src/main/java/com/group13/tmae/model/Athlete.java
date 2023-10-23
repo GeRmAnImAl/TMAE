@@ -76,6 +76,9 @@ public class Athlete implements Serializable {
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
+    @Column(name = "photo_data")
+    private byte[] photoData;
+
 
     /**
      * Constructs an athlete with specified details.
@@ -290,6 +293,14 @@ public class Athlete implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public byte[] getPhotoData() {
+        return photoData;
+    }
+
+    public void setPhotoData(byte[] photoData) {
+        this.photoData = photoData;
     }
 }
 
