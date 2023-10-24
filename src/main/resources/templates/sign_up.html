@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Tournament and Athlete Empowerment</title>
-    <link rel="stylesheet" href="/static/CSSFile.css">
+    <link rel="stylesheet" href="/CSSFile.css">
+    <link rel="icon" href="/backgrounds/icon.png">
 </head>
 <body id="sign-up" class="background">
 <div class="header">
@@ -13,65 +14,66 @@
 <div class="container">
     <h1 class="page-description">New Athlete Creation</h1>
     <div id="sign-up-box">
-        <h2 id="sign-up-header">Sign Up</h2>
+        <h2 id="sign-up-header" class="both">Sign Up</h2>
         <form id="sign-up-form" th:action="@{/athlete_profile/saveAthlete}" th:object="${athlete}" method="POST">
 
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
-            <label class="sign-up-form-input-label" for="userName">Username</label>
-            <input class="sign-up-form-input" id="userName" type="text" placeholder="Enter A Username" name="userName"
+            <label class="sign-up-form-input-label both" for="userName">Username</label>
+            <input class="sign-up-form-input both " id="userName" type="text" placeholder="Enter A Username" name="userName"
                    required
                    autocomplete="userName">
 
-            <label class="sign-up-form-input-label" for="password">Password</label>
-            <input class="sign-up-form-input" id="password" type="password" placeholder="Enter A Password"
+            <label class="sign-up-form-input-label both" for="password">Password</label>
+            <input class="sign-up-form-input both" id="password" type="password" placeholder="Enter A Password"
                    name="password"
                    required autocomplete="current-password">
 
-            <label class="sign-up-form-input-label" for="firstName">First Name</label>
-            <input class="sign-up-form-input" id="firstName" type="text" placeholder="Enter Your First Name"
+            <label class="sign-up-form-input-label both" for="firstName">First Name</label>
+            <input class="sign-up-form-input both" id="firstName" type="text" placeholder="Enter Your First Name"
                    name="firstName" required
                    autocomplete="firstName">
 
-            <label class="sign-up-form-input-label" for="lastName">Last Name</label>
-            <input class="sign-up-form-input" id="lastName" type="text" placeholder="Enter Your Last Name"
+            <label class="sign-up-form-input-label both" for="lastName">Last Name</label>
+            <input class="sign-up-form-input both" id="lastName" type="text" placeholder="Enter Your Last Name"
                    name="lastName" required
                    autocomplete="lastName">
 
-            <label class="sign-up-form-input-label" for="affiliation">Affiliation</label>
-            <input class="sign-up-form-input" id="affiliation" type="text"
+            <label class="sign-up-form-input-label both" for="affiliation">Affiliation</label>
+            <input class="sign-up-form-input both" id="affiliation" type="text"
                    placeholder="Enter Your Affiliation, Leave Blank for None" name="affiliation"
                    autocomplete="affiliation">
 
-            <label class="sign-up-form-input-label" for="age">Age</label>
-            <input class="sign-up-form-input" id="age" type="number" placeholder="Enter Your Age" name="age" required
+            <label class="sign-up-form-input-label both" for="age">Age</label>
+            <input class="sign-up-form-input both" id="age" type="number" placeholder="Enter Your Age" name="age" required
                    autocomplete="age">
 
-            <label class="sign-up-form-input-label" for="weight">Weight</label>
-            <input class="sign-up-form-input" id="weight" type="number" placeholder="Enter Your Weight" name="weight"
+            <label class="sign-up-form-input-label both" for="weight">Weight</label>
+            <input class="sign-up-form-input both" id="weight" type="number" placeholder="Enter Your Weight" name="weight"
                    required
                    autocomplete="weight">
 
-            <label class="sign-up-form-input-label" for="address">Address</label>
-            <input class="sign-up-form-input" id="address" type="text" placeholder="Enter Your Address" name="address"
+            <label class="sign-up-form-input-label both" for="address">Address</label>
+            <input class="sign-up-form-input both" id="address" type="text" placeholder="Enter Your Address" name="address"
                    required
                    autocomplete="address">
 
-            <label class="sign-up-form-input-label" for="email">Email</label>
-            <input class="sign-up-form-input" id="email" type="text" placeholder="Enter Your Email Address" name="email"
+            <label class="sign-up-form-input-label both" for="email">Email</label>
+            <input class="sign-up-form-input both" id="email" type="text" placeholder="Enter Your Email Address" name="email"
                    required
                    autocomplete="email">
 
-            <label class="sign-up-form-input-label" for="phoneNumber">Phone Number</label>
-            <input class="sign-up-form-input" id="phoneNumber" type="text" placeholder="Enter Your Phone Number"
+            <label class="sign-up-form-input-label both" for="phoneNumber">Phone Number</label>
+            <input class="sign-up-form-input both" id="phoneNumber" type="text" placeholder="Enter Your Phone Number"
                    name="phoneNumber" required
                    autocomplete="phoneNumber">
-
-            <button class="button" id="submit-sign-up-button" type="submit">Create Account</button>
+            <div id="sign-up-form-buttons">
+            <button class="button both" id="submit-sign-up-button" type="submit">Create Account</button>
 
             <a href="/login">
-                <button class="button" id="cancel-sign-up-button" type="button">Cancel</button>
+                <button class="button both" id="cancel-sign-up-button" type="button">Cancel</button>
             </a>
+            </div>
         </form>
     </div>
 </div>

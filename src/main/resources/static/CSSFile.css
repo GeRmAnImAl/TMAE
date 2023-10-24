@@ -71,6 +71,18 @@
     box-shadow: inset 2px 2px 4px black;
 }
 
+.horizontal{
+    resize: horizontal;
+}
+
+.vertical{
+    resize: vertical;
+}
+
+.both{
+    resize: both;
+}
+
 /* ---------- Login Page Elements ---------- */
 
 #login-page{
@@ -132,19 +144,20 @@
     font-size: large;
 }
 
-#cancel-login-button{
+#cancel-login-button, #create-new-link{
     height: 35px;
     width: 20%;
-    margin-left: 17%;
     margin-top: 10%;
     border-radius: 20px;
     font-size: large;
 }
 
+#cancel-login-button{
+    margin-left: 17%;
+}
+
 #create-new-link{
-    font-size: x-large;
-    margin-left: 5%;
-    color: white;
+    margin-left: 25%;
 }
 
 /* ---------- Landing Page Elements ---------- */
@@ -222,50 +235,74 @@
 
 /* ---------- Sign Up Page Elements ---------- */
 
+#sign-up{
+    background-image: url("backgrounds/SportsBG1.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 #sign-up-box{
     background-color: #00C4B4;
-    height: 100%;
     width: 50%;
+    display: table;
     border-radius: 40px;
     margin-left: auto;
     margin-right: auto;
     padding: 3%;
     box-shadow: 5px 5px 5px black;
+    container-type: size;
 }
 
-#sign-up-header{
-    font-size: xx-large;
+#sign-up-header.both{
+    font-size: 3cqmin;
     color: white;
     text-align: center;
     text-shadow: 2px 2px 2px black;
     margin-top: 0;
+    padding: 0;
 }
 
-.sign-up-form-input-label, .sign-up-form-input{
-    display: block;
+#sign-up-form{
+    display: flex;
+    flex-direction: column;
 }
 
-.sign-up-form-input-label{
-    margin-left: 5%;
-    font-size: x-large;
+.sign-up-form-input-label.both{
+    font-size: max(1cqmin, 20px);
     color: white;
     text-shadow: 2px 2px 2px black;
+    margin-top: 2%;
+    margin-left: 15%;
 }
 
-.sign-up-form-input{
-    width: 60%;
-    font-size: x-large;
-    padding: 2% 2%;
-    border-radius: 40px;
+.sign-up-form-input.both{
+    width: 70%;
+    font-size: max(1cqmin, 20px);
+    min-font-size: 100px;
+    padding: 1%;
+    border-radius: 3cqmax;
     margin-left: auto;
     margin-right: auto;
 }
 
-#submit-sign-up-button, #cancel-sign-up-button{
-    height: 50px;
-    width: 30%;
-    margin-top: 2%;
-    border-radius: 25px;
+#submit-sign-up-button.both, #cancel-sign-up-button.both{
+    height: 60px;
+    width: 50%;
+    margin-top: 5%;
+    border-radius: 30px;
     font-size: large;
+}
+
+#submit-sign-up-button{
+    margin-left: 40%;
+}
+
+#cancel-sign-up-button{
+    margin-left: 10%;
+}
+
+#sign-up-form-buttons {
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
