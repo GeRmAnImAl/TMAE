@@ -2,7 +2,11 @@ package com.group13.tmae.model;
 
 import javax.persistence.*;
 import org.springframework.lang.NonNull;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.Base64;
 
 /**
  * Represents an athlete participating in a sports event.
@@ -79,6 +83,12 @@ public class Athlete implements Serializable {
     @Column(name = "photo_data")
     private byte[] photoData;
 
+    @Transient
+    private MultipartFile photoFile;
+
+    @Column(name = "photo_content_type")
+    private String photoContentType;
+
 
     /**
      * Constructs an athlete with specified details.
@@ -87,7 +97,7 @@ public class Athlete implements Serializable {
      * @param lastName  The last name of the athlete.
      */
     public Athlete(String userName, String password, String firstName, String lastName, String affiliation, Integer age,
-                   Double weight, String address, String email, String phoneNumber) {
+                   Double weight, String address, String email, String phoneNumber, byte[] photoData) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
@@ -101,6 +111,7 @@ public class Athlete implements Serializable {
         this.address = address;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.photoData = photoData;
     }
 
     /**
@@ -301,6 +312,27 @@ public class Athlete implements Serializable {
 
     public void setPhotoData(byte[] photoData) {
         this.photoData = photoData;
+    }
+
+    public String getPhotoDataAsBase64() {
+        return Base64.getEncoder().encodeToString(this.photoData);
+    }
+
+
+    public MultipartFile getPhotoFile() {
+        return photoFile;
+    }
+
+    public void setPhotoFile(MultipartFile photoFile) {
+        this.photoFile = photoFile;
+    }
+
+    public String getPhotoContentType() {
+        return photoContentType;
+    }
+
+    public void setPhotoContentType(String photoContentType) {
+        this.photoContentType = photoContentType;
     }
 }
 
