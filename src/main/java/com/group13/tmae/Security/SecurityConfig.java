@@ -12,6 +12,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+/**
+ * This configuration class extends WebSecurityConfigurerAdapter to customize
+ * Spring Security configurations.
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -19,13 +23,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
     private final CustomAuthenticationSuccessHandler authenticationSuccessHandler;
 
+    /**
+     * Constructs a SecurityConfig with the specified UserDetailsService and
+     * CustomAuthenticationSuccessHandler.
+     * @param userDetailsService        the service to fetch user details
+     * @param authenticationSuccessHandler the handler for authentication success events
+     */
     @Autowired
     public SecurityConfig(@Lazy UserDetailsService userDetailsService, CustomAuthenticationSuccessHandler authenticationSuccessHandler) {
         this.userDetailsService = userDetailsService;
         this.authenticationSuccessHandler = authenticationSuccessHandler;
     }
 
-
+    /**
+     * Configures the specified AuthenticationManagerBuilder to use the custom
+     * UserDetailsService and a BCryptPasswordEncoder.
+     * @param auth          the AuthenticationManagerBuilder to configure
+     * @throws Exception    if an error occurs
+     */
    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
@@ -40,6 +55,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Configures the specified HttpSecurity object to customize the security
+     * settings. This includes configuring URL access permissions and login settings.
+     * @param http          the HttpSecurity object to configure
+     * @throws Exception    if an error occurs
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
