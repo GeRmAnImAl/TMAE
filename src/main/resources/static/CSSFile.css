@@ -74,7 +74,7 @@
 /* ---------- Login Page Elements ---------- */
 
 #login-page{
-    background-image: url("backgrounds/login-background.svg");
+    background-image: url("backgrounds/SportsBG1.svg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -150,7 +150,7 @@
 /* ---------- Landing Page Elements ---------- */
 
 #landing-page {
-    background-image: url("backgrounds/background1.svg");
+    background-image: url("backgrounds/SportsBG2.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom center;
@@ -197,7 +197,7 @@
 /* ---------- Athlete List Elements ---------- */
 
 #athletes-list {
-    background-image: url("backgrounds/background2.svg");
+    background-image: url("backgrounds/SportsBG3.svg");
     background-repeat: no-repeat;
     background-size: cover;
 }
