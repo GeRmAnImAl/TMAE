@@ -308,3 +308,47 @@
 
 /* ---------- Athlete Page Elements ---------- */
 
+#athlete-page{
+    background-image: url("backgrounds/SportsBG3.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#athlete-page-top-grid{
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+#athlete-page-photo-box{
+    background-color: #00C4B4;
+    height: 400px;
+    width: 80%;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    box-shadow: 5px 5px 5px black;
+}
+
+#athlete-page-win-loss-box{
+    background-color: #00C4B4;
+    height: 400px;
+    width: 80%;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    box-shadow: 5px 5px 5px black;
+}
+
+#athlete-page-athlete-info-box{
+    background-color: #00C4B4;
+    height: 400px;
+    width: 80%;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    box-shadow: 5px 5px 5px black;
+}
