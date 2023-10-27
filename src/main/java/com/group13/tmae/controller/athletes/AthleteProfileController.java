@@ -4,6 +4,7 @@ import com.group13.tmae.model.Athlete;
 import com.group13.tmae.repository.AthleteRepository;
 import com.group13.tmae.service.AthleteService;
 import com.group13.tmae.service.Impl.CustomUserDetailsService;
+import com.group13.tmae.service.Impl.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,6 +57,13 @@ public class AthleteProfileController {
         model.addAttribute("photoContentType", athlete.getPhotoContentType());
 
         //TODO change this string to the actual link for the athlete profile page.
-        return "link_to_athlete_page";
+        return "/";
+    }
+
+    @GetMapping("/userlogin")
+    public String userProfile(Model model){
+        Athlete user = this.customUserDetailsService.getLoggedInUser();
+        model.addAttribute("loggedInFullName", user.getUserName());
+        return "athlete_login_page";
     }
 }

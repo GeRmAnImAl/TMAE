@@ -73,7 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //Go to landing page after login
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/landing_page", true)
+                .defaultSuccessUrl("/", true)
                 .successHandler(authenticationSuccessHandler);
     }
 
