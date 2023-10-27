@@ -7,7 +7,7 @@
 
     <!-- Page title and linking to external CSS file -->
     <title>Tournament and Athlete Empowerment</title>
-    <link rel="stylesheet" href="/static/CSSFile.css">
+    <link rel="stylesheet" href="/CSSFile.css">
     <link rel="icon" href="/backgrounds/icon.png">
 </head>
 <body id="athlete-page" class="background">
@@ -16,13 +16,31 @@
 </div>
 <div class="container">
     <div id="athlete-page-welcome-div">
-        <h2>Welcome, <h2 th:text="${loggedInFullName}"></h2>!</h2>
+        <h2 th:text="${customWelcome}"</h2>
     </div>
     <div id="athlete-page-top-grid">
         <div id="athlete-page-photo-box">
-            <img>
+            <img th:src="${photo}">
         </div>
         <div id="athlete-page-win-loss-box">
+            <div class="user-win-loss-tie-container">
+                <h3>Wins</h3>
+                <div class="user-win-loss-tie-box">
+                    <p th:text="${wins}"></p>
+                </div>
+            </div>
+            <div class="user-win-loss-tie-container">
+                <h3>Losses</h3>
+                <div class="user-win-loss-tie-box">
+                    <p th:text="${losses}"></p>
+                </div>
+            </div>
+            <div class="user-win-loss-tie-container">
+                <h3>Ties</h3>
+                <div class="user-win-loss-ties-box">
+                    <p th:text="${ties}"></p>
+                </div>
+            </div>
         </div>
         <div id="athlete-page-athlete-info-box">
         </div>

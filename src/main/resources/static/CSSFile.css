@@ -314,6 +314,14 @@
     background-position: center;
 }
 
+#athlete-page-welcome-div{
+    font-size: x-large;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin-top: 0;
+}
+
 #athlete-page-top-grid{
     margin-top: 5%;
     display: grid;

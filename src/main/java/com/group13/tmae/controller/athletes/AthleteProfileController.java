@@ -63,7 +63,21 @@ public class AthleteProfileController {
     @GetMapping("/userlogin")
     public String userProfile(Model model){
         Athlete user = this.customUserDetailsService.getLoggedInUser();
-        model.addAttribute("loggedInFullName", user.getUserName());
+        String welcome = "Welcome " + user.getFirstName() + " " + user.getLastName() + "!";
+        model.addAttribute("customWelcome", welcome);
+        model.addAttribute("wins", user.getWins());
+        model.addAttribute("losses", user.getLosses());
+        model.addAttribute("ties", user.getTies());
+        model.addAttribute("weight", user.getWeight());
+        model.addAttribute("age", user.getAge());
+        model.addAttribute("affiliation", user.getAffiliation());
+
+        if(user.getPhotoFile() != null){
+            //model.addAttribute("photo", user.getPhotoFile());
+        }
+        else{
+            model.addAttribute("photo", "/backgrounds/no-photo-icon.png");
+        }
         return "athlete_login_page";
     }
 }
