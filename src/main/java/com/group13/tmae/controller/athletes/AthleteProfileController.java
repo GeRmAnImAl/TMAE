@@ -3,6 +3,7 @@ package com.group13.tmae.controller.athletes;
 import com.group13.tmae.model.Athlete;
 import com.group13.tmae.repository.AthleteRepository;
 import com.group13.tmae.service.AthleteService;
+import com.group13.tmae.service.Impl.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,8 @@ public class AthleteProfileController {
     private AthleteService athleteService;
     @Autowired
     private AthleteRepository athleteRepository;
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService;
 
     /**
      * Handles the submission of a form to create or update an athlete's information, including uploading a photo.
