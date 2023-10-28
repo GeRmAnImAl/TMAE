@@ -306,7 +306,7 @@
     grid-template-columns: 50% 50%;
 }
 
-/* ---------- Athlete Page Elements ---------- */
+/* ---------- User Profile Page Elements ---------- */
 
 #athlete-page{
     background-image: url("backgrounds/SportsBG3.svg");
@@ -355,6 +355,18 @@
     height: 400px;
     width: 80%;
     border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    box-shadow: 5px 5px 5px black;
+}
+
+#user-page-events-box{
+    background-color: #00C4B4;
+    height: 400px;
+    width: 80%;
+    border-radius: 40px;
+    margin-top: 3%;
     margin-left: auto;
     margin-right: auto;
     padding: 3%;

@@ -4,7 +4,6 @@ import com.group13.tmae.model.Athlete;
 import com.group13.tmae.repository.AthleteRepository;
 import com.group13.tmae.service.AthleteService;
 import com.group13.tmae.service.Impl.CustomUserDetailsService;
-import com.group13.tmae.service.Impl.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -78,6 +77,6 @@ public class AthleteProfileController {
         else{
             model.addAttribute("photo", "/backgrounds/no-photo-icon.png");
         }
-        return "athlete_login_page";
+        return "user-profile-page";
     }
 }
