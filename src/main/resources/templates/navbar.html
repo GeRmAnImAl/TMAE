@@ -2,20 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Navigation bar</title>
+  <link rel="stylesheet" href="/CSSFile.css">
 </head>
 <body>
-<div th:fragment="navbar" id="navbar">
-  <nav class="nav nav-pills nav-justified">
-    <a th:classappend="${currentPage == '/dashboard' ? 'active' : ''}" class="nav-link" th:href="@{/dashboard}">Home</a>
-    <a th:classappend="${currentPage == '/employees/list' ? 'active' : ''}" class="nav-link" th:href="@{/employees/list}">Employees</a>
-    <a th:classappend="${currentPage == '/payroll/payroll' ? 'active' : ''}" class="nav-link" th:href="@{/payroll/payroll}">Payroll</a>
-    <a th:classappend="${currentPage == '/pto/ptorequests' ? 'active' : ''}" class="nav-link" th:href="@{/pto/ptorequests}">Paid Time Off</a>
-    <a th:classappend="${currentPage == '/timesheets/all' ? 'active' : ''}" class="nav-link" th:href="@{/timesheets/all}">Time Sheets</a>
-    <a th:classappend="${currentPage == '/training/training' ? 'active' : ''}" class="nav-link" th:href="@{/training/training}">Training</a>
-    <a th:classappend="${currentPage == '/messages/messages' ? 'active' : ''}" class="nav-link" th:href="@{/messages/messages}">Messages</a>
-    <a th:classappend="${currentPage == '/notifications/notifications' ? 'active' : ''}" class="nav-link" th:href="@{/notifications/notifications}">Notifications</a>
-    <a th:classappend="${currentPage == '/tasks/tasks' ? 'active' : ''}" class="nav-link" th:href="@{/tasks/tasks}">Tasks</a>
-    <a th:classappend="${currentPage == '/payments/paystubs' ? 'active' : ''}" class="nav-link" th:href="@{/payments/paystubs}">Paystubs</a>
+<div th:fragment="navbar" id="navbar-div">
+  <nav id="navbar-nav">
+    <a th:classappend="${currentPage == '/athlete_profile/userlogin' ? 'active' : ''}" class="nav-link" th:href="@{/athlete_profile/userlogin}">User Profile</a>
+    <a th:classappend="${currentPage == 'tournaments/creation' ? 'active' : ''}" class="nav-link" th:href="@{/tournamants/creation}">Tournament Creation</a>
+    <a th:classappend="${currentPage == '/athletes/athletes_list' ? 'active' : ''}" class="nav-link" th:href="@{/athletes/athletes_list}">Athletes List</a>
+    <a th:classappend="${currentPage == '/landing_page' ? 'active' : ''}" class="nav-link" th:href="@{/landing_page}">Landing Page</a>
     <a class="nav-link" th:href="@{/logout}">Logout</a>
   </nav>
 </div>

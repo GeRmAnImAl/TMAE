@@ -83,6 +83,28 @@
     resize: both;
 }
 
+.nav-link{
+    padding: 0.5%;
+    background-color: #9540FC;
+    box-shadow: 2px 2px 4px black;
+    font-size: large;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    border-radius: 25px;
+    text-decoration: none;
+}
+
+#navbar-nav{
+    background-color: #00C4B4;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: .1%;
+    padding-bottom: .1%;
+    display: flex;
+    justify-content: space-between;
+}
+
 /* ---------- Login Page Elements ---------- */
 
 #login-page{
