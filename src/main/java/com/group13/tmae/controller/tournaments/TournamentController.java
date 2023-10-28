@@ -29,6 +29,7 @@ public class TournamentController {
     @GetMapping("/tournament/{id}")
     public String showTournamentPage(@PathVariable(value = "id") Long id, Model model){
         Tournament tournament = tournamentService.getTournamentById(id);
+        //TODO implement the logic to display tournament information.
         //TODO change this string to the actual link.
         return "link to tournament page";
     }
