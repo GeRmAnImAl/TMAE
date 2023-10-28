@@ -43,11 +43,41 @@
             </div>
         </div>
         <div id="athlete-page-athlete-info-box">
+            <div class="user-page-stats-div">
+                <h4>Age</h4>
+                <div class="user-page-stats-box">
+                    <p th:text="${age}"></p>
+                </div>
+            </div>
+            <div class="user-page-stats-div">
+                <h4>Weight</h4>
+                <div class="user-page-stats-box">
+                    <p th:text="${weight}"></p>
+                </div>
+            </div>
+            <div class="user-page-stats-div">
+                <h4>Affiliation</h4>
+                <div class="user-page-stats-box">
+                    <p th:text="${affiliation}"></p>
+                </div>
+            </div>
         </div>
     </div>
     <div id="athlete-page-bottom-grid">
-        <div id="athlete-page-tournaments-box">
-
+        <div id="user-page-events-box">
+            <table class="table">
+                <thead>
+                <!-- Table header -->
+                <tr class="table-header">
+                    <th scope="col">Event</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="striped-table" th:each="event : ${listEvents}">
+                    <th th:text="placeholder"></th>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
