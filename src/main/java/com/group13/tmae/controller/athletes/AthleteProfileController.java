@@ -72,7 +72,7 @@ public class AthleteProfileController {
         model.addAttribute("affiliation", user.getAffiliation());
 
         if(user.getPhotoFile() != null){
-            //model.addAttribute("photo", user.getPhotoFile());
+            model.addAttribute("photo", user.getPhotoFile());
         }
         else{
             model.addAttribute("photo", "/backgrounds/no-photo-icon.png");
