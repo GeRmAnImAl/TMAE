@@ -24,22 +24,24 @@
             <img th:src="${photo}">
         </div>
         <div id="athlete-page-win-loss-box">
-            <div class="user-win-loss-tie-container">
-                <h3>Wins</h3>
-                <div class="user-win-loss-tie-box">
-                    <p th:text="${wins}"></p>
+            <div id="win-loss-tie-row">
+                <div class="user-win-loss-tie-container">
+                    <h3>Wins</h3>
+                    <div class="user-win-loss-tie-box">
+                        <p th:text="${wins}"></p>
+                    </div>
                 </div>
-            </div>
-            <div class="user-win-loss-tie-container">
-                <h3>Losses</h3>
-                <div class="user-win-loss-tie-box">
-                    <p th:text="${losses}"></p>
+                <div class="user-win-loss-tie-container">
+                    <h3>Losses</h3>
+                    <div class="user-win-loss-tie-box">
+                        <p th:text="${losses}"></p>
+                    </div>
                 </div>
-            </div>
-            <div class="user-win-loss-tie-container">
-                <h3>Ties</h3>
-                <div class="user-win-loss-ties-box">
-                    <p th:text="${ties}"></p>
+                <div class="user-win-loss-tie-container">
+                    <h3>Ties</h3>
+                    <div class="user-win-loss-tie-box">
+                        <p th:text="${ties}"></p>
+                    </div>
                 </div>
             </div>
         </div>

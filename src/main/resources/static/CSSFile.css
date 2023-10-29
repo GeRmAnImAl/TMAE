@@ -72,24 +72,24 @@
     box-shadow: inset 2px 2px 4px black;
 }
 
-.horizontal{
+.horizontal {
     resize: horizontal;
 }
 
-.vertical{
+.vertical {
     resize: vertical;
 }
 
-.both{
+.both {
     resize: both;
 }
 
-.nav-link{
+.nav-link {
     padding: 0.5%;
     border-radius: 25px;
 }
 
-#navbar-nav{
+#navbar-nav {
     background-color: #00C4B4;
     padding-left: 10%;
     padding-right: 10%;
@@ -101,7 +101,7 @@
 
 /* ---------- Login Page Elements ---------- */
 
-#login-page{
+#login-page {
     background-image: url("backgrounds/SportsBG1.svg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -118,11 +118,11 @@
     box-shadow: 5px 5px 5px black;
 }
 
-#login-form-form{
+#login-form-form {
     display: block;
 }
 
-#login-box-header{
+#login-box-header {
     font-size: xx-large;
     color: white;
     text-align: center;
@@ -130,26 +130,26 @@
     margin-top: 0;
 }
 
-.login-form-input-label{
+.login-form-input-label {
     margin-left: 5%;
     font-size: x-large;
     color: white;
     text-shadow: 2px 2px 2px black;
 }
 
-#form-label-two{
+#form-label-two {
     display: block;
     margin-top: 5%;
 }
 
-.login-form-input{
+.login-form-input {
     width: 100%;
     font-size: x-large;
     padding: 2% 2%;
     border-radius: 40px;
 }
 
-#submit-login-button{
+#submit-login-button {
     display: block;
     height: 50px;
     width: 70%;
@@ -160,7 +160,7 @@
     font-size: large;
 }
 
-#cancel-login-button, #create-new-link{
+#cancel-login-button, #create-new-link {
     height: 35px;
     width: 20%;
     margin-top: 10%;
@@ -168,11 +168,11 @@
     font-size: large;
 }
 
-#cancel-login-button{
+#cancel-login-button {
     margin-left: 17%;
 }
 
-#create-new-link{
+#create-new-link {
     margin-left: 25%;
 }
 
@@ -251,13 +251,13 @@
 
 /* ---------- Sign Up Page Elements ---------- */
 
-#sign-up{
+#sign-up {
     background-image: url("backgrounds/SportsBG1.svg");
     background-repeat: no-repeat;
     background-position: center;
 }
 
-#sign-up-box{
+#sign-up-box {
     background-color: #00C4B4;
     width: 50%;
     display: table;
@@ -269,7 +269,7 @@
     container-type: size;
 }
 
-#sign-up-header.both{
+#sign-up-header.both {
     font-size: 3cqmin;
     color: white;
     text-align: center;
@@ -278,12 +278,12 @@
     padding: 0;
 }
 
-#sign-up-form{
+#sign-up-form {
     display: flex;
     flex-direction: column;
 }
 
-.sign-up-form-input-label.both{
+.sign-up-form-input-label.both {
     font-size: max(1cqmin, 20px);
     color: white;
     text-shadow: 2px 2px 2px black;
@@ -291,7 +291,7 @@
     margin-left: 15%;
 }
 
-.sign-up-form-input.both{
+.sign-up-form-input.both {
     width: 70%;
     font-size: max(1cqmin, 20px);
     min-font-size: 100px;
@@ -301,7 +301,7 @@
     margin-right: auto;
 }
 
-#submit-sign-up-button.both, #cancel-sign-up-button.both{
+#submit-sign-up-button.both, #cancel-sign-up-button.both {
     height: 60px;
     width: 50%;
     margin-top: 5%;
@@ -309,11 +309,11 @@
     font-size: large;
 }
 
-#submit-sign-up-button{
+#submit-sign-up-button {
     margin-left: 40%;
 }
 
-#cancel-sign-up-button{
+#cancel-sign-up-button {
     margin-left: 10%;
 }
 
@@ -324,13 +324,13 @@
 
 /* ---------- User Profile Page Elements ---------- */
 
-#athlete-page{
+#athlete-page {
     background-image: url("backgrounds/SportsBG3.svg");
     background-repeat: no-repeat;
     background-position: center;
 }
 
-#athlete-page-welcome-div{
+#athlete-page-welcome-div {
     font-size: x-large;
     color: white;
     text-align: center;
@@ -338,13 +338,13 @@
     margin-top: 0;
 }
 
-#athlete-page-top-grid{
+#athlete-page-top-grid {
     margin-top: 5%;
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
 }
 
-#athlete-page-photo-box{
+#athlete-page-photo-box {
     background-color: #00C4B4;
     height: 400px;
     width: 80%;
@@ -355,7 +355,45 @@
     box-shadow: 5px 5px 5px black;
 }
 
-#athlete-page-win-loss-box{
+#athlete-page-win-loss-box {
+    background-color: #00C4B4;
+    height: 300px;
+    width: 80%;
+    border-radius: 40px;
+    margin: auto;
+    padding: 1%;
+    box-shadow: 5px 5px 5px black;
+    display: inline;
+}
+
+#win-loss-tie-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
+
+}
+
+.user-win-loss-tie-container{
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    font-size: xx-large;
+}
+
+.user-win-loss-tie-box{
+    background-color: white;
+    border-radius: 15px;
+    height: 80px;
+    box-shadow: 3px 3px 3px black;
+}
+
+.user-win-loss-tie-box p{
+    font-size: xx-large;
+    color: black;
+    margin: auto;
+}
+
+#athlete-page-athlete-info-box {
     background-color: #00C4B4;
     height: 400px;
     width: 80%;
@@ -366,18 +404,7 @@
     box-shadow: 5px 5px 5px black;
 }
 
-#athlete-page-athlete-info-box{
-    background-color: #00C4B4;
-    height: 400px;
-    width: 80%;
-    border-radius: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 3%;
-    box-shadow: 5px 5px 5px black;
-}
-
-#user-page-events-box{
+#user-page-events-box {
     background-color: #00C4B4;
     height: 400px;
     width: 80%;
@@ -391,13 +418,13 @@
 
 /* ---------- Tournament Creation Page Elements ---------- */
 
-#tournament-creation-page{
+#tournament-creation-page {
     background-image: url("backgrounds/SportsBG4.svg");
     background-repeat: no-repeat;
     background-position: center;
 }
 
-#tournament-creation-card{
+#tournament-creation-card {
     background-color: #00C4B4;
     width: 50%;
     display: table;
@@ -409,12 +436,12 @@
     container-type: size;
 }
 
-#tournament-creation-form{
+#tournament-creation-form {
     display: flex;
     flex-direction: column;
 }
 
-.tournament-creation-form-input-label.both{
+.tournament-creation-form-input-label.both {
     font-size: max(1cqmin, 20px);
     color: white;
     text-shadow: 2px 2px 2px black;
@@ -422,7 +449,7 @@
     margin-left: 15%;
 }
 
-.tournament-creation-form-input.both{
+.tournament-creation-form-input.both {
     width: 70%;
     font-size: max(1cqmin, 20px);
     min-font-size: 100px;
@@ -432,7 +459,7 @@
     margin-right: auto;
 }
 
-#submit-tournament-creation-button.both, #cancel-tournament-creation-button.both{
+#submit-tournament-creation-button.both, #cancel-tournament-creation-button.both {
     height: 60px;
     width: 50%;
     margin-top: 5%;
@@ -440,11 +467,11 @@
     font-size: large;
 }
 
-#submit-tournament-creation-button{
+#submit-tournament-creation-button {
     margin-left: 40%;
 }
 
-#cancel-tournament-creation-button{
+#cancel-tournament-creation-button {
     margin-left: 10%;
 }
 
@@ -455,13 +482,13 @@
 
 /* ----------- All Tournaments Page ---------- */
 
-#all-tournaments-list{
+#all-tournaments-list {
     background-image: url("backgrounds/SportsBG1.svg");
     background-repeat: no-repeat;
     background-position: center;
 }
 
-#all-tournaments-list-table-card{
+#all-tournaments-list-table-card {
     background-color: #00C4B4;
     width: 80%;
     display: table;
