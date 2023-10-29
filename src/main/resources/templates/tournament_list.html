@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Meta tags for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Page title and linking to external CSS file -->
+    <title>Tournament Management and Athlete Empowerment</title>
+    <link rel="stylesheet" href="/CSSFile.css">
+    <link rel="icon" href="/backgrounds/icon.png">
+</head>
+<body id="all-tournaments-list" class="background">
+<div class="container">
+    <!-- Header section -->
+    <div class="header">
+        <h1 class="headerText">Tournament Management and Athlete Empowerment</h1>
+    </div>
+
+    <div th:include="/navbar :: navbar"></div>
+
+    <!-- Page description -->
+    <h1 class="page-description">All Tournaments</h1>
+
+    <div id="all-tournaments-list-table-card">
+        <!-- Container label -->
+        <table class="table">
+            <thead>
+            <!-- Table header -->
+            <tr class="table-header">
+                <th scope="col">Name</th>
+                <th scope="col">Location</th>
+                <th scope="col">Max Participants</th>
+                <th scope="col">Link</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Registration Deadline</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="striped-table" th:each="tournament : ${listAllTournaments}">
+                <th th:text="${tournament.getTournamentName()}"></th>
+                <th th:text="${tournament.getLocation()}"></th>
+                <th th:text="${tournament.getMaxNumParticipants()}"></th>
+                <th th:text="${tournament.getWebsiteLink()}"></th>
+                <th th:text="${#temporals.format(tournament.getStartDate(), 'MM/dd/yyyy')}"></th>
+                <th th:text="${#temporals.format(tournament.getEndDate(), 'MM/dd/yyyy')}"></th>
+                <th th:text="${#temporals.format(tournament.getRegistrationDeadline(), 'MM/dd/yyyy')}"></th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

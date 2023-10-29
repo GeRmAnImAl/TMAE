@@ -21,9 +21,9 @@ public class TournamentController {
 
     @PostMapping("/saveTournament")
     public String saveTournament(@ModelAttribute("tournament") Tournament tournament) {
-        System.out.println(tournament.getStartDate().toString());
         tournamentService.createTournament(tournament);
-        return "redirect:/landing_page";
+
+        return "redirect:/tournament/listAllTournaments";
     }
 
     @GetMapping("/tournament/{id}")
@@ -38,6 +38,13 @@ public class TournamentController {
     public String createEvent(Model model) {
 
         return "/event_creation";
+    }
+
+    @GetMapping("/listAllTournaments")
+    public String showAllTournaments(Model model){
+        model.addAttribute("listAllTournaments", this.tournamentService.getAllTournaments());
+
+        return "/tournament_list";
     }
 
 }
