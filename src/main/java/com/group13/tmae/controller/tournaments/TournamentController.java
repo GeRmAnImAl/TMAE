@@ -34,6 +34,9 @@ public class TournamentController {
         return "link to tournament page";
     }
 
-
+    @GetMapping("/creation")
+    public String createEvent(Model model){
+        return "/event_creation";
+    }
 
 }

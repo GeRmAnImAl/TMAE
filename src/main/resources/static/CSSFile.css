@@ -394,3 +394,67 @@
     padding: 3%;
     box-shadow: 5px 5px 5px black;
 }
+
+/* ---------- Tournament Creation Page Elements ---------- */
+
+#tournament-creation-page{
+    background-image: url("backgrounds/SportsBG4.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#tournament-creation-card{
+    background-color: #00C4B4;
+    width: 50%;
+    display: table;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    box-shadow: 5px 5px 5px black;
+    container-type: size;
+}
+
+#tournament-creation-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.tournament-creation-form-input-label.both{
+    font-size: max(1cqmin, 20px);
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    margin-top: 2%;
+    margin-left: 15%;
+}
+
+.tournament-creation-form-input.both{
+    width: 70%;
+    font-size: max(1cqmin, 20px);
+    min-font-size: 100px;
+    padding: 1%;
+    border-radius: 3cqmax;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#submit-tournament-creation-button.both, #cancel-tournament-creation-button.both{
+    height: 60px;
+    width: 50%;
+    margin-top: 5%;
+    border-radius: 30px;
+    font-size: large;
+}
+
+#submit-tournament-creation-button{
+    margin-left: 40%;
+}
+
+#cancel-tournament-creation-button{
+    margin-left: 10%;
+}
+
+#tournament-creation-form-buttons {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
