@@ -7,11 +7,11 @@
 <body>
 <div th:fragment="navbar" id="navbar-div">
   <nav id="navbar-nav">
-    <a th:classappend="${currentPage == '/athlete_profile/userlogin' ? 'active' : ''}" class="nav-link" th:href="@{/athlete_profile/userlogin}">User Profile</a>
-    <a th:classappend="${currentPage == '/tournament/creation' ? 'active' : ''}" class="nav-link" th:href="@{/tournament/creation}">Tournament Creation</a>
-    <a th:classappend="${currentPage == '/athletes/athletes_list' ? 'active' : ''}" class="nav-link" th:href="@{/athletes/athletes_list}">Athletes List</a>
-    <a th:classappend="${currentPage == '/landing_page' ? 'active' : ''}" class="nav-link" th:href="@{/landing_page}">Landing Page</a>
-    <a class="nav-link" th:href="@{/logout}">Logout</a>
+    <a th:classappend="${currentPage == '/athlete_profile/userlogin' ? 'active' : ''}" class="nav-link button" th:href="@{/athlete_profile/userlogin}">User Profile</a>
+    <a th:classappend="${currentPage == '/tournament/creation' ? 'active' : ''}" class="nav-link button" th:href="@{/tournament/creation}">Tournament Creation</a>
+    <a th:classappend="${currentPage == '/athletes/athletes_list' ? 'active' : ''}" class="nav-link button" th:href="@{/athletes/athletes_list}">Athletes List</a>
+    <a th:classappend="${currentPage == '/landing_page' ? 'active' : ''}" class="nav-link button" th:href="@{/landing_page}">Landing Page</a>
+    <a class="nav-link button" th:href="@{/logout}">Logout</a>
   </nav>
 </div>
 </body>
