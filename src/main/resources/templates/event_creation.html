@@ -23,29 +23,29 @@
             <!input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
             <label class="tournament-creation-form-input-label both" for="tournamentName">Tournament Name</label>
-            <input class="tournament-creation-form-input both " id="tournamentName" type="text" placeholder="Enter Tournament Name" name="tournament_name"
+            <input class="tournament-creation-form-input both " id="tournamentName" type="text" placeholder="Enter Tournament Name" name="tournamentName"
                    required
-                   autocomplete="tournament_name">
+                   autocomplete="tournamentName">
             <label class="tournament-creation-form-input-label both" for="tournamentLocation">Location</label>
             <input class="tournament-creation-form-input both " id="tournamentLocation" type="text" placeholder="Enter Tournament Location" name="location"
                    required
                    autocomplete="location">
             <label class="tournament-creation-form-input-label both" for="tournamentWebsite">Website</label>
-            <input class="tournament-creation-form-input both " id="tournamentWebsite" type="text" placeholder="Enter Tournament Website" name="event_website_link"
-                   autocomplete="event_website_link">
+            <input class="tournament-creation-form-input both " id="tournamentWebsite" type="text" placeholder="Enter Tournament Website" name="websiteLink"
+                   autocomplete="websiteLink">
             <label class="tournament-creation-form-input-label both" for="tournamentMaxParticipants">Max Participants</label>
-            <input class="tournament-creation-form-input both " id="tournamentMaxParticipants" type="number" placeholder="0" name="max_num_participants"
+            <input class="tournament-creation-form-input both " id="tournamentMaxParticipants" type="number" placeholder="0" name="maxNumParticipants"
                    autocomplete="max_num_participants">
             <label class="tournament-creation-form-input-label both" for="tournamentStartDate">Start Date</label>
-            <input class="tournament-creation-form-input both " id="tournamentStartDate" type="date" placeholder="MM/DD/YYYY" name="start_date"
+            <input class="tournament-creation-form-input both " id="tournamentStartDate" type="date" placeholder="MM/DD/YYYY" name="startDate"
                    required
                    autocomplete="start_date">
             <label class="tournament-creation-form-input-label both" for="tournamentEndDate">End Date</label>
-            <input class="tournament-creation-form-input both " id="tournamentEndDate" type="date" placeholder="MM/DD/YYYY" name="end_date"
+            <input class="tournament-creation-form-input both " id="tournamentEndDate" type="date" placeholder="MM/DD/YYYY" name="endDate"
                    required
                    autocomplete="end_date">
             <label class="tournament-creation-form-input-label both" for="tournamentRegistrationDate">Register By</label>
-            <input class="tournament-creation-form-input both " id="tournamentRegistrationDate" type="date" placeholder="MM/DD/YYYY" name="registration_deadline"
+            <input class="tournament-creation-form-input both " id="tournamentRegistrationDate" type="date" placeholder="MM/DD/YYYY" name="registrationDeadline"
                    required
                    autocomplete="registration_deadline">
             <div id="tournament-creation-form-buttons">

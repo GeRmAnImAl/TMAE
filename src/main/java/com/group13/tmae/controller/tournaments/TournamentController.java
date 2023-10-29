@@ -23,7 +23,7 @@ public class TournamentController {
     public String saveTournament(@ModelAttribute("tournament")Tournament tournament){
         tournamentService.createTournament(tournament);
         //TODO change this string to the actual link.
-        return "link to tournament page";
+        return "redirect:/landing_page";
     }
 
     @GetMapping("/tournament/{id}")

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tournaments")
-public class Tournament {
+public class  Tournament {
     /**
      * The unique identifier for the tournament. Generated automatically by the database.
      */
