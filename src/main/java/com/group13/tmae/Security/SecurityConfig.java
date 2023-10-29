@@ -74,7 +74,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/", true)
-                .successHandler(authenticationSuccessHandler);
+                .successHandler(authenticationSuccessHandler)
+                .and()
+                .logout()
+                .logoutUrl("/logout") // Logout URL
+                .invalidateHttpSession(true) // Invalidate user session
+                .clearAuthentication(true) // Clear user authentication
+                .permitAll();
     }
 
 

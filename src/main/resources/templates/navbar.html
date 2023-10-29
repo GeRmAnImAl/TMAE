@@ -12,7 +12,10 @@
     <a th:classappend="${currentPage == '/tournament/creation' ? 'active' : ''}" class="nav-link button" th:href="@{/tournament/creation}">Tournament Creation</a>
     <a th:classappend="${currentPage == '/athletes/athletes_list' ? 'active' : ''}" class="nav-link button" th:href="@{/athletes/athletes_list}">Athletes List</a>
     <a th:classappend="${currentPage == '/landing_page' ? 'active' : ''}" class="nav-link button" th:href="@{/landing_page}">Landing Page</a>
-    <a class="nav-link button" th:href="@{/logout}">Logout</a>
+    <!-- <a class="nav-link button" th:href="@{/logout}">Logout</a> -->
+    <form th:action="@{/logout}" method="post">
+      <input type="submit" value="Logout"/>
+    </form>
   </nav>
 </div>
 </body>
