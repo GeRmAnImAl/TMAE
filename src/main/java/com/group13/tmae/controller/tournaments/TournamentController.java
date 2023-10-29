@@ -20,14 +20,14 @@ public class TournamentController {
     private CustomUserDetailsService customUserDetailsService;
 
     @PostMapping("/saveTournament")
-    public String saveTournament(@ModelAttribute("tournament")Tournament tournament){
+    public String saveTournament(@ModelAttribute("tournament") Tournament tournament) {
+        System.out.println(tournament.getStartDate().toString());
         tournamentService.createTournament(tournament);
-        //TODO change this string to the actual link.
         return "redirect:/landing_page";
     }
 
     @GetMapping("/tournament/{id}")
-    public String showTournamentPage(@PathVariable(value = "id") Long id, Model model){
+    public String showTournamentPage(@PathVariable(value = "id") Long id, Model model) {
         Tournament tournament = tournamentService.getTournamentById(id);
         //TODO implement the logic to display tournament information.
         //TODO change this string to the actual link.
@@ -35,7 +35,8 @@ public class TournamentController {
     }
 
     @GetMapping("/creation")
-    public String createEvent(Model model){
+    public String createEvent(Model model) {
+
         return "/event_creation";
     }
 

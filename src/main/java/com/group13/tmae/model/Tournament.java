@@ -1,5 +1,7 @@
 package com.group13.tmae.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,9 +21,11 @@ public class  Tournament {
     private String tournamentName;
 
     @Column(name = "start_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
     @Column(name = "end_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
     @Column(name = "location")
@@ -34,6 +38,7 @@ public class  Tournament {
     private Integer maxNumParticipants;
 
     @Column(name = "registration_deadline")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate registrationDeadline;
 
     @ManyToMany
