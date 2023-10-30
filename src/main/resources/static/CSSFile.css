@@ -97,6 +97,7 @@
     padding-bottom: .2%;
     display: flex;
     justify-content: space-between;
+    font-size: x-large;
 }
 
 /* ---------- Login Page Elements ---------- */

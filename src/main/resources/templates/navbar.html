@@ -14,7 +14,7 @@
     <a th:classappend="${currentPage == '/landing_page' ? 'active' : ''}" class="nav-link button" th:href="@{/landing_page}">Landing Page</a>
     <!-- <a class="nav-link button" th:href="@{/logout}">Logout</a> -->
     <form th:action="@{/logout}" method="post">
-      <input type="submit" value="Logout"/>
+      <input class="nav-link button" type="submit" value="Logout"/>
     </form>
   </nav>
 </div>
