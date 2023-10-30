@@ -72,6 +72,25 @@
     box-shadow: inset 2px 2px 4px black;
 }
 
+.button-green{
+    background-color: #00C4B4;
+    text-decoration: none;
+    color: white;
+    box-shadow: 3px 3px 5px black;
+    text-shadow: 2px 2px 4px black;
+    text-align: center;
+    transition-duration: 0.2s;
+}
+
+.button-green:hover {
+    background-color: #b1eee0;
+}
+
+.button-green:active {
+    background-color: #3b9872;
+    box-shadow: inset 2px 2px 4px black;
+}
+
 .horizontal {
     resize: horizontal;
 }
@@ -106,6 +125,7 @@
 
 #navbar-nav-logout-button{
     font-size: x-large;
+    font-family: "Times New Roman";
     height: 99.9%;
     padding: 10%;
     cursor: pointer;
@@ -568,4 +588,11 @@
     margin-right: auto;
     padding: 3%;
     box-shadow: 5px 5px 5px black;
+}
+
+#tournament-list-info-button, #tournament-list-join-button{
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 25px;
+    border-width: 2px;
 }
