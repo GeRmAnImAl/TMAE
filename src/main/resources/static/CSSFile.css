@@ -100,6 +100,17 @@
     font-size: x-large;
 }
 
+#navbar-nav-logout-button{
+    font-size: x-large;
+    height: 99.9%;
+    padding-left: 10%;
+    padding-right: 10%;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px black;
+    text-shadow: 2px 2px 4px black;
+    border: none;
+}
+
 /* ---------- Login Page Elements ---------- */
 
 #login-page {
