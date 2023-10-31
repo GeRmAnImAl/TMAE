@@ -48,5 +48,10 @@ public interface TournamentService {
      */
     Page<Tournament> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
 
+    /**
+     *
+     * @param athlete
+     * @param tournament
+     */
     void joinTournament(Athlete athlete, Tournament tournament);
 }

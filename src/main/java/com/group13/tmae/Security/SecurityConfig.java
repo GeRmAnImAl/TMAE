@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -22,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
     private final CustomAuthenticationSuccessHandler authenticationSuccessHandler;
+    private final SecurityKeyGenerator securityKeyGenerator = new SecurityKeyGenerator();
 
     /**
      * Constructs a SecurityConfig with the specified UserDetailsService and
@@ -70,17 +72,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").authenticated()
                 .anyRequest().authenticated()
                 .and()
-                //Go to landing page after login
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/", true)
                 .successHandler(authenticationSuccessHandler)
                 .and()
                 .logout()
-                .logoutUrl("/logout") // Logout URL
-                .invalidateHttpSession(true) // Invalidate user session
-                .clearAuthentication(true) // Clear user authentication
-                .permitAll();
+                .logoutUrl("/logout")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .permitAll()
+                .and()
+                .sessionManagement()
+                .invalidSessionUrl("/login")
+                .sessionFixation().migrateSession()
+                .maximumSessions(1)
+                .expiredUrl("/login?expired")
+                .and()
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                .and()
+                .rememberMe()
+                .key(securityKeyGenerator.generateSecureKey())
+                .rememberMeParameter("remember-me")
+                .tokenValiditySeconds(1800); // 30 minutes
     }
 
 

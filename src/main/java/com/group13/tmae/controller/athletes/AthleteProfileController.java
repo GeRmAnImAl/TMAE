@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
+
 @Controller
 @RequestMapping("/athlete_profile")
 public class AthleteProfileController {
@@ -24,6 +25,7 @@ public class AthleteProfileController {
 
     /**
      * Handles the submission of a form to create or update an athlete's information, including uploading a photo.
+     *
      * @param athlete The athlete object populated with the data from the form.
      * @return A string indicating the view to redirect to after processing the form submission.
      */
@@ -44,12 +46,13 @@ public class AthleteProfileController {
 
     /**
      * Handles a request to view an athlete's profile.
+     *
      * @param id    The ID of the athlete to be retrieved.
      * @param model The model to which the athlete object is to be added.
-     * @return      The name of the view to be rendered.
+     * @return The name of the view to be rendered.
      */
     @GetMapping("/athlete/{id}")
-    public String showAthleteProfile(@PathVariable(value = "id") Long id, Model model){
+    public String showAthleteProfile(@PathVariable(value = "id") Long id, Model model) {
         Athlete athlete = athleteService.getAthleteById(id);
         model.addAttribute("athlete", athlete);
         model.addAttribute("photoData", athlete.getPhotoDataAsBase64());
@@ -58,24 +61,33 @@ public class AthleteProfileController {
         //TODO change this string to the actual link for the athlete profile page.
         return "/";
     }
+    //TODO fill in java doc tags.
 
+    /**
+     * @param model
+     * @return
+     */
     @GetMapping("/userlogin")
-    public String userProfile(Model model){
-        Athlete user = this.customUserDetailsService.getLoggedInUser();
-        String welcome = "Welcome " + user.getFirstName() + " " + user.getLastName() + "!";
-        model.addAttribute("customWelcome", welcome);
-        model.addAttribute("wins", user.getWins());
-        model.addAttribute("losses", user.getLosses());
-        model.addAttribute("ties", user.getTies());
-        model.addAttribute("weight", user.getWeight());
-        model.addAttribute("age", user.getAge());
-        model.addAttribute("affiliation", user.getAffiliation());
+    public String userProfile(Model model) {
+        try {
+            Athlete user = this.customUserDetailsService.getLoggedInUser();
 
-        if(user.getPhotoFile() != null){
-            model.addAttribute("photo", user.getPhotoFile());
-        }
-        else{
-            model.addAttribute("photo", "/backgrounds/no-photo-icon.png");
+            String welcome = "Welcome " + user.getFirstName() + " " + user.getLastName() + "!";
+            model.addAttribute("customWelcome", welcome);
+            model.addAttribute("wins", user.getWins());
+            model.addAttribute("losses", user.getLosses());
+            model.addAttribute("ties", user.getTies());
+            model.addAttribute("weight", user.getWeight());
+            model.addAttribute("age", user.getAge());
+            model.addAttribute("affiliation", user.getAffiliation());
+
+            if (user.getPhotoFile() != null) {
+                model.addAttribute("photo", user.getPhotoFile());
+            } else {
+                model.addAttribute("photo", "/backgrounds/no-photo-icon.png");
+            }
+        } catch (Exception e) {
+            
         }
         return "user-profile-page";
     }

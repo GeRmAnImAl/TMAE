@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ *
+ */
 @Controller
 @RequestMapping("/tournament")
 public class TournamentController {
@@ -20,6 +23,11 @@ public class TournamentController {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
+    /**
+     *
+     * @param tournament
+     * @return
+     */
     @PostMapping("/saveTournament")
     public String saveTournament(@ModelAttribute("tournament") Tournament tournament) {
         tournamentService.createTournament(tournament);
@@ -27,6 +35,12 @@ public class TournamentController {
         return "redirect:/tournament/listAllTournaments";
     }
 
+    /**
+     *
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/tournament/{id}")
     public String showTournamentPage(@PathVariable(value = "id") Long id, Model model) {
         Tournament tournament = tournamentService.getTournamentById(id);
@@ -35,12 +49,22 @@ public class TournamentController {
         return "link to tournament page";
     }
 
+    /**
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/creation")
     public String createEvent(Model model) {
 
         return "/event_creation";
     }
 
+    /**
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/listAllTournaments")
     public String showAllTournaments(Model model){
         model.addAttribute("listAllTournaments", this.tournamentService.getAllTournaments());
@@ -48,6 +72,12 @@ public class TournamentController {
         return "/tournament_list";
     }
 
+    /**
+     *
+     * @param tournamentID
+     * @param model
+     * @return
+     */
     @GetMapping("/joinTournament/{id}")
     public String joinTournament(@PathVariable("id") Long tournamentID, Model model){
         Athlete user = this.customUserDetailsService.getLoggedInUser();
