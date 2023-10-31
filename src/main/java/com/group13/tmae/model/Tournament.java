@@ -4,7 +4,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,11 +41,11 @@ public class  Tournament {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate registrationDeadline;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "tournament_participants",
-            joinColumns = @JoinColumn(name = "tournament_id"),
-            inverseJoinColumns = @JoinColumn(name = "athlete_id")
+            joinColumns = @JoinColumn(name = "tournamentid"),
+            inverseJoinColumns = @JoinColumn(name = "athleteid")
     )
     private List<Athlete> participants;
 

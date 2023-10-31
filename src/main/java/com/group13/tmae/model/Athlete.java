@@ -1,16 +1,18 @@
 package com.group13.tmae.model;
 
 import javax.persistence.*;
+
 import org.springframework.lang.NonNull;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 /**
  * Represents an athlete participating in a sports event.
- *
+ * <p>
  * This entity class is annotated with JPA annotations to define its mapping
  * to the underlying database table "athletes". It includes fields for athlete
  * details such as name, wins, losses, and ties.
@@ -26,7 +28,7 @@ public class Athlete implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long athleteID;
 
-    @Column(name = "userName")
+    @Column(name = "user_name")
     private String userName;
 
     @Column(name = "password")
@@ -35,13 +37,13 @@ public class Athlete implements Serializable {
     /**
      * The first name of the athlete.
      */
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName;
 
     /**
      * The last name of the athlete.
      */
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
 
     /**
@@ -77,7 +79,7 @@ public class Athlete implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "phoneNumber")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     @Column(name = "photo_data")
@@ -89,6 +91,8 @@ public class Athlete implements Serializable {
     @Column(name = "photo_content_type")
     private String photoContentType;
 
+    @ManyToMany(mappedBy = "participants")
+    private List<Tournament> tournaments;
 
     /**
      * Constructs an athlete with specified details.
@@ -112,6 +116,7 @@ public class Athlete implements Serializable {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.photoData = photoData;
+        this.tournaments = new ArrayList<>();
     }
 
     /**
@@ -131,6 +136,7 @@ public class Athlete implements Serializable {
         this.address = "";
         this.email = "";
         this.phoneNumber = "";
+        this.tournaments = new ArrayList<>();
     }
 
     /**
@@ -333,6 +339,14 @@ public class Athlete implements Serializable {
 
     public void setPhotoContentType(String photoContentType) {
         this.photoContentType = photoContentType;
+    }
+
+    public List<Tournament> getTournaments() {
+        return tournaments;
+    }
+
+    public void setTournaments(List<Tournament> tournaments) {
+        this.tournaments = tournaments;
     }
 }
 
