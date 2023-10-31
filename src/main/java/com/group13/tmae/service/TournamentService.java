@@ -1,5 +1,6 @@
 package com.group13.tmae.service;
 
+import com.group13.tmae.model.Athlete;
 import com.group13.tmae.model.Tournament;
 import org.springframework.data.domain.Page;
 
@@ -46,4 +47,6 @@ public interface TournamentService {
      * @return A Page object containing the paginated list of Tournament objects.
      */
     Page<Tournament> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
+
+    void joinTournament(Athlete athlete, Tournament tournament);
 }

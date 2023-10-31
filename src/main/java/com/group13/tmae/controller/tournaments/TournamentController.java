@@ -53,9 +53,7 @@ public class TournamentController {
         Athlete user = this.customUserDetailsService.getLoggedInUser();
         Tournament tournament = this.tournamentService.getTournamentById(tournamentID);
 
-        tournament.getParticipants().add(user);
-
-        this.tournamentService.updateTournament(tournament);
+        this.tournamentService.joinTournament(user, tournament);
 
         model.addAttribute("listAllTournaments", this.tournamentService.getAllTournaments());
 

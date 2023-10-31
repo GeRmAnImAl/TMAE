@@ -1,5 +1,6 @@
 package com.group13.tmae.service.Impl;
 
+import com.group13.tmae.model.Athlete;
 import com.group13.tmae.model.Tournament;
 import com.group13.tmae.repository.TournamentRepository;
 import com.group13.tmae.service.TournamentService;
@@ -89,5 +90,16 @@ public class TournamentServiceImpl implements TournamentService {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
 
         return this.tournamentRepository.findAll(pageable);
+    }
+
+    /**
+     *
+     * @param athlete
+     * @param tournament
+     */
+    @Override
+    public void joinTournament(Athlete athlete, Tournament tournament) {
+        tournament.getParticipants().add(athlete);
+        updateTournament(tournament);
     }
 }
