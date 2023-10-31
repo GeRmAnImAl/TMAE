@@ -1,5 +1,6 @@
 package com.group13.tmae.controller.tournaments;
 
+import com.group13.tmae.model.Athlete;
 import com.group13.tmae.model.Tournament;
 import com.group13.tmae.repository.TournamentRepository;
 import com.group13.tmae.service.Impl.CustomUserDetailsService;
@@ -47,6 +48,18 @@ public class TournamentController {
         return "/tournament_list";
     }
 
+    @GetMapping("/joinTournament/{id}")
+    public String joinTournament(@PathVariable("id") Long tournamentID, Model model){
+        Athlete user = this.customUserDetailsService.getLoggedInUser();
+        Tournament tournament = this.tournamentService.getTournamentById(tournamentID);
 
+        tournament.getParticipants().add(user);
+
+        this.tournamentService.updateTournament(tournament);
+
+        model.addAttribute("listAllTournaments", this.tournamentService.getAllTournaments());
+
+        return "/tournament_list";
+    }
 
 }
