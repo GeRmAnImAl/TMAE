@@ -55,7 +55,7 @@ public class TournamentController {
         model.addAttribute("registerBy", tournament.getRegistrationDeadline());
         model.addAttribute("participants", tournament.getParticipants());
         model.addAttribute("participantsNumber", tournament.getParticipants().size());
-        model.addAttribute("readOnly", String "readonly");
+        model.addAttribute("readOnly", "readonly");
 
         return "link to tournament page";
     }
