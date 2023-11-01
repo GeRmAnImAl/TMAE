@@ -49,6 +49,10 @@
     border-collapse: collapse;
 }
 
+tr{
+    height: 50px;
+}
+
 .striped-table:nth-child(even) {
     background-color: #E1C8FF;
 }
@@ -497,7 +501,6 @@
 
 #user-page-events-box {
     background-color: #00C4B4;
-    height: 400px;
     width: 80%;
     border-radius: 40px;
     margin-top: 3%;
@@ -505,6 +508,22 @@
     margin-right: auto;
     padding: 3%;
     box-shadow: 5px 5px 5px black;
+    display: table;
+}
+
+#user-events-heading{
+    font-size: xx-large;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin-top: 0;
+}
+
+#user-tournament-info-button, #user-tournament-leave-button{
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 25px;
+    border-width: 2px;
 }
 
 /* ---------- Tournament Creation Page Elements ---------- */
@@ -592,7 +611,7 @@
 
 #tournament-list-info-button, #tournament-list-join-button{
     padding: 5px 10px;
-    margin: 5px;
+    margin: 5px 10px;
     border-radius: 25px;
     border-width: 2px;
 }

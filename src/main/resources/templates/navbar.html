@@ -7,7 +7,7 @@
 <body>
 <div th:fragment="navbar" id="navbar-div">
   <nav id="navbar-nav">
-    <a th:classappend="${currentPage == '/athlete_profile/userlogin' ? 'active' : ''}" class="nav-link button" th:href="@{/athlete_profile/userlogin}">User Profile</a>
+    <a th:classappend="${currentPage == '/athlete_profile/userInfo' ? 'active' : ''}" class="nav-link button" th:href="@{/athlete_profile/userInfo}">User Profile</a>
     <a th:classappend="${currentPage == '/tournament/listAllTournaments' ? 'active' : ''}" class="nav-link button" th:href="@{/tournament/listAllTournaments}">All Tournaments</a>
     <a th:classappend="${currentPage == '/tournament/creation' ? 'active' : ''}" class="nav-link button" th:href="@{/tournament/creation}">Tournament Creation</a>
     <a th:classappend="${currentPage == '/athletes/athletes_list' ? 'active' : ''}" class="nav-link button" th:href="@{/athletes/athletes_list}">Athletes List</a>

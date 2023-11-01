@@ -17,7 +17,7 @@
 <div th:include="/navbar :: navbar"></div>
 <div class="container">
     <div id="athlete-page-welcome-div">
-        <h2 th:text="${customWelcome}"</h2>
+        <h2 th:text="${customWelcome}"></h2>
     </div>
     <div id="athlete-page-top-grid">
         <div id="athlete-page-photo-box">
@@ -70,16 +70,23 @@
     </div>
     <div id="athlete-page-bottom-grid">
         <div id="user-page-events-box">
-            <table class="table">
+            <h2 id="user-events-heading">Registered Events</h2>
+            <table class="table" id="user-events-table">
                 <thead>
                 <!-- Table header -->
                 <tr class="table-header">
-                    <th scope="col">Event</th>
+                    <th scope="col">Tournament Name</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">Location</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr class="striped-table" th:each="event : ${listEvents}">
-                    <th th:text="placeholder"></th>
+                    <th th:text="${event.getTournamentName()}"></th>
+                    <th th:text="${event.getStartDate()}"></th>
+                    <th th:text="${event.getLocation()}"></th>
+                    <th><a id="user-tournament-info-button" class="button-green" href="test">Info</a></th>
+                    <th><a id="user-tournament-leave-button" class="button-green" th:href="@{'/tournament/leaveTournament/' + ${event.getTournamentID()}}">Leave</a></th>
                 </tr>
                 </tbody>
             </table>

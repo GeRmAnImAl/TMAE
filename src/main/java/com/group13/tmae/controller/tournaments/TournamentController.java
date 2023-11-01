@@ -90,4 +90,14 @@ public class TournamentController {
         return "/tournament_list";
     }
 
+    @GetMapping("/leaveTournament/{id}")
+    public String leaveTournament(@PathVariable("id") Long tournamentID){
+        Athlete user = this.customUserDetailsService.getLoggedInUser();
+        Tournament tournament = this.tournamentService.getTournamentById(tournamentID);
+
+        this.tournamentService.leaveTournament(user, tournament);
+
+        return "redirect:/athlete_profile/userInfo";
+    }
+
 }
