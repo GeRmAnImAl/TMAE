@@ -99,7 +99,13 @@ public class TournamentServiceImpl implements TournamentService {
      */
     @Override
     public void joinTournament(Athlete athlete, Tournament tournament) {
-        tournament.getParticipants().add(athlete);
-        updateTournament(tournament);
+
+        if(!tournament.getParticipants().contains(athlete)){
+            tournament.getParticipants().add(athlete);
+            updateTournament(tournament);
+        }
+        else {
+            System.out.println("Already Joined That Tournament");
+        }
     }
 }
