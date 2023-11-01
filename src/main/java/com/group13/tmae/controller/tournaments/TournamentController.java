@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  */
@@ -46,18 +48,21 @@ public class TournamentController {
         Tournament tournament = this.tournamentService.getTournamentById(id);
         Athlete user = this.customUserDetailsService.getLoggedInUser();
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/YYYY");
+
         model.addAttribute("tournamentName", tournament.getTournamentName());
         model.addAttribute("tournamentLocation", tournament.getLocation());
         model.addAttribute("tournamentWebsite", tournament.getWebsiteLink());
         model.addAttribute("maxParticipants", tournament.getMaxNumParticipants());
-        model.addAttribute("startDate", tournament.getStartDate());
-        model.addAttribute("endDate", tournament.getEndDate());
-        model.addAttribute("registerBy", tournament.getRegistrationDeadline());
+        model.addAttribute("startDate", formatter.format(tournament.getStartDate()));
+        model.addAttribute("endDate", formatter.format(tournament.getEndDate()));
+        model.addAttribute("registerBy", formatter.format(tournament.getRegistrationDeadline()));
         model.addAttribute("participants", tournament.getParticipants());
         model.addAttribute("participantsNumber", tournament.getParticipants().size());
         model.addAttribute("readOnly", "readonly");
+        model.addAttribute("tournamentID", tournament.getTournamentID());
 
-        return "link to tournament page";
+        return "/eventInfo";
     }
 
     /**
@@ -109,6 +114,13 @@ public class TournamentController {
         this.tournamentService.leaveTournament(user, tournament);
 
         return "redirect:/athlete_profile/userInfo";
+    }
+
+    @GetMapping("updateTournament")
+    public String updateTournament(@ModelAttribute("tournament") Tournament tournament){
+        this.tournamentService.updateTournament(tournament);
+
+        return "redirect:/tournament/tournament/{" + tournament.getTournamentID() + "}";
     }
 
 }

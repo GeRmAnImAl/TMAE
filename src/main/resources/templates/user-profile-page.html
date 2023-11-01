@@ -85,7 +85,7 @@
                     <th th:text="${event.getTournamentName()}"></th>
                     <th th:text="${event.getStartDate()}"></th>
                     <th th:text="${event.getLocation()}"></th>
-                    <th><a id="user-tournament-info-button" class="button-green" href="test">Info</a></th>
+                    <th><a id="user-tournament-info-button" class="button-green" th:href="@{'/tournament/tournament/' + ${event.getTournamentID()}}">Info</a></th>
                     <th><a id="user-tournament-leave-button" class="button-green" th:href="@{'/tournament/leaveTournament/' + ${event.getTournamentID()}}">Leave</a></th>
                 </tr>
                 </tbody>
