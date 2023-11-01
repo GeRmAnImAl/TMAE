@@ -43,9 +43,20 @@ public class TournamentController {
      */
     @GetMapping("/tournament/{id}")
     public String showTournamentPage(@PathVariable(value = "id") Long id, Model model) {
-        Tournament tournament = tournamentService.getTournamentById(id);
-        //TODO implement the logic to display tournament information.
-        //TODO change this string to the actual link.
+        Tournament tournament = this.tournamentService.getTournamentById(id);
+        Athlete user = this.customUserDetailsService.getLoggedInUser();
+
+        model.addAttribute("tournamentName", tournament.getTournamentName());
+        model.addAttribute("tournamentLocation", tournament.getLocation());
+        model.addAttribute("tournamentWebsite", tournament.getWebsiteLink());
+        model.addAttribute("maxParticipants", tournament.getMaxNumParticipants());
+        model.addAttribute("startDate", tournament.getStartDate());
+        model.addAttribute("endDate", tournament.getEndDate());
+        model.addAttribute("registerBy", tournament.getRegistrationDeadline());
+        model.addAttribute("participants", tournament.getParticipants());
+        model.addAttribute("participantsNumber", tournament.getParticipants().size());
+        model.addAttribute("readOnly", String "readonly");
+
         return "link to tournament page";
     }
 

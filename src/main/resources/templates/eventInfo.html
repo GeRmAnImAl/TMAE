@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <!-- Meta tags for character set and viewport -->
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <!-- Page title and linking to external CSS file -->
+  <title>Tournament Management and Athlete Empowerment</title>
+  <link rel="stylesheet" href="/CSSFile.css">
+  <link rel="icon" href="/backgrounds/icon.png">
+</head>
+<body id="tournament-creation-page" class="background">
+<div class="header">
+  <h1 class="headerText">Tournament Management and Athlete Empowerment</h1>
+</div>
+<div th:include="/navbar :: navbar"></div>
+<div class="container">
+  <h1 class="page-description">Event Info</h1>
+  <div id="tournament-creation-card">
+    <form id="tournament-creation-form" th:action="@{/tournament/saveTournament}" th:object="${tournament}" method="POST">
+
+      <!input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+      <label class="tournament-creation-form-input-label both" for="tournamentName">Tournament Name</label>
+      <input class="tournament-creation-form-input both " id="tournamentName" type="text" placeholder="Enter Tournament Name" name="tournamentName"
+             required
+             th:text="${}"
+             autocomplete="tournamentName">
+      <label class="tournament-creation-form-input-label both" for="tournamentLocation">Location</label>
+      <input class="tournament-creation-form-input both " id="tournamentLocation" type="text" placeholder="Enter Tournament Location" name="location"
+             required
+             autocomplete="location">
+      <label class="tournament-creation-form-input-label both" for="tournamentWebsite">Website</label>
+      <input class="tournament-creation-form-input both " id="tournamentWebsite" type="text" placeholder="Enter Tournament Website" name="websiteLink"
+             autocomplete="websiteLink">
+      <label class="tournament-creation-form-input-label both" for="tournamentMaxParticipants">Max Participants</label>
+      <input class="tournament-creation-form-input both " id="tournamentMaxParticipants" type="number" placeholder="0" name="maxNumParticipants"
+             autocomplete="max_num_participants">
+      <label class="tournament-creation-form-input-label both" for="tournamentStartDate">Start Date</label>
+      <input class="tournament-creation-form-input both " id="tournamentStartDate" type="date" placeholder="MM-DD-YYYY" name="startDate"
+             required
+             autocomplete="startDate">
+      <label class="tournament-creation-form-input-label both" for="tournamentEndDate">End Date</label>
+      <input class="tournament-creation-form-input both " id="tournamentEndDate" type="date" placeholder="MM-DD-YYYY" name="endDate"
+             required
+             autocomplete="endDate">
+      <label class="tournament-creation-form-input-label both" for="tournamentRegistrationDate">Register By</label>
+      <input class="tournament-creation-form-input both " id="tournamentRegistrationDate" type="date" placeholder="MM-DD-YYYY" name="registrationDeadline"
+             required
+             autocomplete="registrationDeadline">
+      <div id="tournament-creation-form-buttons">
+        <button class="button both" id="submit-tournament-creation-button" type="submit">Create Tournament</button>
+
+        <a>
+          <button class="button both" id="cancel-tournament-creation-button" type="reset">Cancel</button>
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
