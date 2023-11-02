@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLOutput;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 /**
  *
@@ -45,6 +47,7 @@ public class TournamentController {
      */
     @GetMapping("/tournament/{id}")
     public String showTournamentPage(@PathVariable(value = "id") Long id, Model model) {
+        System.out.println("Got Here");
         Tournament tournament = this.tournamentService.getTournamentById(id);
         Athlete user = this.customUserDetailsService.getLoggedInUser();
 
@@ -54,9 +57,9 @@ public class TournamentController {
         model.addAttribute("tournamentLocation", tournament.getLocation());
         model.addAttribute("tournamentWebsite", tournament.getWebsiteLink());
         model.addAttribute("maxParticipants", tournament.getMaxNumParticipants());
-        model.addAttribute("startDate", formatter.format(tournament.getStartDate()));
-        model.addAttribute("endDate", formatter.format(tournament.getEndDate()));
-        model.addAttribute("registerBy", formatter.format(tournament.getRegistrationDeadline()));
+        model.addAttribute("startDate", tournament.getStartDate());
+        model.addAttribute("endDate", tournament.getEndDate());
+        model.addAttribute("registerBy", tournament.getRegistrationDeadline());
         model.addAttribute("participants", tournament.getParticipants());
         model.addAttribute("participantsNumber", tournament.getParticipants().size());
         model.addAttribute("readOnly", "readonly");
@@ -116,11 +119,17 @@ public class TournamentController {
         return "redirect:/athlete_profile/userInfo";
     }
 
-    @GetMapping("updateTournament")
-    public String updateTournament(@ModelAttribute("tournament") Tournament tournament){
-        this.tournamentService.updateTournament(tournament);
+    @PostMapping("/updateTournament")
+    public String updateTournament(@ModelAttribute("tournament") Tournament tournamentInput){
 
-        return "redirect:/tournament/tournament/{" + tournament.getTournamentID() + "}";
+        /* Since the incoming model doesn't include the participants list, we need to get it from the existing DB entry */
+        Tournament savedTournament = this.tournamentService.getTournamentById(tournamentInput.getTournamentID());
+
+        tournamentInput.setParticipants(savedTournament.getParticipants());
+
+        this.tournamentService.updateTournament(tournamentInput);
+
+        return "redirect:/tournament/tournament/" + tournamentInput.getTournamentID();
     }
 
 }

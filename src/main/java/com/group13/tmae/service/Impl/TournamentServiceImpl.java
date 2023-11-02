@@ -59,8 +59,7 @@ public class TournamentServiceImpl implements TournamentService {
      * @param tournament The Tournament object to be updated.
      */
     @Override
-    public void updateTournament(Tournament tournament) {
-        this.tournamentRepository.save(tournament);
+    public void updateTournament(Tournament tournament) {this.tournamentRepository.save(tournament);
     }
 
     /**

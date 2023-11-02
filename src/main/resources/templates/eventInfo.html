@@ -18,7 +18,7 @@
 <div class="container">
   <h1 class="page-description">Event Info</h1>
   <div id="tournament-info-card">
-    <form id="tournament-info-form" th:action="@{/tournament/saveTournament}" th:object="${tournament}" method="POST">
+    <form id="tournament-info-form" th:action="@{/tournament/updateTournament}" th:object="${tournament}" method="POST">
 
       <input type="hidden" name="tournamentID" th:value="${tournamentID}"/>
 
@@ -33,20 +33,17 @@
       <label class="tournament-info-form-input-label both" for="tournamentMaxParticipants">Max Participants</label>
       <input class="tournament-info-form-input both " id="tournamentMaxParticipants" type="number" th:value="${maxParticipants}" name="maxNumParticipants">
       <label class="tournament-info-form-input-label both" for="tournamentStartDate">Start Date</label>
-      <input class="tournament-info-form-input both " id="tournamentStartDate" type="text" th:value="${startDate}" name="startDate"
-             onfocus="this.type='date'"
+      <input class="tournament-info-form-input both " id="tournamentStartDate" type="date" th:value="${startDate}" name="startDate"
              required>
       <label class="tournament-info-form-input-label both" for="tournamentEndDate">End Date</label>
-      <input class="tournament-info-form-input both " id="tournamentEndDate" type="text" th:value="${endDate}" name="endDate"
-             onfocus="this.type='date'"
+      <input class="tournament-info-form-input both " id="tournamentEndDate" type="date" th:value="${endDate}" name="endDate"
              required>
       <label class="tournament-info-form-input-label both" for="tournamentRegistrationDate">Register By</label>
-      <input class="tournament-info-form-input both " id="tournamentRegistrationDate" type="text" th:value="${registerBy}" name="registrationDeadline"
-             onfocus="this.type='date'"
+      <input class="tournament-info-form-input both " id="tournamentRegistrationDate" type="date" th:value="${registerBy}" name="registrationDeadline"
              required>
       <div id="tournament-info-form-buttons">
         <button class="button both" id="submit-tournament-info-button" type="submit">Update Tournament</button>
-        <a class="button both" id="cancel-tournament-info-button" th:href="@{'/tournament/tournament/' + ${tournamentID}}">Cancel</a>
+        <button class="button both" id="cancel-tournament-info-button" type="reset">Cancel</button>
       </div>
     </form>
   </div>
