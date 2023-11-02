@@ -14,6 +14,10 @@ public class Match {
     private Bracket bracket;
 
     @ManyToOne
+    @JoinColumn(name = "tournament_id")
+    private Tournament tournament;
+
+    @ManyToOne
     @JoinColumn(name = "athlete1_id")
     private Athlete athlete1;
 
@@ -22,6 +26,7 @@ public class Match {
     private Athlete athlete2;
 
     private Integer athlete1Score;
+
     private Integer athlete2Score;
 
     @ManyToOne
@@ -30,8 +35,9 @@ public class Match {
     @ManyToOne
     private Athlete loser;
 
-    public Match(Bracket bracket, Athlete athlete1, Athlete athlete2) {
+    public Match(Bracket bracket, Tournament tournament, Athlete athlete1, Athlete athlete2) {
         this.bracket = bracket;
+        this.tournament = tournament;
         this.athlete1 = athlete1;
         this.athlete2 = athlete2;
         this.athlete1Score = 0;
@@ -50,6 +56,14 @@ public class Match {
 
     public void setBracket(Bracket bracket) {
         this.bracket = bracket;
+    }
+
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
     }
 
     public Athlete getAthlete1() {

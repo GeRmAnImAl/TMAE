@@ -64,7 +64,7 @@ public interface TournamentService {
     void leaveTournament(Athlete athlete, Tournament tournament);
 
     /**
-     * Generates and saves bracekts for a given tournament.
+     * Generates and saves brackets for a given tournament.
      *
      * @param tournament The Tournament object for which to generate and save brackets.
      */
@@ -92,4 +92,10 @@ public interface TournamentService {
      * @param loserId
      */
     void recordMatchResult(Long matchId, Long winnerId, Long loserId);
+
+    /**
+     *
+     * @param tournament
+     */
+    void checkAndGenerateNextRound(Tournament tournament);
 }

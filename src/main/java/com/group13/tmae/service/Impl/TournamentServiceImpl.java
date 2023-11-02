@@ -149,6 +149,12 @@ public class TournamentServiceImpl implements TournamentService {
         }
     }
 
+    /**
+     * Generates and saves brackets for a given tournament.
+     *
+     * @param tournament The Tournament object for which to generate and save brackets.
+     */
+    @Override
     @Transactional
     public void generateAndSaveBrackets(Tournament tournament) {
         List<List<Athlete>> bracketsData = generateBrackets(tournament);
@@ -196,21 +202,21 @@ public class TournamentServiceImpl implements TournamentService {
     @Transactional
     public void generateMatches(Bracket bracket){
         List<Athlete> athletes = bracket.getAthletes();
+        Tournament tournament = bracket.getTournament();
 
         for(int i = 0; i < athletes.size(); i += 2){
             if(i + 1 < athletes.size()){
                 Athlete athlete1 = athletes.get(i);
                 Athlete athlete2 = athletes.get(i + 1);
-                Match match = new Match(bracket, athlete1, athlete2);
+                Match match = new Match(bracket, tournament, athlete1, athlete2);
                 matchRepository.save(match);
                 bracket.getMatches().add(match);
             }
         }
-        bracketRepository.save(bracket);
     }
 
     /**
-     * 
+     *
      * @param matchId
      * @param winnerId
      * @param loserId
@@ -230,5 +236,29 @@ public class TournamentServiceImpl implements TournamentService {
         matchRepository.save(match);
         athleteRepository.save(winner);
         athleteRepository.save(loser);
+
+        Tournament tournament = match.getTournament();
+        tournament.getParticipants().remove(loser);
+        tournamentRepository.save(tournament);
+
+        checkAndGenerateNextRound(tournament);
     }
+
+    /**
+     *
+     * @param tournament
+     */
+    @Override
+    public void checkAndGenerateNextRound(Tournament tournament) {
+        // Check if all matches in the current round are complete
+        boolean allMatchesComplete = tournament.getBrackets().stream()
+                .flatMap(bracket -> bracket.getMatches().stream())
+                .allMatch(match -> match.getWinner() != null);
+
+        if (allMatchesComplete) {
+            // If all matches are complete, generate new brackets with the remaining participants
+            generateAndSaveBrackets(tournament);
+        }
+    }
+
 }
