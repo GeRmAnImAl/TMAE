@@ -1,7 +1,9 @@
 package com.group13.tmae.service.Impl;
 
 import com.group13.tmae.model.Athlete;
+import com.group13.tmae.model.Bracket;
 import com.group13.tmae.model.Tournament;
+import com.group13.tmae.repository.BracketRepository;
 import com.group13.tmae.repository.TournamentRepository;
 import com.group13.tmae.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class TournamentServiceImpl implements TournamentService {
@@ -21,6 +24,12 @@ public class TournamentServiceImpl implements TournamentService {
      */
     @Autowired
     private TournamentRepository tournamentRepository;
+
+    /**
+     * Autowired BracketRepository instance for database interaction.
+     */
+    @Autowired
+    private BracketRepository bracketRepository;
 
     /**
      * Creates a new tournament.
@@ -108,6 +117,11 @@ public class TournamentServiceImpl implements TournamentService {
         }
     }
 
+    /**
+     *
+     * @param athlete
+     * @param tournament
+     */
     @Override
     public void leaveTournament(Athlete athlete, Tournament tournament) {
 
@@ -120,5 +134,41 @@ public class TournamentServiceImpl implements TournamentService {
         }
     }
 
+    @Transactional
+    public void generateAndSaveBrackets(Tournament tournament) {
+        List<List<Athlete>> bracketsData = generateBrackets(tournament);
+        for (List<Athlete> bracketData : bracketsData) {
+            Bracket bracket = new Bracket(tournament, bracketData);
+            bracketRepository.save(bracket);
+        }
+    }
 
+    /**
+     * Generates brackets for a given tournament.
+     *
+     * @param tournament The Tournament object for which to generate brackets.
+     * @return A list containing lists of athletes, each representing a bracket.
+     */
+    @Override
+    @Transactional
+    public List<List<Athlete>> generateBrackets(Tournament tournament) {
+        List<Athlete> participants = tournament.getParticipants();
+        // Randomizes the list
+        Collections.shuffle(participants);
+
+        List<List<Athlete>> brackets = new ArrayList<>();
+        Queue<Athlete> queue = new LinkedList<>(participants);
+
+        while(!queue.isEmpty()){
+            List<Athlete> bracket = new ArrayList<>();
+            int bracketSize = Math.min(queue.size(), 32);
+            for(int i = 0; i < bracketSize; i++){
+                bracket.add(queue.poll());
+            }
+            brackets.add(bracket);
+        }
+
+
+        return brackets;
+    }
 }

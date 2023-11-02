@@ -55,5 +55,25 @@ public interface TournamentService {
      */
     void joinTournament(Athlete athlete, Tournament tournament);
 
+    /**
+     *
+     * @param athlete
+     * @param tournament
+     */
     void leaveTournament(Athlete athlete, Tournament tournament);
+
+    /**
+     * Generates and saves bracekts for a given tournament.
+     *
+     * @param tournament The Tournament object for which to generate and save brackets.
+     */
+    void generateAndSaveBrackets(Tournament tournament);
+
+    /**
+     * Generates brackets for a given tournament.
+     *
+     * @param tournament The Tournament object for which to generate brackets.
+     * @return A list containing lists of athletes, each representing a bracket.
+     */
+    List<List<Athlete>> generateBrackets(Tournament tournament);
 }

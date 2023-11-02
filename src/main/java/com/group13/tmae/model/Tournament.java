@@ -49,6 +49,9 @@ public class  Tournament {
     )
     private List<Athlete> participants;
 
+    @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Bracket> brackets = new ArrayList<>();
+
     public Tournament(Long tournamentID, String tournamentName, LocalDate startDate, LocalDate endDate, String location,
                       String websiteLink, Integer maxNumParticipants, LocalDate registrationDeadline) {
         this.tournamentID = tournamentID;
@@ -138,4 +141,21 @@ public class  Tournament {
         this.registrationDeadline = registrationDeadline;
     }
 
+    public List<Bracket> getBrackets() {
+        return brackets;
+    }
+
+    public void setBrackets(List<Bracket> brackets) {
+        this.brackets = brackets;
+    }
+
+    public void addBracket(Bracket bracket){
+        this.brackets.add(bracket);
+        bracket.setTournament(this);
+    }
+
+    public void removeBracket(Bracket bracket){
+        this.brackets.remove(bracket);
+        bracket.setTournament(null);
+    }
 }
