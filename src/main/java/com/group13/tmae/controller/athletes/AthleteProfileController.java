@@ -87,7 +87,7 @@ public class AthleteProfileController {
                 model.addAttribute("photo", "/backgrounds/no-photo-icon.png");
             }
         } catch (Exception e) {
-            
+            System.out.println(e);
         }
         return "user-profile-page";
     }
