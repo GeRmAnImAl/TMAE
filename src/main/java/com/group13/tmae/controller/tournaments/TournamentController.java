@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  */
@@ -43,10 +45,24 @@ public class TournamentController {
      */
     @GetMapping("/tournament/{id}")
     public String showTournamentPage(@PathVariable(value = "id") Long id, Model model) {
-        Tournament tournament = tournamentService.getTournamentById(id);
-        //TODO implement the logic to display tournament information.
-        //TODO change this string to the actual link.
-        return "link to tournament page";
+        Tournament tournament = this.tournamentService.getTournamentById(id);
+        Athlete user = this.customUserDetailsService.getLoggedInUser();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/YYYY");
+
+        model.addAttribute("tournamentName", tournament.getTournamentName());
+        model.addAttribute("tournamentLocation", tournament.getLocation());
+        model.addAttribute("tournamentWebsite", tournament.getWebsiteLink());
+        model.addAttribute("maxParticipants", tournament.getMaxNumParticipants());
+        model.addAttribute("startDate", formatter.format(tournament.getStartDate()));
+        model.addAttribute("endDate", formatter.format(tournament.getEndDate()));
+        model.addAttribute("registerBy", formatter.format(tournament.getRegistrationDeadline()));
+        model.addAttribute("participants", tournament.getParticipants());
+        model.addAttribute("participantsNumber", tournament.getParticipants().size());
+        model.addAttribute("readOnly", "readonly");
+        model.addAttribute("tournamentID", tournament.getTournamentID());
+
+        return "/eventInfo";
     }
 
     /**
@@ -88,6 +104,23 @@ public class TournamentController {
         model.addAttribute("listAllTournaments", this.tournamentService.getAllTournaments());
 
         return "/tournament_list";
+    }
+
+    @GetMapping("/leaveTournament/{id}")
+    public String leaveTournament(@PathVariable("id") Long tournamentID){
+        Athlete user = this.customUserDetailsService.getLoggedInUser();
+        Tournament tournament = this.tournamentService.getTournamentById(tournamentID);
+
+        this.tournamentService.leaveTournament(user, tournament);
+
+        return "redirect:/athlete_profile/userInfo";
+    }
+
+    @GetMapping("updateTournament")
+    public String updateTournament(@ModelAttribute("tournament") Tournament tournament){
+        this.tournamentService.updateTournament(tournament);
+
+        return "redirect:/tournament/tournament/{" + tournament.getTournamentID() + "}";
     }
 
 }

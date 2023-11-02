@@ -34,6 +34,6 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
      */
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
-        response.sendRedirect(request.getContextPath() + "/athlete_profile/userlogin"); // Replace "/" with your desired URL.
+        response.sendRedirect(request.getContextPath() + "/athlete_profile/userInfo"); // Replace "/" with your desired URL.
     }
 }

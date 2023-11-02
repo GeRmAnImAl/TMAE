@@ -49,6 +49,10 @@
     border-collapse: collapse;
 }
 
+tr{
+    height: 50px;
+}
+
 .striped-table:nth-child(even) {
     background-color: #E1C8FF;
 }
@@ -267,8 +271,8 @@
 
 #athletes-list-table-container {
     background-color: #00C4B4;
-    height: 50%;
-    width: 50%;
+    display: table;
+    width: 60%;
     border-radius: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -497,7 +501,6 @@
 
 #user-page-events-box {
     background-color: #00C4B4;
-    height: 400px;
     width: 80%;
     border-radius: 40px;
     margin-top: 3%;
@@ -505,6 +508,22 @@
     margin-right: auto;
     padding: 3%;
     box-shadow: 5px 5px 5px black;
+    display: table;
+}
+
+#user-events-heading{
+    font-size: xx-large;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin-top: 0;
+}
+
+#user-tournament-info-button, #user-tournament-leave-button{
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 25px;
+    border-width: 2px;
 }
 
 /* ---------- Tournament Creation Page Elements ---------- */
@@ -592,7 +611,75 @@
 
 #tournament-list-info-button, #tournament-list-join-button{
     padding: 5px 10px;
-    margin: 5px;
+    margin: 5px 10px;
     border-radius: 25px;
     border-width: 2px;
+}
+
+/* ---------- Tournament Info Page ---------- */
+
+#tournament-info-page {
+    background-image: url("backgrounds/SportsBG1.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#tournament-info-card {
+    background-color: #00C4B4;
+    width: 50%;
+    display: table;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    box-shadow: 5px 5px 5px black;
+    container-type: size;
+}
+
+#tournament-info-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.tournament-info-form-input{
+    width: 70%;
+    font-size: max(1cqmin, 20px);
+    min-font-size: 100px;
+    padding: 1%;
+    border-radius: 3cqmax;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tournament-info-form-input::placeholder{
+    color: black;
+}
+
+.tournament-info-form-input-label{
+    font-size: max(1cqmin, 20px);
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    margin-top: 2%;
+    margin-left: 15%;
+}
+
+#submit-tournament-info-button.both, #cancel-tournament-info-button.both {
+    height: 60px;
+    width: 50%;
+    margin-top: 5%;
+    border-radius: 30px;
+    font-size: large;
+}
+
+#submit-tournament-info-button {
+    margin-left: 40%;
+}
+
+#cancel-tournament-info-button {
+    margin-left: 10%;
+}
+
+#tournament-info-form-buttons {
+    display: grid;
+    grid-template-columns: 50% 50%;
 }

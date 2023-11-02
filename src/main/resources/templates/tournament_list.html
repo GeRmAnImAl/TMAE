@@ -43,8 +43,8 @@
                 <th th:text="${#temporals.format(tournament.getStartDate(), 'MM/dd/yyyy')}"></th>
                 <th th:text="${#temporals.format(tournament.getEndDate(), 'MM/dd/yyyy')}"></th>
                 <th th:text="${#temporals.format(tournament.getRegistrationDeadline(), 'MM/dd/yyyy')}"></th>
-                <th><a id="tournament-list-info-button" class="button-green" href="test">Info</a></th>
-                <th><a id="tournament-list-join-button" class="button-green" th:href="@{'/tournament/joinTournament/' + ${tournament.tournamentID}}">Join</a></th>
+                <th><a id="tournament-list-info-button" class="button-green" th:href="@{'/tournament/tournament/' + ${tournament.getTournamentID()}}">Info</a></th>
+                <th><a id="tournament-list-join-button" class="button-green" th:href="@{'/tournament/joinTournament/' + ${tournament.getTournamentID()}}">Join</a></th>
             </tr>
             </tbody>
         </table>

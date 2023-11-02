@@ -67,7 +67,7 @@ public class AthleteProfileController {
      * @param model
      * @return
      */
-    @GetMapping("/userlogin")
+    @GetMapping("/userInfo")
     public String userProfile(Model model) {
         try {
             Athlete user = this.customUserDetailsService.getLoggedInUser();
@@ -80,6 +80,7 @@ public class AthleteProfileController {
             model.addAttribute("weight", user.getWeight());
             model.addAttribute("age", user.getAge());
             model.addAttribute("affiliation", user.getAffiliation());
+            model.addAttribute("listEvents", user.getTournaments());
 
             if (user.getPhotoFile() != null) {
                 model.addAttribute("photo", user.getPhotoFile());

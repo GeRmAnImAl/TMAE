@@ -54,4 +54,6 @@ public interface TournamentService {
      * @param tournament
      */
     void joinTournament(Athlete athlete, Tournament tournament);
+
+    void leaveTournament(Athlete athlete, Tournament tournament);
 }
