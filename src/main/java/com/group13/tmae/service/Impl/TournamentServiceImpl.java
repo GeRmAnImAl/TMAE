@@ -2,8 +2,11 @@ package com.group13.tmae.service.Impl;
 
 import com.group13.tmae.model.Athlete;
 import com.group13.tmae.model.Bracket;
+import com.group13.tmae.model.Match;
 import com.group13.tmae.model.Tournament;
+import com.group13.tmae.repository.AthleteRepository;
 import com.group13.tmae.repository.BracketRepository;
+import com.group13.tmae.repository.MatchRepository;
 import com.group13.tmae.repository.TournamentRepository;
 import com.group13.tmae.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,18 @@ public class TournamentServiceImpl implements TournamentService {
      */
     @Autowired
     private BracketRepository bracketRepository;
+
+    /**
+     * Autowired MatchRepository instance for database interaction.
+     */
+    @Autowired
+    private MatchRepository matchRepository;
+
+    /**
+     * Autowired AthleteRepository instance for database interaction.
+     */
+    @Autowired
+    private AthleteRepository athleteRepository;
 
     /**
      * Creates a new tournament.
@@ -139,6 +154,7 @@ public class TournamentServiceImpl implements TournamentService {
         List<List<Athlete>> bracketsData = generateBrackets(tournament);
         for (List<Athlete> bracketData : bracketsData) {
             Bracket bracket = new Bracket(tournament, bracketData);
+            generateMatches(bracket);
             bracketRepository.save(bracket);
         }
     }
@@ -168,7 +184,51 @@ public class TournamentServiceImpl implements TournamentService {
             brackets.add(bracket);
         }
 
-
         return brackets;
+    }
+
+    /**
+     * Generates matches for a given bracket
+     *
+     * @param bracket The Bracket object for which to generate matches.
+     */
+    @Override
+    @Transactional
+    public void generateMatches(Bracket bracket){
+        List<Athlete> athletes = bracket.getAthletes();
+
+        for(int i = 0; i < athletes.size(); i += 2){
+            if(i + 1 < athletes.size()){
+                Athlete athlete1 = athletes.get(i);
+                Athlete athlete2 = athletes.get(i + 1);
+                Match match = new Match(bracket, athlete1, athlete2);
+                matchRepository.save(match);
+                bracket.getMatches().add(match);
+            }
+        }
+        bracketRepository.save(bracket);
+    }
+
+    /**
+     * 
+     * @param matchId
+     * @param winnerId
+     * @param loserId
+     */
+    @Override
+    @Transactional
+    public void recordMatchResult(Long matchId, Long winnerId, Long loserId) {
+        Match match = matchRepository.findById(matchId).orElseThrow(() -> new NoSuchElementException("Match not found with ID: " + matchId));
+        Athlete winner = athleteRepository.findById(winnerId).orElseThrow(() -> new NoSuchElementException("Winner athlete not found with ID: " + winnerId));
+        Athlete loser = athleteRepository.findById(loserId).orElseThrow(() -> new NoSuchElementException("Loser athlete not found with ID: " + loserId));
+
+        match.setWinner(winner);
+        match.setLoser(loser);
+        winner.setWins(winner.getWins() + 1);
+        loser.setLosses(loser.getLosses() + 1);
+
+        matchRepository.save(match);
+        athleteRepository.save(winner);
+        athleteRepository.save(loser);
     }
 }

@@ -73,10 +73,6 @@ public class  Tournament {
         return tournamentID;
     }
 
-    public void setTournamentID(Long tournamentID) {
-        this.tournamentID = tournamentID;
-    }
-
     public String getTournamentName() {
         return tournamentName;
     }

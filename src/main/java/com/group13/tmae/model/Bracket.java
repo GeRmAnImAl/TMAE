@@ -1,6 +1,7 @@
 package com.group13.tmae.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,17 +22,20 @@ public class Bracket {
     @JoinTable(name = "bracket_athletes", joinColumns = @JoinColumn(name = "bracket_id"), inverseJoinColumns = @JoinColumn(name = "athlete_id"))
     private List<Athlete> athletes;
 
+    @OneToMany(mappedBy = "bracket", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Match> matches = new ArrayList<>();
+
     public Bracket(Tournament tournament, List<Athlete> athletes) {
         this.tournament = tournament;
         this.athletes = athletes;
     }
 
-    public Long getBracketID() {
-        return bracketID;
+    public Bracket(){
+
     }
 
-    public void setBracketID(Long bracketID) {
-        this.bracketID = bracketID;
+    public Long getBracketID() {
+        return bracketID;
     }
 
     public Tournament getTournament() {
@@ -48,5 +52,13 @@ public class Bracket {
 
     public void setAthletes(List<Athlete> athletes) {
         this.athletes = athletes;
+    }
+
+    public List<Match> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<Match> matches) {
+        this.matches = matches;
     }
 }

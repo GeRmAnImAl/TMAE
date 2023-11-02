@@ -1,6 +1,7 @@
 package com.group13.tmae.service;
 
 import com.group13.tmae.model.Athlete;
+import com.group13.tmae.model.Bracket;
 import com.group13.tmae.model.Tournament;
 import org.springframework.data.domain.Page;
 
@@ -76,4 +77,19 @@ public interface TournamentService {
      * @return A list containing lists of athletes, each representing a bracket.
      */
     List<List<Athlete>> generateBrackets(Tournament tournament);
+
+    /**
+     * Generates matches for a given bracket
+     *
+     * @param bracket The Bracket object for which to generate matches.
+     */
+    void generateMatches(Bracket bracket);
+
+    /**
+     *
+     * @param matchId
+     * @param winnerId
+     * @param loserId
+     */
+    void recordMatchResult(Long matchId, Long winnerId, Long loserId);
 }
