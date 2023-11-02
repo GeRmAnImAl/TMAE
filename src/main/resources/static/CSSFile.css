@@ -624,6 +624,10 @@ tr{
     background-position: center;
 }
 
+#tournament-info-card-space{
+    display: flex;
+}
+
 #tournament-info-card {
     background-color: #00C4B4;
     width: 50%;
@@ -634,6 +638,16 @@ tr{
     padding: 3%;
     box-shadow: 5px 5px 5px black;
     container-type: size;
+}
+
+#tournament-participants-card{
+    background-color: #00C4B4;
+    width: 30%;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 5px 5px 5px black;
+    text-align: center;
 }
 
 #tournament-info-form {
@@ -682,4 +696,18 @@ tr{
 #tournament-info-form-buttons {
     display: grid;
     grid-template-columns: 50% 50%;
+}
+
+#tournament-info-participants-title{
+    font-size: xx-large;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    margin-top: 2%;
+}
+
+#tournament-info-athlete-info-button, #tournament-info-athlete-kick-button{
+    padding: 5px 10px;
+    margin: 5px 10px;
+    border-radius: 25px;
+    border-width: 2px;
 }

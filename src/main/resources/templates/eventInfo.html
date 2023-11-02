@@ -1,52 +1,84 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-  <!-- Meta tags for character set and viewport -->
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Meta tags for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <!-- Page title and linking to external CSS file -->
-  <title>Tournament Management and Athlete Empowerment</title>
-  <link rel="stylesheet" href="/CSSFile.css">
-  <link rel="icon" href="/backgrounds/icon.png">
+    <!-- Page title and linking to external CSS file -->
+    <title>Tournament Management and Athlete Empowerment</title>
+    <link rel="stylesheet" href="/CSSFile.css">
+    <link rel="icon" href="/backgrounds/icon.png">
 </head>
 <body id="tournament-info-page" class="background">
 <div class="header">
-  <h1 class="headerText">Tournament Management and Athlete Empowerment</h1>
+    <h1 class="headerText">Tournament Management and Athlete Empowerment</h1>
 </div>
 <div th:include="/navbar :: navbar"></div>
 <div class="container">
-  <h1 class="page-description">Event Info</h1>
-  <div id="tournament-info-card">
-    <form id="tournament-info-form" th:action="@{/tournament/updateTournament}" th:object="${tournament}" method="POST">
+    <h1 class="page-description">Event Info</h1>
+    <div id="tournament-info-card-space">
+    <div id="tournament-info-card">
+        <form id="tournament-info-form" th:action="@{/tournament/updateTournament}" th:object="${tournament}"
+              method="POST">
 
-      <input type="hidden" name="tournamentID" th:value="${tournamentID}"/>
+            <input type="hidden" name="tournamentID" th:value="${tournamentID}"/>
 
-      <label class="tournament-info-form-input-label both" for="tournamentName">Tournament Name</label>
-      <input class="tournament-info-form-input both " id="tournamentName" type="text" th:value="${tournamentName}" name="tournamentName"
-             required>
-      <label class="tournament-info-form-input-label both" for="tournamentLocation">Location</label>
-      <input class="tournament-info-form-input both " id="tournamentLocation" type="text" th:value="${tournamentLocation}" name="location"
-             required>
-      <label class="tournament-info-form-input-label both" for="tournamentWebsite">Website</label>
-      <input class="tournament-info-form-input both " id="tournamentWebsite" type="text" th:value="${tournamentWebsite}" name="websiteLink">
-      <label class="tournament-info-form-input-label both" for="tournamentMaxParticipants">Max Participants</label>
-      <input class="tournament-info-form-input both " id="tournamentMaxParticipants" type="number" th:value="${maxParticipants}" name="maxNumParticipants">
-      <label class="tournament-info-form-input-label both" for="tournamentStartDate">Start Date</label>
-      <input class="tournament-info-form-input both " id="tournamentStartDate" type="date" th:value="${startDate}" name="startDate"
-             required>
-      <label class="tournament-info-form-input-label both" for="tournamentEndDate">End Date</label>
-      <input class="tournament-info-form-input both " id="tournamentEndDate" type="date" th:value="${endDate}" name="endDate"
-             required>
-      <label class="tournament-info-form-input-label both" for="tournamentRegistrationDate">Register By</label>
-      <input class="tournament-info-form-input both " id="tournamentRegistrationDate" type="date" th:value="${registerBy}" name="registrationDeadline"
-             required>
-      <div id="tournament-info-form-buttons">
-        <button class="button both" id="submit-tournament-info-button" type="submit">Update Tournament</button>
-        <button class="button both" id="cancel-tournament-info-button" type="reset">Cancel</button>
-      </div>
-    </form>
-  </div>
+            <label class="tournament-info-form-input-label both" for="tournamentName">Tournament Name</label>
+            <input class="tournament-info-form-input both " id="tournamentName" type="text" th:value="${tournamentName}"
+                   name="tournamentName"
+                   required>
+            <label class="tournament-info-form-input-label both" for="tournamentLocation">Location</label>
+            <input class="tournament-info-form-input both " id="tournamentLocation" type="text"
+                   th:value="${tournamentLocation}" name="location"
+                   required>
+            <label class="tournament-info-form-input-label both" for="tournamentWebsite">Website</label>
+            <input class="tournament-info-form-input both " id="tournamentWebsite" type="text"
+                   th:value="${tournamentWebsite}" name="websiteLink">
+            <label class="tournament-info-form-input-label both" for="tournamentMaxParticipants">Max
+                Participants</label>
+            <input class="tournament-info-form-input both " id="tournamentMaxParticipants" type="number"
+                   th:value="${maxParticipants}" name="maxNumParticipants">
+            <label class="tournament-info-form-input-label both" for="tournamentStartDate">Start Date</label>
+            <input class="tournament-info-form-input both " id="tournamentStartDate" type="date" th:value="${startDate}"
+                   name="startDate"
+                   required>
+            <label class="tournament-info-form-input-label both" for="tournamentEndDate">End Date</label>
+            <input class="tournament-info-form-input both " id="tournamentEndDate" type="date" th:value="${endDate}"
+                   name="endDate"
+                   required>
+            <label class="tournament-info-form-input-label both" for="tournamentRegistrationDate">Register By</label>
+            <input class="tournament-info-form-input both " id="tournamentRegistrationDate" type="date"
+                   th:value="${registerBy}" name="registrationDeadline"
+                   required>
+            <div id="tournament-info-form-buttons">
+                <button class="button both" id="submit-tournament-info-button" type="submit">Update Tournament</button>
+                <button class="button both" id="cancel-tournament-info-button" type="reset">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <div id="tournament-participants-card">
+        <h3 id="tournament-info-participants-title">Participants</h3>
+        <table class="table">
+            <thead>
+            <tr class="table-header">
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="striped-table" th:each="athlete : ${participants}">
+                <th th:text="${athlete.getFirstName()}"></th>
+                <th th:text="${athlete.getLastName()}"></th>
+                <th><a id="tournament-info-athlete-info-button" class="button-green"
+                       th:href="@{'/athlete_profile/athlete/' + ${athlete.getAthleteID()}}">Info</a></th>
+                <th><a id="tournament-info-athlete-kick-button" class="button-green"
+                       th:href="@{'/tournament/leaveTournament/' + ${tournamentID}}">Kick</a></th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
 </div>
 </body>
 </html>
