@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * Controller class for managing athlete-related operations and views.
- *
  * This controller handles requests related to athletes and interacts with the AthleteService
  * to retrieve athlete data.
  */
@@ -25,7 +24,6 @@ public class AthletesListController {
 
     /**
      * Handles the HTTP GET request for displaying the list of athletes.
-     *
      * Retrieves the list of athletes from the AthleteService and adds it to the model
      * for rendering in the corresponding view.
      *

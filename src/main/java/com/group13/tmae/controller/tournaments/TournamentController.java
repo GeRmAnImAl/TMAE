@@ -10,9 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLOutput;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 /**
  * Controller for handling tournament-related operations.

@@ -64,8 +64,11 @@ public class AthleteProfileController {
     //TODO fill in java doc tags.
 
     /**
-     * @param model
-     * @return
+     * Handles the request to view the profile page of the currently logged-in user. Populates the model with user details
+     * and prepares attributes for display on the profile page.
+     *
+     * @param model The {@link Model} object that holds attributes to be displayed by the view.
+     * @return The name of the user profile view template to render.
      */
     @GetMapping("/userInfo")
     public String userProfile(Model model) {
