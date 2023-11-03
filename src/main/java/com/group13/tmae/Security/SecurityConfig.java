@@ -14,22 +14,34 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 /**
- * This configuration class extends WebSecurityConfigurerAdapter to customize
- * Spring Security configurations.
+ * Security configuration class that extends WebSecurityConfigurerAdapter to customize
+ * security settings for the application. This configuration sets up authentication mechanisms,
+ * password encoding, and authorization rules for accessing different parts of the application.
  */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /**
+     * Service for loading user-specific data for authentication.
+     */
     private final UserDetailsService userDetailsService;
+
+    /**
+     * Handler that is triggered upon successful user authentication.
+     */
     private final CustomAuthenticationSuccessHandler authenticationSuccessHandler;
+
+    /**
+     * Utility class for generating security keys, used for remember-me functionality.
+     */
     private final SecurityKeyGenerator securityKeyGenerator = new SecurityKeyGenerator();
 
     /**
-     * Constructs a SecurityConfig with the specified UserDetailsService and
-     * CustomAuthenticationSuccessHandler.
-     * @param userDetailsService        the service to fetch user details
-     * @param authenticationSuccessHandler the handler for authentication success events
+     * Constructor that injects the necessary dependencies for the security configuration.
+     *
+     * @param userDetailsService The service that provides user authentication data.
+     * @param authenticationSuccessHandler The handler for successful authentication events.
      */
     @Autowired
     public SecurityConfig(@Lazy UserDetailsService userDetailsService, CustomAuthenticationSuccessHandler authenticationSuccessHandler) {
@@ -38,10 +50,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * Configures the specified AuthenticationManagerBuilder to use the custom
-     * UserDetailsService and a BCryptPasswordEncoder.
-     * @param auth          the AuthenticationManagerBuilder to configure
-     * @throws Exception    if an error occurs
+     * Configures the AuthenticationManagerBuilder to use the provided UserDetailsService
+     * and a BCryptPasswordEncoder for user authentication.
+     *
+     * @param auth The AuthenticationManagerBuilder to configure.
+     * @throws Exception If any error occurs during configuration.
      */
    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -49,19 +62,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * Provides the BCryptPasswordEncoder for password encoding.
+     * Defines a Bean for BCryptPasswordEncoder to encode and verify passwords securely.
+     *
      * @return A BCryptPasswordEncoder instance.
-    */
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     /**
-     * Configures the specified HttpSecurity object to customize the security
-     * settings. This includes configuring URL access permissions and login settings.
-     * @param http          the HttpSecurity object to configure
-     * @throws Exception    if an error occurs
+     * Configures the HttpSecurity object to specify security settings, such as session management,
+     * login configuration, and remember-me functionality. It sets up the authorization for
+     * protected resources and configures the login and logout behavior.
+     *
+     * @param http The HttpSecurity object to configure.
+     * @throws Exception If any error occurs during configuration.
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {

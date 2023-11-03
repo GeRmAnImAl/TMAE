@@ -8,7 +8,6 @@ import java.util.Optional;
 
 /**
  * Repository interface for managing Athlete entities in the database.
- *
  * This interface extends the JpaRepository interface provided by Spring Data JPA
  * and specifies the type of entity (Athlete) and the type of its primary key (Long).
  */
@@ -17,7 +16,6 @@ public interface AthleteRepository extends JpaRepository<Athlete, Long> {
 
     /**
      * Retrieves an Athlete entity by its unique identifier.
-     *
      * Overrides the default findById method in JpaRepository to return an Optional
      * containing the Athlete with the specified ID, if it exists.
      *
@@ -27,6 +25,14 @@ public interface AthleteRepository extends JpaRepository<Athlete, Long> {
     @Override
     Optional<Athlete> findById(Long id);
 
+    /**
+     * Retrieves an Athlete entity by its username.
+     * If an athlete with the given username exists, an Optional containing the Athlete is returned.
+     * Otherwise, an empty Optional is returned.
+     *
+     * @param userName The username of the Athlete to retrieve.
+     * @return Optional containing the Athlete with the specified username, or an empty Optional if not found.
+     */
     Optional<Athlete> findByUserName(String userName);
 
 }

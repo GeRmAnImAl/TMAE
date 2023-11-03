@@ -14,8 +14,9 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 /**
- * Implementation of the AthleteService interface that provides
- * functionality for managing athlete-related operations.
+ * Service implementation for managing athlete-related operations.
+ * This service provides methods to create, retrieve, update, and delete athlete records,
+ * as well as to facilitate pagination and sorting of athlete data.
  */
 @Service
 public class AthleteServiceImpl implements AthleteService {
@@ -25,6 +26,10 @@ public class AthleteServiceImpl implements AthleteService {
      */
     @Autowired
     private AthleteRepository athleteRepository;
+
+    /**
+     * Encoder for hashing passwords to enhance security.
+     */
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 

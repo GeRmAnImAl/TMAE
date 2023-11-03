@@ -19,6 +19,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
+/**
+ * Service implementation for managing tournaments.
+ * Provides methods to create, retrieve, update, and delete tournaments,
+ * as well as to manage tournament participation and brackets.
+ */
 @Service
 public class TournamentServiceImpl implements TournamentService {
 
@@ -116,9 +121,11 @@ public class TournamentServiceImpl implements TournamentService {
     }
 
     /**
+     * Registers an athlete for a given tournament.
+     * If the athlete is already registered, a message is printed indicating so.
      *
-     * @param athlete
-     * @param tournament
+     * @param athlete    The athlete to register.
+     * @param tournament The tournament for which to register the athlete.
      */
     @Override
     public void joinTournament(Athlete athlete, Tournament tournament) {
@@ -133,9 +140,11 @@ public class TournamentServiceImpl implements TournamentService {
     }
 
     /**
+     * Withdraws an athlete from a given tournament.
+     * If the athlete is not registered for the tournament, a message is printed indicating so.
      *
-     * @param athlete
-     * @param tournament
+     * @param athlete    The athlete to withdraw.
+     * @param tournament The tournament from which to withdraw the athlete.
      */
     @Override
     public void leaveTournament(Athlete athlete, Tournament tournament) {
@@ -228,20 +237,26 @@ public class TournamentServiceImpl implements TournamentService {
     }
 
     /**
+     * Determines if a bye is necessary for bracket generation based on the number of athletes.
+     * A bye is needed if there is an odd number of athletes.
      *
-     * @param athletes
-     * @return
+     * @param athletes The list of athletes participating in the tournament.
+     * @return true if a bye is needed, false otherwise.
      */
+    @Override
     public boolean isByeNeeded(List<Athlete> athletes) {
         return athletes.size() % 2 != 0;
     }
 
 
     /**
+     * Records the result of a match, updating the winner's and loser's statistics.
+     * The match winner is advanced, and the loser is removed from the tournament participants.
+     * After updating, it checks if all matches are complete to generate the next round.
      *
-     * @param matchId
-     * @param winnerId
-     * @param loserId
+     * @param matchId   The unique identifier of the match.
+     * @param winnerId  The unique identifier of the winning athlete.
+     * @param loserId   The unique identifier of the losing athlete.
      */
     @Override
     @Transactional
@@ -267,8 +282,10 @@ public class TournamentServiceImpl implements TournamentService {
     }
 
     /**
+     * Checks if all matches in the current round are complete and generates the next round of brackets.
+     * If an athlete was given a bye in the previous round, they are added back into the participants.
      *
-     * @param tournament
+     * @param tournament The tournament for which to check matches and generate the next round.
      */
     @Override
     public void checkAndGenerateNextRound(Tournament tournament) {

@@ -11,8 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Custom implementation of {@link AuthenticationSuccessHandler} to define custom behavior on authentication success.
+ * This handler redirects the user to their profile page upon successful authentication.
+ */
 @Component
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+    /**
+     *
+     */
     private final AthleteRepository athleteRepository;
 
     /**
@@ -25,12 +32,14 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     }
 
     /**
-     * Handles the behavior after a successful authentication.
-     * @param request        the servlet request.
-     * @param response       the servlet response.
-     * @param authentication the current authentication object.
-     * @throws IOException      in case of IO errors.
-     * @throws ServletException in case of servlet errors.
+     * Handles the behavior immediately after a successful authentication.
+     * Redirects the authenticated user to their profile page.
+     *
+     * @param request        The HttpServletRequest being processed.
+     * @param response       The HttpServletResponse to be produced as a result of the authentication.
+     * @param authentication The current authentication object which contains the user's details.
+     * @throws IOException      If an input or output exception occurs during redirect.
+     * @throws ServletException If a servlet exception occurs during redirect.
      */
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {

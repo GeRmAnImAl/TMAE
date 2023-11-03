@@ -12,18 +12,21 @@ public interface AthleteService {
 
     /**
      * Creates a new athlete.
+     *
      * @param athlete The Athlete object to be created.
      */
     void createAthlete(Athlete athlete);
 
     /**
      * Retrieves a list of all athletes.
+     *
      * @return List of Athlete objects.
      */
     List<Athlete> getAllAthletes();
 
     /**
      * Retrieves an athlete by their unique identifier.
+     *
      * @param id The unique identifier of the Athlete.
      * @return The Athlete object with the specified ID, or null if not found.
      */
@@ -31,18 +34,21 @@ public interface AthleteService {
 
     /**
      * Updates an existing athlete.
+     *
      * @param athlete The Athlete object to be updated.
      */
     void updateAthlete(Athlete athlete);
 
     /**
      * Deletes an athlete by their unique identifier.
+     *
      * @param id The unique identifier of the Athlete to be deleted.
      */
     void deleteAthlete(Long id);
 
     /**
      * Retrieves a paginated list of athletes, sorted based on specified criteria.
+     *
      * @param pageNo         The page number to be retrieved.
      * @param pageSize       The number of items per page.
      * @param sortField      The field by which the results should be sorted.

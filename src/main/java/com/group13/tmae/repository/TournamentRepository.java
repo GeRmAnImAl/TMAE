@@ -6,6 +6,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+/**
+ * Repository interface for managing {@link Tournament} entities in the database.
+ * It extends the JpaRepository interface provided by Spring Data JPA,
+ * leveraging standard CRUD operations and enabling custom query methods for Tournament entities.
+ */
 @Repository
 public interface TournamentRepository extends JpaRepository<Tournament, Long> {
     /**

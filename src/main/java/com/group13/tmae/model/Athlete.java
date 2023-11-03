@@ -28,9 +28,15 @@ public class Athlete implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long athleteID;
 
+    /**
+     * The username of the athlete.
+     */
     @Column(name = "user_name")
     private String userName;
 
+    /**
+     * The password of the athlete.
+     */
     @Column(name = "password")
     private String password;
 
@@ -64,33 +70,63 @@ public class Athlete implements Serializable {
     @Column(name = "ties")
     private Integer ties;
 
+    /**
+     * The athlete's affiliation, if any.
+     */
     @Column(name = "affiliation")
     private String affiliation;
 
+    /**
+     * The age of the athlete.
+     */
     @Column(name = "age")
     private Integer age;
 
+    /**
+     * The weight of the athlete.
+     */
     @Column(name = "weight")
     private Double weight;
 
+    /**
+     * The address of the athlete.
+     */
     @Column(name = "address")
     private String address;
 
+    /**
+     * The email address of the athlete.
+     */
     @Column(name = "email")
     private String email;
 
+    /**
+     * The phone number of the athlete.
+     */
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    /**
+     * Photo data for the athlete in binary format.
+     */
     @Column(name = "photo_data")
     private byte[] photoData;
 
+    /**
+     * The file of the athlete's photo to be uploaded.
+     */
     @Transient
     private MultipartFile photoFile;
 
+    /**
+     * The content type of the athlete's photo.
+     */
     @Column(name = "photo_content_type")
     private String photoContentType;
 
+    /**
+     * Tournaments the athlete is registered for.
+     */
     @ManyToMany(mappedBy = "participants")
     private List<Tournament> tournaments;
 
@@ -149,18 +185,38 @@ public class Athlete implements Serializable {
         return athleteID;
     }
 
+    /**
+     * Retrieves the username of the athlete.
+     *
+     * @return the athlete's username.
+     */
     public String getUserName() {
         return userName;
     }
 
+    /**
+     * Sets the athlete's username.
+     *
+     * @param userName the new username for the athlete.
+     */
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
+    /**
+     * Retrieves the athlete's password.
+     *
+     * @return the athlete's password.
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Sets the athlete's password.
+     *
+     * @param password the new password for the athlete.
+     */
     public void setPassword(String password) {
         this.password = password;
     }
@@ -264,87 +320,191 @@ public class Athlete implements Serializable {
         this.ties = ties;
     }
 
+    /**
+     * Retrieves the athlete's affiliation.
+     *
+     * @return the athlete's affiliation.
+     */
     public String getAffiliation() {
         return affiliation;
     }
 
+    /**
+     * Sets the athlete's affiliation.
+     *
+     * @param affiliation the new affiliation for the athlete.
+     */
     public void setAffiliation(String affiliation) {
         this.affiliation = affiliation;
     }
 
+    /**
+     * Retrieves the athlete's age.
+     *
+     * @return the athlete's age.
+     */
     public Integer getAge() {
         return age;
     }
 
+    /**
+     * Sets the athlete's age.
+     *
+     * @param age the new age for the athlete.
+     */
     public void setAge(Integer age) {
         this.age = age;
     }
 
+    /**
+     * Retrieves the athlete's weight.
+     *
+     * @return the athlete's weight.
+     */
     public Double getWeight() {
         return weight;
     }
 
+    /**
+     * Sets the athlete's weight.
+     *
+     * @param weight the new weight for the athlete.
+     */
     public void setWeight(Double weight) {
         this.weight = weight;
     }
 
+    /**
+     * Retrieves the athlete's address.
+     *
+     * @return the athlete's address.
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * Sets the athlete's address.
+     *
+     * @param address the new address for the athlete.
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**
+     * Retrieves the athlete's email.
+     *
+     * @return the athlete's email address.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets the athlete's email.
+     *
+     * @param email the new email address for the athlete.
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Retrieves the athlete's phone number.
+     *
+     * @return the athlete's phone number.
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    /**
+     * Sets the athlete's phone number.
+     *
+     * @param phoneNumber the new phone number for the athlete.
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
+    /**
+     * Retrieves the raw photo data of the athlete.
+     *
+     * @return A byte array containing the binary data of the athlete's photo.
+     */
     public byte[] getPhotoData() {
         return photoData;
     }
 
+    /**
+     * Sets the raw photo data of the athlete.
+     *
+     * @param photoData A byte array representing the binary data of the athlete's photo to be set.
+     */
     public void setPhotoData(byte[] photoData) {
         this.photoData = photoData;
     }
 
+    /**
+     * Converts the athlete's photo data to a Base64-encoded string.
+     *
+     * @return the Base64-encoded string of the athlete's photo data.
+     */
     public String getPhotoDataAsBase64() {
         return Base64.getEncoder().encodeToString(this.photoData);
     }
 
-
+    /**
+     * Retrieves the athlete's photo file.
+     *
+     * @return the athlete's photo file.
+     */
     public MultipartFile getPhotoFile() {
         return photoFile;
     }
 
+    /**
+     * Sets the athlete's photo file.
+     *
+     * @param photoFile the new photo file for the athlete.
+     */
     public void setPhotoFile(MultipartFile photoFile) {
         this.photoFile = photoFile;
     }
 
+    /**
+     * Retrieves the content type of the athlete's photo.
+     *
+     * @return the content type of the athlete's photo.
+     */
     public String getPhotoContentType() {
         return photoContentType;
     }
 
+    /**
+     * Sets the content type of the athlete's photo.
+     *
+     * @param photoContentType the new content type for the athlete's photo.
+     */
     public void setPhotoContentType(String photoContentType) {
         this.photoContentType = photoContentType;
     }
 
+    /**
+     * Retrieves the list of tournaments the athlete is registered for.
+     *
+     * @return the list of tournaments the athlete is participating in.
+     */
     public List<Tournament> getTournaments() {
         return tournaments;
     }
 
+    /**
+     * Sets the list of tournaments the athlete is registered for.
+     *
+     * @param tournaments the new list of tournaments for the athlete.
+     */
     public void setTournaments(List<Tournament> tournaments) {
         this.tournaments = tournaments;
     }

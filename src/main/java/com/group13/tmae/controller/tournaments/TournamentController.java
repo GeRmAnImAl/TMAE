@@ -15,22 +15,37 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
- *
+ * Controller for handling tournament-related operations.
  */
 @Controller
 @RequestMapping("/tournament")
 public class TournamentController {
+    /**
+     * Service for handling operations related to tournament management.
+     * This includes creating, updating, deleting, and querying tournament data.
+     */
     @Autowired
     private TournamentService tournamentService;
+
+    /**
+     * Repository for direct database access and operations on tournament entities.
+     * Provides a more granular level of data manipulation than TournamentService.
+     */
     @Autowired
     private TournamentRepository tournamentRepository;
+
+    /**
+     * Custom service for user details, providing access to the currently authenticated user's data
+     * and handling user-related business logic.
+     */
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
     /**
+     * Saves a new tournament to the database and redirects to the tournament list view.
      *
-     * @param tournament
-     * @return
+     * @param tournament The tournament object to save.
+     * @return The view name to redirect to after saving the tournament.
      */
     @PostMapping("/saveTournament")
     public String saveTournament(@ModelAttribute("tournament") Tournament tournament) {
@@ -40,10 +55,11 @@ public class TournamentController {
     }
 
     /**
+     * Displays the tournament page for a specific tournament.
      *
-     * @param id
-     * @param model
-     * @return
+     * @param id    The unique identifier of the tournament to display.
+     * @param model The view model to pass to the front end.
+     * @return The name of the view to render the tournament page.
      */
     @GetMapping("/tournament/{id}")
     public String showTournamentPage(@PathVariable(value = "id") Long id, Model model) {
@@ -69,9 +85,10 @@ public class TournamentController {
     }
 
     /**
+     * Displays the view for creating a new event.
      *
-     * @param model
-     * @return
+     * @param model The view model to pass to the front end.
+     * @return The name of the view to render the event creation page.
      */
     @GetMapping("/creation")
     public String createEvent(Model model) {
@@ -80,9 +97,10 @@ public class TournamentController {
     }
 
     /**
+     * Displays the list of all tournaments.
      *
-     * @param model
-     * @return
+     * @param model The view model to pass to the front end.
+     * @return The name of the view to render the list of all tournaments.
      */
     @GetMapping("/listAllTournaments")
     public String showAllTournaments(Model model){
@@ -92,10 +110,11 @@ public class TournamentController {
     }
 
     /**
+     * Registers the currently logged-in athlete to the specified tournament and redirects to the tournament list view.
      *
-     * @param tournamentID
-     * @param model
-     * @return
+     * @param tournamentID The unique identifier of the tournament to join.
+     * @param model        The view model to pass to the front end.
+     * @return The name of the view to render after joining the tournament.
      */
     @GetMapping("/joinTournament/{id}")
     public String joinTournament(@PathVariable("id") Long tournamentID, Model model){
@@ -109,6 +128,12 @@ public class TournamentController {
         return "/tournament_list";
     }
 
+    /**
+     * Withdraws the currently logged-in athlete from the specified tournament and redirects to the athlete profile view.
+     *
+     * @param tournamentID The unique identifier of the tournament to leave.
+     * @return The view name to redirect to after leaving the tournament.
+     */
     @GetMapping("/leaveTournament/{id}")
     public String leaveTournament(@PathVariable("id") Long tournamentID){
         Athlete user = this.customUserDetailsService.getLoggedInUser();
@@ -119,6 +144,12 @@ public class TournamentController {
         return "redirect:/athlete_profile/userInfo";
     }
 
+    /**
+     * Updates an existing tournament with new information and redirects to the updated tournament's page.
+     *
+     * @param tournamentInput The tournament object with updated information.
+     * @return The view name to redirect to after updating the tournament.
+     */
     @PostMapping("/updateTournament")
     public String updateTournament(@ModelAttribute("tournament") Tournament tournamentInput){
 
