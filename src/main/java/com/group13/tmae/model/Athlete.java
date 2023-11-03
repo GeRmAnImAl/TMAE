@@ -2,10 +2,12 @@ package com.group13.tmae.model;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -77,10 +79,11 @@ public class Athlete implements Serializable {
     private String affiliation;
 
     /**
-     * The age of the athlete.
+     * The birthdate of the athlete.
      */
-    @Column(name = "age")
-    private Integer age;
+    @Column(name = "birth_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthDate;
 
     /**
      * The weight of the athlete.
@@ -136,7 +139,7 @@ public class Athlete implements Serializable {
      * @param firstName The first name of the athlete.
      * @param lastName  The last name of the athlete.
      */
-    public Athlete(String userName, String password, String firstName, String lastName, String affiliation, Integer age,
+    public Athlete(String userName, String password, String firstName, String lastName, String affiliation, LocalDate birthDate,
                    Double weight, String address, String email, String phoneNumber, byte[] photoData) {
         this.userName = userName;
         this.password = password;
@@ -146,7 +149,7 @@ public class Athlete implements Serializable {
         this.losses = 0;
         this.ties = 0;
         this.affiliation = affiliation;
-        this.age = age;
+        this.birthDate = birthDate;
         this.weight = weight;
         this.address = address;
         this.email = email;
@@ -167,7 +170,7 @@ public class Athlete implements Serializable {
         this.losses = 0;
         this.ties = 0;
         this.affiliation = "";
-        this.age = 0;
+        this.birthDate = LocalDate.now();
         this.weight = 0.0;
         this.address = "";
         this.email = "";
@@ -343,17 +346,17 @@ public class Athlete implements Serializable {
      *
      * @return the athlete's age.
      */
-    public Integer getAge() {
-        return age;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
     /**
      * Sets the athlete's age.
      *
-     * @param age the new age for the athlete.
+     * @param birthDate the new age for the athlete.
      */
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     /**

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 
 @Controller
@@ -81,7 +83,10 @@ public class AthleteProfileController {
             model.addAttribute("losses", user.getLosses());
             model.addAttribute("ties", user.getTies());
             model.addAttribute("weight", user.getWeight());
-            model.addAttribute("age", user.getAge());
+
+            long age = ChronoUnit.YEARS.between(user.getBirthDate(), LocalDate.now());
+
+            model.addAttribute("age", age);
             model.addAttribute("affiliation", user.getAffiliation());
             model.addAttribute("listEvents", user.getTournaments());
 
