@@ -203,6 +203,12 @@ public class TournamentServiceImpl implements TournamentService {
     public void generateMatches(Bracket bracket){
         List<Athlete> athletes = bracket.getAthletes();
         Tournament tournament = bracket.getTournament();
+        Set<Athlete> athleteWithBye = null;
+
+        if(isByeNeeded(athletes)){
+            athleteWithBye = new HashSet<>();
+            athleteWithBye.add(athletes.remove(0));
+        }
 
         for(int i = 0; i < athletes.size(); i += 2){
             if(i + 1 < athletes.size()){
@@ -213,7 +219,23 @@ public class TournamentServiceImpl implements TournamentService {
                 bracket.getMatches().add(match);
             }
         }
+
+        if(athleteWithBye != null){
+            tournament.setAthleteWithBye(athleteWithBye);
+            tournamentRepository.save(tournament);
+        }
+
     }
+
+    /**
+     *
+     * @param athletes
+     * @return
+     */
+    public boolean isByeNeeded(List<Athlete> athletes) {
+        return athletes.size() % 2 != 0;
+    }
+
 
     /**
      *
@@ -257,6 +279,13 @@ public class TournamentServiceImpl implements TournamentService {
 
         if (allMatchesComplete) {
             // If all matches are complete, generate new brackets with the remaining participants
+            Set<Athlete> athleteWithBye = tournament.getAthleteWithBye();
+            if(athleteWithBye != null){
+                for(Athlete athlete : athleteWithBye){
+                    tournament.getParticipants().add(athlete);
+                }
+                tournament.setAthleteWithBye(null);
+            }
             generateAndSaveBrackets(tournament);
         }
     }

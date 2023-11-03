@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tournaments")
@@ -52,6 +53,9 @@ public class  Tournament {
     @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Bracket> brackets = new ArrayList<>();
 
+    @Transient
+    private Set<Athlete> athleteWithBye;
+
     public Tournament(Long tournamentID, String tournamentName, LocalDate startDate, LocalDate endDate, String location,
                       String websiteLink, Integer maxNumParticipants, LocalDate registrationDeadline) {
         this.tournamentID = tournamentID;
@@ -63,6 +67,7 @@ public class  Tournament {
         this.maxNumParticipants = maxNumParticipants;
         this.registrationDeadline = registrationDeadline;
         this.participants = new ArrayList<>();
+        this.athleteWithBye = null;
     }
 
     public Tournament() {
@@ -153,5 +158,13 @@ public class  Tournament {
     public void removeBracket(Bracket bracket){
         this.brackets.remove(bracket);
         bracket.setTournament(null);
+    }
+
+    public Set<Athlete> getAthleteWithBye() {
+        return athleteWithBye;
+    }
+
+    public void setAthleteWithBye(Set<Athlete> athleteWithBye) {
+        this.athleteWithBye = athleteWithBye;
     }
 }
