@@ -37,17 +37,30 @@
             <input class="tournament-creation-form-input both " id="tournamentMaxParticipants" type="number" placeholder="0" name="maxNumParticipants"
                    autocomplete="max_num_participants">
             <label class="tournament-creation-form-input-label both" for="tournamentStartDate">Start Date</label>
-            <input class="tournament-creation-form-input both " id="tournamentStartDate" type="date" placeholder="MM-DD-YYYY" name="startDate"
+            <input class="tournament-creation-form-input both " id="tournamentStartDate" type="date" max="2035-12-31" placeholder="MM-DD-YYYY" name="startDate"
                    required
                    autocomplete="startDate">
             <label class="tournament-creation-form-input-label both" for="tournamentEndDate">End Date</label>
-            <input class="tournament-creation-form-input both " id="tournamentEndDate" type="date" placeholder="MM-DD-YYYY" name="endDate"
+            <input class="tournament-creation-form-input both " id="tournamentEndDate" type="date" max="2035-12-31" placeholder="MM-DD-YYYY" name="endDate"
                    required
                    autocomplete="endDate">
             <label class="tournament-creation-form-input-label both" for="tournamentRegistrationDate">Register By</label>
-            <input class="tournament-creation-form-input both " id="tournamentRegistrationDate" type="date" placeholder="MM-DD-YYYY" name="registrationDeadline"
+            <input class="tournament-creation-form-input both " id="tournamentRegistrationDate" type="date" max="2035-12-31" placeholder="MM-DD-YYYY" name="registrationDeadline"
                    required
                    autocomplete="registrationDeadline">
+
+            <!-- JavaScript to set the minimum date to today -->
+            <script>
+                var today = new Date();
+                var yyyy = today.getFullYear();
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); // Month is 0-based, so we add 1
+                var dd = String(today.getDate()).padStart(2, '0');
+                var formattedDate = yyyy + '-' + mm + '-' + dd;
+                document.getElementById('tournamentStartDate').min = formattedDate;
+                document.getElementById('tournamentEndDate').min = formattedDate;
+                document.getElementById('tournamentRegistrationDate').min = formattedDate;
+            </script>
+
             <div id="tournament-creation-form-buttons">
                 <button class="button both" id="submit-tournament-creation-button" type="submit">Create Tournament</button>
 
