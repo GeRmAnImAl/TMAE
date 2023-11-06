@@ -91,6 +91,12 @@ public class  Tournament {
     private Set<Athlete> athleteWithBye;
 
     /**
+     * A flag indicating whether the initial set of brackets for the tournament has been generated.
+     * It is set to false by default and should be updated to true after the first generation of brackets.
+     */
+    private boolean initialBracketsGenerated = false;
+
+    /**
      * Creates a tournament with detailed information.
      *
      * @param tournamentID The unique identifier for the tournament.
@@ -330,5 +336,23 @@ public class  Tournament {
      */
     public void setAthleteWithBye(Set<Athlete> athleteWithBye) {
         this.athleteWithBye = athleteWithBye;
+    }
+
+    /**
+     * Checks if the initial brackets have already been generated for the tournament.
+     *
+     * @return true if the initial brackets have been generated, false otherwise.
+     */
+    public boolean isInitialBracketsGenerated() {
+        return initialBracketsGenerated;
+    }
+
+    /**
+     * Sets the flag indicating whether the initial brackets have been generated for the tournament.
+     *
+     * @param initialBracketsGenerated The flag to indicate if the initial brackets have been generated.
+     */
+    public void setInitialBracketsGenerated(boolean initialBracketsGenerated) {
+        this.initialBracketsGenerated = initialBracketsGenerated;
     }
 }

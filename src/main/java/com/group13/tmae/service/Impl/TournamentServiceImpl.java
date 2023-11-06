@@ -184,8 +184,12 @@ public class TournamentServiceImpl implements TournamentService {
     @Transactional
     public List<List<Athlete>> generateBrackets(Tournament tournament) {
         List<Athlete> participants = tournament.getParticipants();
-        // Randomizes the list
-        Collections.shuffle(participants);
+        // Randomizes the list if creating the initial brackets for the tournament
+        if(!tournament.isInitialBracketsGenerated()){
+            Collections.shuffle(participants);
+            tournament.setInitialBracketsGenerated(true);
+            tournamentRepository.save(tournament);
+        }
 
         List<List<Athlete>> brackets = new ArrayList<>();
         Queue<Athlete> queue = new LinkedList<>(participants);
