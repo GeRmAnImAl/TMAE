@@ -61,7 +61,6 @@ public class TournamentController {
      */
     @GetMapping("/tournament/{id}")
     public String showTournamentPage(@PathVariable(value = "id") Long id, Model model) {
-        System.out.println("Got Here");
         Tournament tournament = this.tournamentService.getTournamentById(id);
         Athlete user = this.customUserDetailsService.getLoggedInUser();
 
@@ -159,6 +158,11 @@ public class TournamentController {
         this.tournamentService.updateTournament(tournamentInput);
 
         return "redirect:/tournament/tournament/" + tournamentInput.getTournamentID();
+    }
+
+    @GetMapping("/tournament{tournamentID}/bracket")
+    public String showTournamentBracket(){
+        return "";
     }
 
 }

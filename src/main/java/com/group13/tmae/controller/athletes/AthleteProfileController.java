@@ -57,7 +57,7 @@ public class AthleteProfileController {
     public String showAthleteProfile(@PathVariable(value = "id") Long id, Model model) {
         Athlete athlete = athleteService.getAthleteById(id);
         model.addAttribute("athlete", athlete);
-        model.addAttribute("photoData", athlete.getPhotoDataAsBase64());
+        model.addAttribute("photoData", athlete.getPhotoFile());
         model.addAttribute("photoContentType", athlete.getPhotoContentType());
 
         //TODO change this string to the actual link for the athlete profile page.
