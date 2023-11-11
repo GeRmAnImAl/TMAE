@@ -22,7 +22,14 @@ public class DeveloperPageController {
     @GetMapping("/")
     public String athleteTournamentAdd(Model model){
         model.addAttribute("athletes", this.athleteService.getAllAthletes());
+        model.addAttribute("tournaments", this.tournamentService.getAllTournaments());
 
         return "secret_developer_page";
+    }
+
+    @PostMapping("/add_to_tournament")
+    public String developerAddToTournament(@ModelAttribute("developerTournamentForJoin") Tournament tournament){
+        System.out.println("Selected tournament: " + tournament.getTournamentName());
+        return "redirect:/developer/";
     }
 }
