@@ -1,0 +1,29 @@
+INSERT INTO athletes (first_name, last_name, address, affiliation, email, password, phone_number, user_name, weight, birth_date, losses, ties, wins)
+SELECT 
+    first_name,
+    last_name,
+    CONCAT('Street ', FLOOR(RAND() * 100) + 1, ', City', FLOOR(RAND() * 10) + 1) AS address,
+    CONCAT('Affiliation ', FLOOR(RAND() * 100) + 1) AS affiliation,
+    CONCAT('email', FLOOR(RAND() * 1000) + 1, '@domain.com') AS email,
+    'password' AS password,
+    CONCAT('123456', FLOOR(RAND() * 1000000) + 1) AS phone_number,
+    CONCAT(first_name, '_', last_name) AS user_name,
+    FLOOR(RAND() * 200) AS weight,
+    DATE_ADD('1970-01-01', INTERVAL FLOOR(RAND() * 365 * 30) DAY) AS birth_date,
+    0 AS losses,
+    0 AS ties,
+    0 AS wins
+FROM (
+    SELECT 
+        fn.first_name,
+        ln.last_name
+    FROM (
+        SELECT 'John' AS first_name UNION SELECT 'Emma' UNION SELECT 'Michael' UNION SELECT 'Sophia' UNION SELECT 'Daniel' UNION SELECT 'Olivia' UNION SELECT 'James' UNION SELECT 'Ava' UNION 
+        SELECT 'William' UNION SELECT 'Isabella' UNION SELECT 'Alexander' UNION SELECT 'Mia' UNION SELECT 'Ethan' UNION SELECT 'Charlotte' UNION SELECT 'David' UNION SELECT 'Abigail'
+    ) AS fn
+    JOIN (
+        SELECT 'Smith' AS last_name UNION SELECT 'Johnson' UNION SELECT 'Williams' UNION SELECT 'Brown' UNION SELECT 'Jones' UNION SELECT 'Garcia' UNION SELECT 'Martinez' UNION SELECT 'Lee' UNION 
+        SELECT 'Rodriguez' UNION SELECT 'Miller' UNION SELECT 'Davis' UNION SELECT 'Gonzalez' UNION SELECT 'Hernandez' UNION SELECT 'Lopez' UNION SELECT 'Wilson' UNION SELECT 'Anderson'
+    ) AS ln ON RAND()
+    LIMIT 100
+) AS names;

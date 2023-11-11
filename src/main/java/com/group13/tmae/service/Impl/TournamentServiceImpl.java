@@ -311,4 +311,32 @@ public class TournamentServiceImpl implements TournamentService {
         }
     }
 
+    @Override
+    public int[] getRoundInfo(Tournament tournament) {
+        int[] roundInfo = new int[2];
+
+        int tournamentSize = tournament.getParticipants().size();
+        int roundSize = tournament.getBrackets().get(0).getAthletes().size();
+
+
+        int totalRounds = 0;
+        int currentRound = 0;
+
+        if(this.isByeNeeded(tournament.getParticipants())){
+            tournamentSize = tournamentSize - 1;
+        }
+
+        while(tournamentSize > 1){
+            if(this.isByeNeeded(tournament.getParticipants())){
+                tournamentSize = tournamentSize - 1;
+            }
+            totalRounds ++;
+
+            tournamentSize = tournamentSize/2;
+        }
+
+        roundInfo[0] = totalRounds;
+
+        return new int[0];
+    }
 }

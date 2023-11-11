@@ -121,4 +121,6 @@ public interface TournamentService {
      * @param tournament The tournament for which to check matches and generate the next round.
      */
     void checkAndGenerateNextRound(Tournament tournament);
+
+    int[] getRoundInfo(Tournament tournament);
 }
