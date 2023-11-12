@@ -30,8 +30,18 @@ public class DeveloperPageController {
     }
 
     @PostMapping("/add_to_tournament")
-    public String developerAddToTournament(@RequestParam("tournamentDropdown") Long tournamentID) {
-        System.out.println("Selected tournament: " + this.tournamentService.getTournamentById(tournamentID).getTournamentName());
-        return "redirect:/developer/";
+    public String developerAddToTournament(@RequestParam("tournamentDropdown") Long tournamentID,
+                                           @RequestParam(name = "developerSelectedAthletes", required = false) List<Long> athleteIDs) {
+
+        if (tournamentID != 0) {
+            if (athleteIDs != null) {
+                for (Long athlete : athleteIDs) {
+                    System.out.println(this.athleteService.getAthleteById(athlete).getFirstName());
+                    System.out.println("Selected tournament: " + this.tournamentService.getTournamentById(tournamentID).getTournamentName());
+                }
+            }
+        }
+
+        return "redirect:/developer";
     }
 }
