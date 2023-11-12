@@ -1,7 +1,9 @@
 package com.group13.tmae.controller;
 
+import com.group13.tmae.model.Athlete;
 import com.group13.tmae.model.Tournament;
 import com.group13.tmae.service.AthleteService;
+import com.group13.tmae.service.Impl.TournamentServiceImpl;
 import com.group13.tmae.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,9 +25,22 @@ public class DeveloperPageController {
     public TournamentService tournamentService;
 
     @GetMapping("")
-    public String athleteTournamentAdd(Model model) {
-        model.addAttribute("athletes", this.athleteService.getAllAthletes());
+    public String developerNoTournamentSelected(Model model) {
         model.addAttribute("tournaments", this.tournamentService.getAllTournaments());
+
+        List<Athlete> athletes = this.athleteService.getAllAthletes();
+
+        List<List<Object>> athleteEntries = new ArrayList<>();
+
+        for (Athlete athlete : athletes) {
+            List<Object> athleteInTournament = new ArrayList<>();
+            athleteInTournament.add(athlete);
+            athleteInTournament.add(false);
+
+            athleteEntries.add(athleteInTournament);
+        }
+
+        model.addAttribute("athletes", athleteEntries);
 
         return "secret_developer_page";
     }
@@ -42,6 +58,30 @@ public class DeveloperPageController {
             }
         }
 
-        return "redirect:/developer";
+        return "redirect:/developer/";
+    }
+
+    @GetMapping("/{tournamentID}")
+    public String showTournament(@PathVariable(value = "tournamentID") Long tournamentID, Model model) {
+
+        List<Athlete> athletes = this.athleteService.getAllAthletes();
+        Tournament tournament = this.tournamentService.getTournamentById(tournamentID);
+
+        for (Athlete athlete : athletes) {
+            List<Object> athleteInTournament = new ArrayList<>();
+            athleteInTournament.add(athlete);
+
+            if (tournament.getParticipants().contains(athlete)) {
+                athleteInTournament.add(true);
+            } else {
+                athleteInTournament.add(false);
+            }
+
+            model.addAttribute("athletes", athleteInTournament);
+        }
+
+        model.addAttribute("tournaments", this.tournamentService.getAllTournaments());
+
+        return "";
     }
 }
