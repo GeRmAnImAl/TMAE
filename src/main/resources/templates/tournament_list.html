@@ -32,19 +32,21 @@
                 <th scope="col">Start Date</th>
                 <th scope="col">End Date</th>
                 <th scope="col">Registration Deadline</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr class="striped-table" th:each="tournament : ${listAllTournaments}">
-                <th th:text="${tournament.getTournamentName()}"></th>
-                <th th:text="${tournament.getLocation()}"></th>
-                <th th:text="${tournament.getMaxNumParticipants()}"></th>
-                <th th:text="${tournament.getWebsiteLink()}"></th>
-                <th th:text="${#temporals.format(tournament.getStartDate(), 'MM/dd/yyyy')}"></th>
-                <th th:text="${#temporals.format(tournament.getEndDate(), 'MM/dd/yyyy')}"></th>
-                <th th:text="${#temporals.format(tournament.getRegistrationDeadline(), 'MM/dd/yyyy')}"></th>
-                <th><a id="tournament-list-info-button" class="button-green" th:href="@{'/tournament/tournament/' + ${tournament.getTournamentID()}}">Info</a></th>
-                <th><a id="tournament-list-join-button" class="button-green" th:href="@{'/tournament/joinTournament/' + ${tournament.getTournamentID()}}">Join</a></th>
+                <td th:text="${tournament.getTournamentName()}"></td>
+                <td th:text="${tournament.getLocation()}"></td>
+                <td th:text="${tournament.getMaxNumParticipants()}"></td>
+                <td th:text="${tournament.getWebsiteLink()}"></td>
+                <td th:text="${#temporals.format(tournament.getStartDate(), 'MM/dd/yyyy')}"></td>
+                <td th:text="${#temporals.format(tournament.getEndDate(), 'MM/dd/yyyy')}"></td>
+                <td th:text="${#temporals.format(tournament.getRegistrationDeadline(), 'MM/dd/yyyy')}"></td>
+                <td><a id="tournament-list-info-button" class="button-green" th:href="@{'/tournament/tournament/' + ${tournament.getTournamentID()}}">Info</a></td>
+                <td><a id="tournament-list-join-button" class="button-green" th:href="@{'/tournament/joinTournament/' + ${tournament.getTournamentID()}}">Join</a></td>
             </tr>
             </tbody>
         </table>

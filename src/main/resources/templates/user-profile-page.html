@@ -78,15 +78,17 @@
                     <th scope="col">Tournament Name</th>
                     <th scope="col">Start Date</th>
                     <th scope="col">Location</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr class="striped-table" th:each="event : ${listEvents}">
-                    <th th:text="${event.getTournamentName()}"></th>
-                    <th th:text="${event.getStartDate()}"></th>
-                    <th th:text="${event.getLocation()}"></th>
-                    <th><a id="user-tournament-info-button" class="button-green" th:href="@{'/tournament/tournament/' + ${event.getTournamentID()}}">Info</a></th>
-                    <th><a id="user-tournament-leave-button" class="button-green" th:href="@{'/tournament/leaveTournament/' + ${event.getTournamentID()}}">Leave</a></th>
+                    <td th:text="${event.getTournamentName()}"></td>
+                    <td th:text="${event.getStartDate()}"></td>
+                    <td th:text="${event.getLocation()}"></td>
+                    <td><a id="user-tournament-info-button" class="button-green" th:href="@{'/tournament/tournament/' + ${event.getTournamentID()}}">Info</a></td>
+                    <td><a id="user-tournament-leave-button" class="button-green" th:href="@{'/tournament/leaveTournament/' + ${event.getTournamentID()}}">Leave</a></td>
                 </tr>
                 </tbody>
             </table>

@@ -64,16 +64,18 @@
             <tr class="table-header">
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr class="striped-table" th:each="athlete : ${participants}">
-                <th th:text="${athlete.getFirstName()}"></th>
-                <th th:text="${athlete.getLastName()}"></th>
-                <th><a id="tournament-info-athlete-info-button" class="button-green"
-                       th:href="@{'/athlete_profile/athlete/' + ${athlete.getAthleteID()}}">Info</a></th>
-                <th><a id="tournament-info-athlete-kick-button" class="button-green"
-                       th:href="@{'/tournament/leaveTournament/' + ${tournamentID}}">Kick</a></th>
+                <td th:text="${athlete.getFirstName()}"></td>
+                <td th:text="${athlete.getLastName()}"></td>
+                <td><a id="tournament-info-athlete-info-button" class="button-green"
+                       th:href="@{'/athlete_profile/athlete/' + ${athlete.getAthleteID()}}">Info</a></td>
+                <td><a id="tournament-info-athlete-kick-button" class="button-green"
+                       th:href="@{'/tournament/leaveTournament/' + ${tournamentID}}">Kick</a></td>
             </tr>
             </tbody>
         </table>

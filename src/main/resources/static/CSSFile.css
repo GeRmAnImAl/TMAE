@@ -49,6 +49,14 @@
     border-collapse: collapse;
 }
 
+td{
+    text-align: center;
+}
+
+th{
+    border-bottom: 2px solid black;
+}
+
 tr{
     height: 50px;
 }
@@ -136,6 +144,7 @@ tr{
     box-shadow: 3px 3px 5px black;
     text-shadow: 2px 2px 4px black;
 }
+
 
 /* ---------- Login Page Elements ---------- */
 
