@@ -81,7 +81,6 @@ public class DeveloperPageController {
 
             allAthletes.add(athleteInTournament);
         }
-
         model.addAttribute("athletes", allAthletes);
         model.addAttribute("tournaments", this.tournamentService.getAllTournaments());
 
