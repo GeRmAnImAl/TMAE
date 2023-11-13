@@ -67,6 +67,8 @@ public class DeveloperPageController {
         List<Athlete> athletes = this.athleteService.getAllAthletes();
         Tournament tournament = this.tournamentService.getTournamentById(tournamentID);
 
+        System.out.println("tournamentID: " + tournamentID);
+
         List<List<Object>> allAthletes = new ArrayList<>();
 
         for (Athlete athlete : athletes) {
