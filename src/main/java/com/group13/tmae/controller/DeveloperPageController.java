@@ -67,6 +67,8 @@ public class DeveloperPageController {
         List<Athlete> athletes = this.athleteService.getAllAthletes();
         Tournament tournament = this.tournamentService.getTournamentById(tournamentID);
 
+        List<List<Object>> allAthletes = new ArrayList<>();
+
         for (Athlete athlete : athletes) {
             List<Object> athleteInTournament = new ArrayList<>();
             athleteInTournament.add(athlete);
@@ -77,11 +79,12 @@ public class DeveloperPageController {
                 athleteInTournament.add(false);
             }
 
-            model.addAttribute("athletes", athleteInTournament);
+            allAthletes.add(athleteInTournament);
         }
 
+        model.addAttribute("athletes", allAthletes);
         model.addAttribute("tournaments", this.tournamentService.getAllTournaments());
 
-        return "";
+        return "secret_developer_page";
     }
 }
