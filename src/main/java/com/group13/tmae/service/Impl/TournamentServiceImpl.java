@@ -265,6 +265,7 @@ public class TournamentServiceImpl implements TournamentService {
     @Override
     @Transactional
     public void recordMatchResult(Long matchId, Long winnerId, Long loserId) {
+
         Match match = matchRepository.findById(matchId).orElseThrow(() -> new NoSuchElementException("Match not found with ID: " + matchId));
         Athlete winner = athleteRepository.findById(winnerId).orElseThrow(() -> new NoSuchElementException("Winner athlete not found with ID: " + winnerId));
         Athlete loser = athleteRepository.findById(loserId).orElseThrow(() -> new NoSuchElementException("Loser athlete not found with ID: " + loserId));

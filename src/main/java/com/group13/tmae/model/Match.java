@@ -1,6 +1,7 @@
 package com.group13.tmae.model;
 
 import javax.persistence.*;
+import java.time.Instant;
 
 /**
  * Entity representing a match between two athletes within a bracket of a tournament.
@@ -242,4 +243,5 @@ public class Match {
     public void setLoser(Athlete loser) {
         this.loser = loser;
     }
+
 }
