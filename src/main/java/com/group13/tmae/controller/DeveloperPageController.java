@@ -45,10 +45,9 @@ public class DeveloperPageController {
         return "secret_developer_page";
     }
 
-    @PostMapping("/add_to_tournament")
+    @PostMapping("/update_tournament")
     public String developerAddToTournament(@RequestParam("tournamentDropdown") Long tournamentID,
                                            @RequestParam(name = "developerSelectedAthletes", required = false) List<Long> athleteIDs) {
-
         if (tournamentID != 0) {
             if (athleteIDs != null) {
                 for (Long athlete : athleteIDs) {
