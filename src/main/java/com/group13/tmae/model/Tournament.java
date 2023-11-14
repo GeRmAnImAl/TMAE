@@ -355,4 +355,5 @@ public class  Tournament {
     public void setInitialBracketsGenerated(boolean initialBracketsGenerated) {
         this.initialBracketsGenerated = initialBracketsGenerated;
     }
+
 }
