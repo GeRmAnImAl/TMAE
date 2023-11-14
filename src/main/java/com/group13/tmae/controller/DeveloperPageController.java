@@ -62,7 +62,9 @@ public class DeveloperPageController {
     }
 
     @GetMapping("/{tournamentID}")
-    public String showTournament(@PathVariable(value = "tournamentID") Long tournamentID, Model model) {
+    public String showTournament(@PathVariable(value = "tournamentID") String tournamentIDString, Model model) {
+
+        Long tournamentID = Long.parseLong(tournamentIDString);
 
         List<Athlete> athletes = this.athleteService.getAllAthletes();
         Tournament tournament = this.tournamentService.getTournamentById(tournamentID);
@@ -85,6 +87,7 @@ public class DeveloperPageController {
         }
         model.addAttribute("athletes", allAthletes);
         model.addAttribute("tournaments", this.tournamentService.getAllTournaments());
+        model.addAttribute("currentTournamentID", tournamentID);
 
         return "secret_developer_page";
     }
