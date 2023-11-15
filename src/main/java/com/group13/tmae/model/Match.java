@@ -45,6 +45,11 @@ public class Match {
     private Athlete athlete2;
 
     /**
+     * The round in which this match takes place.
+     */
+    private Integer roundNumber;
+
+    /**
      * The score of the first athlete in this match.
      */
     private Integer athlete1Score;
@@ -244,4 +249,11 @@ public class Match {
         this.loser = loser;
     }
 
+    public Integer getRoundNumber() {
+        return roundNumber;
+    }
+
+    public void setRoundNumber(Integer roundNumber) {
+        this.roundNumber = roundNumber;
+    }
 }

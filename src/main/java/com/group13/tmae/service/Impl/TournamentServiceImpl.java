@@ -321,16 +321,14 @@ public class TournamentServiceImpl implements TournamentService {
 
 
         int totalRounds = 0;
-        int currentRound = 0;
+        int currentRound = 1;
 
         if(this.isByeNeeded(tournament.getParticipants())){
             tournamentSize = tournamentSize - 1;
         }
-        System.out.println("Here 1");
         while(tournamentSize > 1){
             if(this.isByeNeeded(tournament.getParticipants())){
                 tournamentSize = tournamentSize - 1;
-                System.out.println("here 2");
             }
             totalRounds ++;
 

@@ -89,10 +89,7 @@ public class DeveloperPageController {
 
             // Save the updated tournament
             this.tournamentService.updateTournament(selectedTournament);
-
-
-            System.out.println("Total Rounds: " + this.tournamentService.getRoundInfo(selectedTournament)[0]);
-            System.out.println("Current Round: " + this.tournamentService.getRoundInfo(selectedTournament)[1]);
+            //this.tournamentService.generateAndSaveBrackets(selectedTournament);
         }
 
 
