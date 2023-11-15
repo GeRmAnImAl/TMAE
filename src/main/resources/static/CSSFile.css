@@ -720,3 +720,37 @@ tr{
     border-radius: 25px;
     border-width: 2px;
 }
+
+/* ---------- Bracket Page ---------- */
+
+#bracket-page{
+    background-image: url("backgrounds/SportsBG4.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#bracket-columns-container{
+    background-color: #00C4B4;
+    width: 95%;
+    border-radius: 40px;
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    box-shadow: 5px 5px 5px black;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+.bracket-match{
+    background-color: #7F39FB;
+    border-radius: 40px;
+    margin-top: 1%;
+    padding: 1%;
+    width: 95%;
+    box-shadow: 2px 2px 2px black;
+    display: table;
+    font-size: x-large;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+}
