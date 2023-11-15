@@ -1,8 +1,10 @@
 package com.group13.tmae.controller.tournaments;
 
+import com.group13.tmae.model.Athlete;
 import com.group13.tmae.model.Match;
 import com.group13.tmae.repository.MatchRepository;
 import com.group13.tmae.repository.TournamentRepository;
+import com.group13.tmae.service.AthleteService;
 import com.group13.tmae.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,12 +33,6 @@ public class MatchController {
 
     /**
      *
-     */
-    @Autowired
-    private TournamentRepository tournamentRepository;
-
-    /**
-     *
      * @param matchID
      * @param model
      * @return
@@ -51,7 +47,10 @@ public class MatchController {
 
     /**
      *
-     * @param match
+     * @param matchID
+     * @param athlete1Score
+     * @param athlete2Score
+     * @param redirectAttributes
      * @return
      */
     @PostMapping("/updateMatch")
@@ -69,15 +68,15 @@ public class MatchController {
      * @param winnerID
      * @return
      */
-    @GetMapping("/completeMatch/{matchID}")
-    public String completeMatch(@PathVariable Long matchID, @RequestParam(required = false) Long winnerID, RedirectAttributes redirectAttributes){
+    @PostMapping("/completeMatch")
+    public String completeMatch(@RequestParam("matchID") Long matchID, @RequestParam("winner") Long winnerID, RedirectAttributes redirectAttributes){
         if (winnerID == null){
             redirectAttributes.addFlashAttribute("error", "A winner must be selected to complete the match.");
             return "redirect:/matches/" + matchID;
         }
         Match match = matchRepository.findById(matchID).orElseThrow(null);
         Long loserID;
-        if(match.getAthlete1().getAthleteID().equals(match.getWinner().getAthleteID())){
+        if(match.getAthlete1().getAthleteID().equals(winnerID)){
             loserID = match.getAthlete2().getAthleteID();
         }
         else{
@@ -86,7 +85,7 @@ public class MatchController {
 
         tournamentService.recordMatchResult(matchID, winnerID, loserID);
 
-        return "redirect:/tournament/" + match.getTournament().getTournamentID();
+        return "redirect:/tournament/tournament/" + match.getTournament().getTournamentID();
     }
 
 

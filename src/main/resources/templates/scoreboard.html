@@ -31,7 +31,7 @@
             <input type="number" id="athlete2Score" name="athlete2Score" th:value="${match.athlete2Score}">
 
             <button class="button" id="updateMatchButton" type="submit">Update Match</button>
-            <button class="button" formaction="@{/completeMatch(matchID=${match.matchID},winnerId=${winner})}" formmethod="get" type="submit">Complete Match</button>
+            <button class="button" formaction="/matches/completeMatch" formmethod="POST" type="submit">Complete Match</button>
 
             <label for="winner">Winner:</label>
             <select id="winner" name="winner">
