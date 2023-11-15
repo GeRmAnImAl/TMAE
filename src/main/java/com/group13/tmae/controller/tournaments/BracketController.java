@@ -30,6 +30,8 @@ public class BracketController {
         int currentRound = this.tournamentService.getRoundInfo(currentTournament)[1];
 
         model.addAttribute("matches", currentBracket.getMatches());
+        model.addAttribute("totalRounds", totalRounds);
+        model.addAttribute("currentRound", currentRound);
 
         return "/bracket";
     }
