@@ -14,8 +14,9 @@
 <div class="container">
     <h1 class="page-description">Match Details</h1>
     <div id="scoreboard-box">
-        <form id="scoreboard-form" th:action="@{/updateMatch}" th:object="${match}" method="POST">
+        <form id="scoreboard-form" th:action="@{/matches/updateMatch}" th:object="${match}" method="POST">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <input type="hidden" name="matchID" th:value="${match.matchID}"/>
 
             <label for="athlete1Name">Athlete 1:</label>
             <input type="text" id="athlete1Name" name="athlete1Name" th:value="${match.athlete1.lastName}" readonly>
@@ -34,11 +35,15 @@
 
             <label for="winner">Winner:</label>
             <select id="winner" name="winner">
+                <option value="" disabled selected>Select a Winner</option>
                 <option th:value="${match.athlete1.athleteID}" th:text="${match.athlete1.firstName + ' ' + match.athlete1.lastName}"></option>
                 <option th:value="${match.athlete2.athleteID}" th:text="${match.athlete2.firstName + ' ' + match.athlete2.lastName}"></option>
             </select>
             <div th:if="${error}" class="flash-message">
                 <p th:text="${error}"></p>
+            </div>
+            <div th:if="${success}" class="flash-message">
+                <p th:text="${success}"></p>
             </div>
 
 

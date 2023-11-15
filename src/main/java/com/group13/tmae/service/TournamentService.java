@@ -104,6 +104,15 @@ public interface TournamentService {
     boolean isByeNeeded(List<Athlete> athletes);
 
     /**
+     * TODO
+     * @param matchID
+     * @param athlete1Score
+     * @param athlete2Score
+     * @return
+     */
+    Long updateMatch(Long matchID, Integer athlete1Score, Integer athlete2Score);
+
+    /**
      * Records the result of a match, updating the winner's and loser's statistics.
      * The match winner is advanced, and the loser is removed from the tournament participants.
      * After updating, it checks if all matches are complete to generate the next round.

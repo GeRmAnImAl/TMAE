@@ -43,7 +43,8 @@ public class MatchController {
      */
     @GetMapping("/{matchID}")
     public String showScoreboard(@PathVariable Long matchID, Model model){
-        Match match = matchRepository.findById(matchID).orElseThrow(null);
+        Match match = matchRepository.findById(matchID).orElseThrow(() -> new RuntimeException("Match not found with ID: " + matchID));
+        System.out.println("*HERE* showScoreboard MatchID: " + match.getMatchID());
         model.addAttribute("match", match);
         return "scoreboard";
     }
@@ -54,9 +55,12 @@ public class MatchController {
      * @return
      */
     @PostMapping("/updateMatch")
-    public String updateMatch(@ModelAttribute Match match){
-        matchRepository.save(match);
-        return "redirect:/matches/" + match.getMatchID();
+    public String updateMatch(@RequestParam("matchID") Long matchID, @RequestParam("athlete1Score") Integer athlete1Score,
+                              @RequestParam("athlete2Score") Integer athlete2Score, RedirectAttributes redirectAttributes) {
+
+        redirectAttributes.addFlashAttribute("success", "Match update was successful!");
+
+        return "redirect:/matches/" + this.tournamentService.updateMatch(matchID, athlete1Score, athlete2Score);
     }
 
     /**

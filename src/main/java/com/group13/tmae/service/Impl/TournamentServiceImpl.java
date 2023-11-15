@@ -252,6 +252,24 @@ public class TournamentServiceImpl implements TournamentService {
         return athletes.size() % 2 != 0;
     }
 
+    /**
+     * TODO
+     * @param matchID
+     * @param athlete1Score
+     * @param athlete2Score
+     * @return
+     */
+    @Override
+    public Long updateMatch(Long matchID, Integer athlete1Score, Integer athlete2Score){
+        Match matchToUpdate = this.matchRepository.findById(matchID).orElseThrow(() -> new RuntimeException("Match not found with ID: " + matchID));
+
+        matchToUpdate.setAthlete1Score(athlete1Score);
+        matchToUpdate.setAthlete2Score(athlete2Score);
+
+        this.matchRepository.save(matchToUpdate);
+
+        return matchToUpdate.getMatchID();
+    }
 
     /**
      * Records the result of a match, updating the winner's and loser's statistics.
