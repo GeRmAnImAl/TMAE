@@ -14,7 +14,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-
+/**
+ * Controller for managing athlete profiles, including viewing, creating, and updating athlete information.
+ */
 @Controller
 @RequestMapping("/athlete_profile")
 public class AthleteProfileController {
@@ -63,7 +65,6 @@ public class AthleteProfileController {
         //TODO change this string to the actual link for the athlete profile page.
         return "/";
     }
-    //TODO fill in java doc tags.
 
     /**
      * Handles the request to view the profile page of the currently logged-in user. Populates the model with user details
