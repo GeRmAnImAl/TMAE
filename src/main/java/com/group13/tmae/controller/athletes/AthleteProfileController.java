@@ -31,23 +31,10 @@ public class AthleteProfileController {
     /**
      * Handles the submission of a form to create or update an athlete's information, including uploading a photo.
      *
-     * @param athlete The athlete object populated with the data from the form.
+     * @param photoFile The photo file uploaded by the athlete.
+     * @param athleteID The unique identifier of the athlete whose profile photo is being updated.
      * @return A string indicating the view to redirect to after processing the form submission.
      */
-   /* @PostMapping("/saveAthlete")
-    public String saveAthlete(@ModelAttribute("athlete") Athlete athlete) {
-        try {
-            MultipartFile photoFile = athlete.getPhotoFile();
-            if (photoFile != null && !photoFile.isEmpty()) {
-                athlete.setPhotoData(photoFile.getBytes());
-                athlete.setPhotoContentType(photoFile.getContentType());
-            }
-            athleteService.createAthlete(athlete);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "redirect:/landing_page";
-    }*/
     @PostMapping("/saveAthlete")
     public String saveAthlete(@RequestParam("photoFile") MultipartFile photoFile,
                               @RequestParam("athleteID") Long athleteID) {
