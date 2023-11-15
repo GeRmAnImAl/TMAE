@@ -104,11 +104,13 @@ public interface TournamentService {
     boolean isByeNeeded(List<Athlete> athletes);
 
     /**
-     * TODO
-     * @param matchID
-     * @param athlete1Score
-     * @param athlete2Score
-     * @return
+     * Updates the scores of a specific match.
+     *
+     * @param matchID The unique identifier of the match to update.
+     * @param athlete1Score The new score to set for the first athlete in the match.
+     * @param athlete2Score The new score to set for the second athlete in the match.
+     * @return The unique identifier of the updated match.
+     * @throws RuntimeException If no match is found with the given ID.
      */
     Long updateMatch(Long matchID, Integer athlete1Score, Integer athlete2Score);
 
@@ -131,5 +133,10 @@ public interface TournamentService {
      */
     void checkAndGenerateNextRound(Tournament tournament);
 
+    /**
+     * TODO
+     * @param tournament
+     * @return
+     */
     int[] getRoundInfo(Tournament tournament);
 }

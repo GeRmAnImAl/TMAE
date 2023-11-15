@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Base64;
 
 /**
  * Controller for managing athlete profiles, including viewing, creating, and updating athlete information.
@@ -33,7 +34,7 @@ public class AthleteProfileController {
      * @param athlete The athlete object populated with the data from the form.
      * @return A string indicating the view to redirect to after processing the form submission.
      */
-    @PostMapping("/saveAthlete")
+   /* @PostMapping("/saveAthlete")
     public String saveAthlete(@ModelAttribute("athlete") Athlete athlete) {
         try {
             MultipartFile photoFile = athlete.getPhotoFile();
@@ -46,6 +47,21 @@ public class AthleteProfileController {
             e.printStackTrace();
         }
         return "redirect:/landing_page";
+    }*/
+    @PostMapping("/saveAthlete")
+    public String saveAthlete(@RequestParam("photoFile") MultipartFile photoFile,
+                              @RequestParam("athleteID") Long athleteID) {
+        try {
+            Athlete athlete = athleteService.getAthleteById(athleteID);
+            if (photoFile != null && !photoFile.isEmpty()) {
+                athlete.setPhotoData(photoFile.getBytes());
+                athlete.setPhotoContentType(photoFile.getContentType());
+            }
+            athleteService.updateAthlete(athlete);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/athlete_profile/userInfo";
     }
 
     /**
@@ -79,7 +95,9 @@ public class AthleteProfileController {
             Athlete user = this.customUserDetailsService.getLoggedInUser();
 
             String welcome = "Welcome " + user.getFirstName() + " " + user.getLastName() + "!";
+
             model.addAttribute("customWelcome", welcome);
+            model.addAttribute("athleteID", user.getAthleteID());
             model.addAttribute("wins", user.getWins());
             model.addAttribute("losses", user.getLosses());
             model.addAttribute("ties", user.getTies());
@@ -91,8 +109,11 @@ public class AthleteProfileController {
             model.addAttribute("affiliation", user.getAffiliation());
             model.addAttribute("listEvents", user.getTournaments());
 
-            if (user.getPhotoFile() != null) {
-                model.addAttribute("photo", user.getPhotoFile());
+            if (user.getPhotoData() != null && user.getPhotoData().length > 0) {
+                String photoDataAsBase64 = user.getPhotoDataAsBase64();
+                model.addAttribute("photoData", user.getPhotoData()); // raw photo data
+                model.addAttribute("photoDataAsBase64", photoDataAsBase64); // Base64 encoded photo data
+                model.addAttribute("photoContentType", user.getPhotoContentType()); // Content type of the photo
             } else {
                 model.addAttribute("photo", "/backgrounds/no-photo-icon.png");
             }

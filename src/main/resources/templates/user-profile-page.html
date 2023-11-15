@@ -21,8 +21,17 @@
     </div>
     <div id="athlete-page-top-grid">
         <div id="athlete-page-photo-box">
-            <img th:src="${photo}">
-            <a class="button" id="user-photo-update-button" href="test">Update Photo</a>
+            <!-- Check if there is photo data and set the source accordingly -->
+            <img th:if="${photoData}" th:src="@{'data:image/' + ${photoContentType} + ';base64,' + ${photoDataAsBase64}}" alt="Athlete Photo" />
+            <!-- Display a default image if there is no photo data -->
+            <img th:unless="${photoData}" src="/backgrounds/no-photo-icon.png" alt="Default Image" />
+
+            <!-- Form to update photo -->
+            <form th:action="@{/athlete_profile/saveAthlete}" method="post" enctype="multipart/form-data">
+                <input type="file" name="photoFile" />
+                <input type="hidden" name="athleteID" th:value="${athleteID}" />
+                <button class="button" id="user-photo-update-button" type="submit">Upload Photo</button>
+            </form>
         </div>
         <div id="athlete-page-win-loss-box">
             <div id="win-loss-tie-row">
