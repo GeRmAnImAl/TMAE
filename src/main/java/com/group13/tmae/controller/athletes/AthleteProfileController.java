@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -28,6 +29,9 @@ public class AthleteProfileController {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
+    private static final long MAX_FILE_SIZE = 3145728;
+
+
     /**
      * Handles the submission of a form to create or update an athlete's information, including uploading a photo.
      *
@@ -37,16 +41,22 @@ public class AthleteProfileController {
      */
     @PostMapping("/saveAthlete")
     public String saveAthlete(@RequestParam("photoFile") MultipartFile photoFile,
-                              @RequestParam("athleteID") Long athleteID) {
+                              @RequestParam("athleteID") Long athleteID, RedirectAttributes redirectAttributes) {
         try {
+
             Athlete athlete = athleteService.getAthleteById(athleteID);
             if (photoFile != null && !photoFile.isEmpty()) {
+                if (photoFile.getSize() > MAX_FILE_SIZE) {
+                    redirectAttributes.addFlashAttribute("error", "Image file is too large. Max size is 3MB.");
+                    return "redirect:/athlete_profile/userInfo";
+                }
                 athlete.setPhotoData(photoFile.getBytes());
                 athlete.setPhotoContentType(photoFile.getContentType());
             }
             athleteService.updateAthlete(athlete);
         } catch (IOException e) {
             e.printStackTrace();
+            redirectAttributes.addFlashAttribute("error", "An error occurred while saving the athlete.");
         }
         return "redirect:/athlete_profile/userInfo";
     }

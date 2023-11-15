@@ -32,6 +32,9 @@
                 <input type="hidden" name="athleteID" th:value="${athleteID}" />
                 <button class="button" id="user-photo-update-button" type="submit">Upload Photo</button>
             </form>
+            <div th:if="${error}">
+                <p th:text="${error}"></p>
+            </div>
         </div>
         <div id="athlete-page-win-loss-box">
             <div id="win-loss-tie-row">
