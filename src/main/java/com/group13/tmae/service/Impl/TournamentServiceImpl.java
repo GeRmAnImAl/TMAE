@@ -334,4 +334,41 @@ public class TournamentServiceImpl implements TournamentService {
         }
     }
 
+    /**
+     * Calculates the total number of rounds required for a given tournament based on the number of participants.
+     * The method accounts for multiple brackets and the possibility of byes in the tournament structure.
+     *
+     * @param tournament The Tournament object for which the total rounds need to be calculated.
+     * @return The total number of rounds required for the tournament.
+     */
+    public int calculateTotalRounds(Tournament tournament) {
+        int rounds = 0;
+        int maxBracketSize = 32;
+        int totalParticipants = tournament.getParticipants().size();
+        if (totalParticipants % 2 != 0) {
+            totalParticipants++;
+        }
+
+        while (totalParticipants > 1) {
+            int numBrackets = totalParticipants / maxBracketSize;
+            if (totalParticipants % maxBracketSize != 0) {
+                numBrackets++;
+            }
+
+            int participantsNextRound = 0;
+            for (int i = 0; i < numBrackets; i++) {
+                int bracketSize = maxBracketSize;
+                if (i == numBrackets - 1 && totalParticipants % maxBracketSize != 0) {
+                    bracketSize = totalParticipants % maxBracketSize;
+                }
+                participantsNextRound += (bracketSize + 1) / 2;
+            }
+
+            totalParticipants = participantsNextRound;
+            rounds++;
+        }
+
+        return rounds;
+    }
+
 }
