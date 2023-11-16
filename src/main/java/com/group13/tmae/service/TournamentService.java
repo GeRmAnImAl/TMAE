@@ -133,4 +133,13 @@ public interface TournamentService {
      */
     void checkAndGenerateNextRound(Tournament tournament);
 
+    /**
+     * Calculates the total number of rounds required for a given tournament based on the number of participants.
+     * The method accounts for multiple brackets and the possibility of byes in the tournament structure.
+     *
+     * @param tournament The Tournament object for which the total rounds need to be calculated.
+     * @return The total number of rounds required for the tournament.
+     */
+    int calculateTotalRounds(Tournament tournament);
+
 }

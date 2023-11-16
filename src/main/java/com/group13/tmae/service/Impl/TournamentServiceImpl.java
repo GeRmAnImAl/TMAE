@@ -341,6 +341,7 @@ public class TournamentServiceImpl implements TournamentService {
      * @param tournament The Tournament object for which the total rounds need to be calculated.
      * @return The total number of rounds required for the tournament.
      */
+    @Override
     public int calculateTotalRounds(Tournament tournament) {
         int rounds = 0;
         int maxBracketSize = 32;

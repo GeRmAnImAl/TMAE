@@ -192,7 +192,14 @@ public class AthleteProfileController {
     }
 
     @GetMapping("/updateUserInfo/{id}")
-    public String showUpdateForm(@PathVariable(value = "id") Long id, Model model){
+    public String showUpdateForm(@PathVariable(value = "id") Long id, Model model, RedirectAttributes redirectAttributes){
+        Athlete user = this.customUserDetailsService.getLoggedInUser();
+        System.out.println("*HERE* USER-ID: " + user.getAthleteID());
+        System.out.println("*HERE* OTHER-ID: " + id);
+        if(!user.getAthleteID().equals(id)){
+            redirectAttributes.addFlashAttribute("warning", "Unauthorized attempt to alter user information.");
+            return "redirect:/athlete_profile/athlete/" + id;
+        }
         Athlete athlete = athleteService.getAthleteById(id);
         model.addAttribute("athlete", athlete);
 
