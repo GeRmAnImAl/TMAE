@@ -70,10 +70,10 @@ public class AthleteServiceImpl implements AthleteService {
      * Updates an existing athlete in the database.
      *
      * @param athlete The Athlete object to be updated.
-     * @return The updated Athlete object.
      */
     @Override
     public void updateAthlete(Athlete athlete) {
+        athlete.setPassword(passwordEncoder.encode(athlete.getPassword()));
         this.athleteRepository.save(athlete);
     }
 

@@ -132,7 +132,8 @@ public class  Tournament {
      * Default constructor for creating a tournament instance without setting any initial values.
      */
     public Tournament() {
-
+        this.athleteWithBye = null;
+        this.currentRoundInfo = 0;
     }
 
     /**
