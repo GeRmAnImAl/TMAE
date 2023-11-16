@@ -83,7 +83,7 @@ public class  Tournament {
      */
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
-            name = "tournament_admin",
+            name = "tournament_admins",
             joinColumns = @JoinColumn(name = "tournamentid"),
             inverseJoinColumns = @JoinColumn(name = "athleteid")
     )
@@ -144,6 +144,8 @@ public class  Tournament {
      * Default constructor for creating a tournament instance without setting any initial values.
      */
     public Tournament() {
+        this.participants = new ArrayList<>();
+        this.admins = new ArrayList<>();
         this.athleteWithBye = null;
         this.currentRoundInfo = 0;
     }
@@ -389,5 +391,9 @@ public class  Tournament {
 
     public void setAdmins(List<Athlete> admins) {
         this.admins = admins;
+    }
+
+    public void setTournamentID(Long tournamentID) {
+        this.tournamentID = tournamentID;
     }
 }

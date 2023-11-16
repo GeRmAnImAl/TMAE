@@ -134,6 +134,12 @@ public class Athlete implements Serializable {
     private List<Tournament> tournaments;
 
     /**
+     * Tournaments the athlete is an admin for.
+     */
+    @ManyToMany(mappedBy = "admins")
+    private List<Tournament> adminInTournament;
+
+    /**
      * Constructs an athlete with specified details.
      *
      * @param firstName The first name of the athlete.
@@ -156,6 +162,7 @@ public class Athlete implements Serializable {
         this.phoneNumber = phoneNumber;
         this.photoData = photoData;
         this.tournaments = new ArrayList<>();
+        this.adminInTournament = new ArrayList<>();
     }
 
     /**
@@ -176,6 +183,7 @@ public class Athlete implements Serializable {
         this.email = "";
         this.phoneNumber = "";
         this.tournaments = new ArrayList<>();
+        this.adminInTournament = new ArrayList<>();
     }
 
     /**

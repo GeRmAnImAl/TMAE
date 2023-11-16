@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 /**
  * Controller for handling tournament-related operations.
@@ -47,6 +48,14 @@ public class TournamentController {
      */
     @PostMapping("/saveTournament")
     public String saveTournament(@ModelAttribute("tournament") Tournament tournament) {
+
+        Athlete user = this.customUserDetailsService.getLoggedInUser();
+
+        ArrayList<Athlete> admins = new ArrayList<>();
+
+        admins.add(user);
+
+        tournament.setAdmins(admins);
 
         tournamentService.createTournament(tournament);
 
@@ -157,12 +166,11 @@ public class TournamentController {
         tournamentInput.setParticipants(savedTournament.getParticipants());
 
         /* Do the same for admins */
-
-        tournamentInput.
+        tournamentInput.setAdmins(savedTournament.getAdmins());
 
         this.tournamentService.updateTournament(tournamentInput);
 
-        return "redirect:/tournament/tournament/" + tournamentInput.getTournamentID();
+        return "redirect:/tournament/" + tournamentInput.getTournamentID();
     }
 
     @GetMapping("/tournament{tournamentID}/bracket")

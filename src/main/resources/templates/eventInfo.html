@@ -22,7 +22,7 @@
         <form id="tournament-info-form" th:action="@{/tournament/updateTournament}" th:object="${tournament}"
               method="POST">
 
-            <input type="hidden" name="tournamentID" th:value="${tournamentID}"/>
+            <input type="hidden" name="tournamentID"  th:value="${tournamentID}"/>
 
             <label class="tournament-info-form-input-label both" for="tournamentName">Tournament Name</label>
             <input class="tournament-info-form-input both " id="tournamentName" type="text" th:value="${tournamentName}"
