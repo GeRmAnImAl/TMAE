@@ -54,6 +54,7 @@
             <div id="tournament-info-form-buttons">
                 <button class="button both" id="submit-tournament-info-button" type="submit">Update Tournament</button>
                 <button class="button both" id="cancel-tournament-info-button" type="reset">Cancel</button>
+                <a class="button both" id="start-tournament-info-button" th:href="@{'/bracket/startTournament/' + ${tournamentID}}">Start Tournament</a>
             </div>
         </form>
     </div>

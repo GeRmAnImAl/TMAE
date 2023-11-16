@@ -35,4 +35,18 @@ public class BracketController {
 
         return "/bracket";
     }
+
+    @GetMapping("/startTournament/{tournamentID}")
+    public String startTournament(@PathVariable(value = "tournamentID") Long tournamentID){
+
+        Tournament tournament = this.tournamentService.getTournamentById(tournamentID);
+
+        System.out.println(tournament.isInitialBracketsGenerated());
+        if(!tournament.isInitialBracketsGenerated()){
+            this.tournamentService.generateAndSaveBrackets(tournament);
+            System.out.println("Creating Bracket");
+        }
+
+        return "redirect:/bracket/" + tournamentID;
+    }
 }

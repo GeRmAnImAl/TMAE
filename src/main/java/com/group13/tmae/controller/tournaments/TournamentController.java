@@ -47,6 +47,9 @@ public class TournamentController {
      */
     @PostMapping("/saveTournament")
     public String saveTournament(@ModelAttribute("tournament") Tournament tournament) {
+
+        //tournament.setCurrentRoundInfo(0);
+
         tournamentService.createTournament(tournament);
 
         return "redirect:/tournament/listAllTournaments";

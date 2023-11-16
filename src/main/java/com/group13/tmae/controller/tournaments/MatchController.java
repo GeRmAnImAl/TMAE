@@ -87,7 +87,7 @@ public class MatchController {
 
         tournamentService.recordMatchResult(matchID, winnerID, loserID);
 
-        return "redirect:/tournament/tournament/" + match.getTournament().getTournamentID();
+        return "redirect:/tournament/" + match.getTournament().getTournamentID();
     }
 
 

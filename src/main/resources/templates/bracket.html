@@ -19,13 +19,11 @@
     <h1 class="page-description">Bracket</h1>
     <div id="bracket-container">
         <div id="bracket-columns-container">
-            <div class="round" th:each=" round, roundIndex : ${#numbers.sequence(1, totalRounds)}">
-                <div class="bracket-match" th:each="match : ${matches}">
-                    <a>
-                        <h4 th:text="${match.getAthlete1().getFirstName()}">Test</h4>
-                        <h4 th:text="${match.getAthlete2().getFirstName()}"></h4>
-                    </a>
-                </div>
+            <div class="bracket-match" th:each="match : ${matches}">
+                <a>
+                    <h4 th:text="${match.getAthlete1().getFirstName()}">Test</h4>
+                    <h4 th:text="${match.getAthlete2().getFirstName()}"></h4>
+                </a>
             </div>
         </div>
     </div>
