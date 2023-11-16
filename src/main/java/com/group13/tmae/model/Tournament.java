@@ -79,6 +79,17 @@ public class  Tournament {
     private List<Athlete> participants;
 
     /**
+     * Athletes with admin privileges.
+     */
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(
+            name = "tournament_admin",
+            joinColumns = @JoinColumn(name = "tournamentid"),
+            inverseJoinColumns = @JoinColumn(name = "athleteid")
+    )
+    private  List<Athlete> admins;
+
+    /**
      * The brackets for the tournament.
      */
     @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -124,6 +135,7 @@ public class  Tournament {
         this.maxNumParticipants = maxNumParticipants;
         this.registrationDeadline = registrationDeadline;
         this.participants = new ArrayList<>();
+        this.admins = new ArrayList<>();
         this.athleteWithBye = null;
         this.currentRoundInfo = 0;
     }
@@ -369,5 +381,13 @@ public class  Tournament {
 
     public void setCurrentRoundInfo(Integer currentRoundInfo) {
         this.currentRoundInfo = currentRoundInfo;
+    }
+
+    public List<Athlete> getAdmins() {
+        return admins;
+    }
+
+    public void setAdmins(List<Athlete> admins) {
+        this.admins = admins;
     }
 }

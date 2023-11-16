@@ -48,8 +48,6 @@ public class TournamentController {
     @PostMapping("/saveTournament")
     public String saveTournament(@ModelAttribute("tournament") Tournament tournament) {
 
-        //tournament.setCurrentRoundInfo(0);
-
         tournamentService.createTournament(tournament);
 
         return "redirect:/tournament/listAllTournaments";
@@ -157,6 +155,10 @@ public class TournamentController {
         Tournament savedTournament = this.tournamentService.getTournamentById(tournamentInput.getTournamentID());
 
         tournamentInput.setParticipants(savedTournament.getParticipants());
+
+        /* Do the same for admins */
+
+        tournamentInput.
 
         this.tournamentService.updateTournament(tournamentInput);
 
