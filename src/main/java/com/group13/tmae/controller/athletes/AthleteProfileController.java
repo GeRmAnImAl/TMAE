@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Base64;
@@ -43,14 +44,46 @@ public class AthleteProfileController {
     private static final long MAX_FILE_SIZE = 3145728; // 3MB
 
 
+    /**
+     * Processes the form submission for creating or updating an athlete's information.
+     *
+     * @param athlete The athlete object populated with data from the form.
+     * @return A string indicating the view to redirect to after processing the form submission.
+     */
     @PostMapping("/saveAthlete")
     public String saveAthlete(@ModelAttribute("athlete") Athlete athlete){
         athleteService.createAthlete(athlete);
         return "redirect:/athlete_profile/userInfo";
     }
 
+    @PostMapping("/updateAthlete")
+    public String updateAthlete(@ModelAttribute("athlete") Athlete athlete){
+        Athlete athleteToUpdate = athleteService.getAthleteById(athlete.getAthleteID());
+
+        Class<?> clazz = Athlete.class;
+        for (Field field : clazz.getDeclaredFields()) {
+            field.setAccessible(true); // to access private fields
+            try {
+                Object value1 = field.get(athlete);
+                Object value2 = field.get(athleteToUpdate);
+
+                // Checking if the value in 'athlete' is different from 'athleteToUpdate'
+                if (value1 != null && !value1.equals(value2)) {
+                    // Updating 'athleteToUpdate' with the value from 'athlete'
+                    field.set(athleteToUpdate, value1);
+                }
+
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+
+        athleteService.updateAthlete(athleteToUpdate);
+        return "redirect:/athlete_profile/userInfo";
+    }
+
     /**
-     * Handles the submission of a form to create or update an athlete's information, including uploading a photo.
+     * Handles the submission of a form to update an athlete's profile photo.
      *
      * @param photoFile The photo file uploaded by the athlete.
      * @param athleteID The unique identifier of the athlete whose profile photo is being updated.
@@ -156,5 +189,13 @@ public class AthleteProfileController {
             System.out.println(e);
         }
         return "user-profile-page";
+    }
+
+    @GetMapping("/updateUserInfo/{id}")
+    public String showUpdateForm(@PathVariable(value = "id") Long id, Model model){
+        Athlete athlete = athleteService.getAthleteById(id);
+        model.addAttribute("athlete", athlete);
+
+        return "update_user_info";
     }
 }

@@ -77,7 +77,7 @@
                     <p th:text="${affiliation}"></p>
                 </div>
             </div>
-            <a class="button" id="user-info-update-button" href="test">Update User Info</a>
+            <a class="button" id="user-info-update-button" th:href="@{'/athlete_profile/updateUserInfo/' + ${athleteID}}">Update User Info</a>
         </div>
     </div>
     <div id="athlete-page-bottom-grid">
