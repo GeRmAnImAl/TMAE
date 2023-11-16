@@ -79,7 +79,7 @@ public class Match {
      * @param athlete1   The first athlete participating in this match.
      * @param athlete2   The second athlete participating in this match.
      */
-    public Match(Bracket bracket, Tournament tournament, Athlete athlete1, Athlete athlete2) {
+    public Match(Bracket bracket, Tournament tournament, Athlete athlete1, Athlete athlete2, Integer roundNumber) {
         this.bracket = bracket;
         this.tournament = tournament;
         this.athlete1 = athlete1;
@@ -88,6 +88,7 @@ public class Match {
         this.athlete2Score = 0;
         this.winner = null;
         this.loser = null;
+        this.roundNumber = roundNumber;
     }
 
     /**

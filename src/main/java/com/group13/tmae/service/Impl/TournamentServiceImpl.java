@@ -202,6 +202,8 @@ public class TournamentServiceImpl implements TournamentService {
             }
             brackets.add(bracket);
         }
+        Integer currentRound = tournament.getCurrentRoundInfo();
+        tournament.setCurrentRoundInfo(currentRound += 1);
 
         return brackets;
     }
@@ -227,7 +229,7 @@ public class TournamentServiceImpl implements TournamentService {
             if(i + 1 < athletes.size()){
                 Athlete athlete1 = athletes.get(i);
                 Athlete athlete2 = athletes.get(i + 1);
-                Match match = new Match(bracket, tournament, athlete1, athlete2);
+                Match match = new Match(bracket, tournament, athlete1, athlete2, tournament.getCurrentRoundInfo());
                 matchRepository.save(match);
                 bracket.getMatches().add(match);
             }
@@ -332,38 +334,4 @@ public class TournamentServiceImpl implements TournamentService {
         }
     }
 
-    /**
-     * TODO
-     * @param tournament
-     * @return
-     */
-    @Override
-    public int[] getRoundInfo(Tournament tournament) {
-        int[] roundInfo = new int[2];
-
-        int tournamentSize = tournament.getParticipants().size();
-        int roundSize = tournament.getBrackets().get(0).getAthletes().size();
-
-
-        int totalRounds = 0;
-        int currentRound = 1;
-
-        if(this.isByeNeeded(tournament.getParticipants())){
-            tournamentSize = tournamentSize - 1;
-        }
-        while(tournamentSize > 1){
-            if(this.isByeNeeded(tournament.getParticipants())){
-                tournamentSize = tournamentSize - 1;
-            }
-            totalRounds ++;
-
-            tournamentSize = tournamentSize/2;
-
-        }
-
-        roundInfo[0] = totalRounds;
-        roundInfo[1] = currentRound;
-
-        return roundInfo;
-    }
 }

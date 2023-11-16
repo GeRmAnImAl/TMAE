@@ -133,10 +133,4 @@ public interface TournamentService {
      */
     void checkAndGenerateNextRound(Tournament tournament);
 
-    /**
-     * TODO
-     * @param tournament
-     * @return
-     */
-    int[] getRoundInfo(Tournament tournament);
 }

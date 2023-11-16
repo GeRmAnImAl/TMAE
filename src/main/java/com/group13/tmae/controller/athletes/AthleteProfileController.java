@@ -22,14 +22,25 @@ import java.util.Base64;
 @Controller
 @RequestMapping("/athlete_profile")
 public class AthleteProfileController {
+    /**
+     *
+     */
     @Autowired
     private AthleteService athleteService;
+
+    /**
+     *
+     */
     @Autowired
     private AthleteRepository athleteRepository;
+
+    /**
+     *
+     */
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
-    private static final long MAX_FILE_SIZE = 3145728;
+    private static final long MAX_FILE_SIZE = 3145728; // 3MB
 
 
     /**

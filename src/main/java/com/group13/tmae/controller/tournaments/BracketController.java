@@ -26,12 +26,12 @@ public class BracketController {
 
         Tournament currentTournament = this.tournamentService.getTournamentById(tournamentID);
         Bracket currentBracket = currentTournament.getBrackets().get(0);
-        int totalRounds = this.tournamentService.getRoundInfo(currentTournament)[0];
-        int currentRound = this.tournamentService.getRoundInfo(currentTournament)[1];
+        //int totalRounds = this.tournamentService.getRoundInfo(currentTournament)[0];
+        //int currentRound = this.tournamentService.getRoundInfo(currentTournament)[1];
 
         model.addAttribute("matches", currentBracket.getMatches());
-        model.addAttribute("totalRounds", totalRounds);
-        model.addAttribute("currentRound", currentRound);
+        //model.addAttribute("totalRounds", totalRounds);
+        //model.addAttribute("currentRound", currentRound);
 
         return "/bracket";
     }

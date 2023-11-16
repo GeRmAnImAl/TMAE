@@ -89,7 +89,7 @@ public class DeveloperPageController {
 
             // Save the updated tournament
             this.tournamentService.updateTournament(selectedTournament);
-            //this.tournamentService.generateAndSaveBrackets(selectedTournament);
+            this.tournamentService.generateAndSaveBrackets(selectedTournament);
         }
 
 

@@ -97,6 +97,11 @@ public class  Tournament {
     private boolean initialBracketsGenerated = false;
 
     /**
+     * TODO
+     */
+    private Integer currentRoundInfo;
+
+    /**
      * Creates a tournament with detailed information.
      *
      * @param tournamentID The unique identifier for the tournament.
@@ -120,6 +125,7 @@ public class  Tournament {
         this.registrationDeadline = registrationDeadline;
         this.participants = new ArrayList<>();
         this.athleteWithBye = null;
+        this.currentRoundInfo = 0;
     }
 
     /**
@@ -356,4 +362,11 @@ public class  Tournament {
         this.initialBracketsGenerated = initialBracketsGenerated;
     }
 
+    public Integer getCurrentRoundInfo() {
+        return currentRoundInfo;
+    }
+
+    public void setCurrentRoundInfo(Integer currentRoundInfo) {
+        this.currentRoundInfo = currentRoundInfo;
+    }
 }
