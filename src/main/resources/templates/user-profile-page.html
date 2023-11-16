@@ -99,7 +99,7 @@
                     <td th:text="${event.getTournamentName()}"></td>
                     <td th:text="${event.getStartDate()}"></td>
                     <td th:text="${event.getLocation()}"></td>
-                    <td><a id="user-tournament-info-button" class="button-green" th:href="@{'/tournament/tournament/' + ${event.getTournamentID()}}">Info</a></td>
+                    <td><a id="user-tournament-info-button" class="button-green" th:href="@{'/tournament/' + ${event.getTournamentID()}}">Info</a></td>
                     <td><a id="user-tournament-leave-button" class="button-green" th:href="@{'/tournament/leaveTournament/' + ${event.getTournamentID()}}">Leave</a></td>
                 </tr>
                 </tbody>

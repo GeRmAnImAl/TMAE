@@ -59,7 +59,7 @@ public class TournamentController {
      * @param model The view model to pass to the front end.
      * @return The name of the view to render the tournament page.
      */
-    @GetMapping("/tournament/{id}")
+    @GetMapping("/{id}")
     public String showTournamentPage(@PathVariable(value = "id") Long id, Model model) {
         Tournament tournament = this.tournamentService.getTournamentById(id);
         Athlete user = this.customUserDetailsService.getLoggedInUser();
