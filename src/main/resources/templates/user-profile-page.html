@@ -27,7 +27,7 @@
             <img th:unless="${photoData}" src="/backgrounds/no-photo-icon.png" alt="Default Image" />
 
             <!-- Form to update photo -->
-            <form th:action="@{/athlete_profile/saveAthlete}" method="post" enctype="multipart/form-data">
+            <form th:action="@{/athlete_profile/updatePhoto}" method="post" enctype="multipart/form-data">
                 <input type="file" name="photoFile" />
                 <input type="hidden" name="athleteID" th:value="${athleteID}" />
                 <button class="button" id="user-photo-update-button" type="submit">Upload Photo</button>

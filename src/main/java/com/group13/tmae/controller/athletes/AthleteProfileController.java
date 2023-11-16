@@ -43,6 +43,12 @@ public class AthleteProfileController {
     private static final long MAX_FILE_SIZE = 3145728; // 3MB
 
 
+    @PostMapping("/saveAthlete")
+    public String saveAthlete(@ModelAttribute("athlete") Athlete athlete){
+        athleteService.createAthlete(athlete);
+        return "redirect:/athlete_profile/userInfo";
+    }
+
     /**
      * Handles the submission of a form to create or update an athlete's information, including uploading a photo.
      *
@@ -50,8 +56,8 @@ public class AthleteProfileController {
      * @param athleteID The unique identifier of the athlete whose profile photo is being updated.
      * @return A string indicating the view to redirect to after processing the form submission.
      */
-    @PostMapping("/saveAthlete")
-    public String saveAthlete(@RequestParam("photoFile") MultipartFile photoFile,
+    @PostMapping("/updatePhoto")
+    public String updateAthletePhoto(@RequestParam("photoFile") MultipartFile photoFile,
                               @RequestParam("athleteID") Long athleteID, RedirectAttributes redirectAttributes) {
         try {
 
