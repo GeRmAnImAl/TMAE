@@ -82,12 +82,33 @@ public class AthleteProfileController {
     @GetMapping("/athlete/{id}")
     public String showAthleteProfile(@PathVariable(value = "id") Long id, Model model) {
         Athlete athlete = athleteService.getAthleteById(id);
-        model.addAttribute("athlete", athlete);
-        model.addAttribute("photoData", athlete.getPhotoFile());
-        model.addAttribute("photoContentType", athlete.getPhotoContentType());
 
-        //TODO change this string to the actual link for the athlete profile page.
-        return "/";
+        String welcome = athlete.getFirstName() + " " + athlete.getLastName() + "'s Profile";
+
+        model.addAttribute("customWelcome", welcome);
+        model.addAttribute("athleteID", athlete.getAthleteID());
+        model.addAttribute("wins", athlete.getWins());
+        model.addAttribute("losses", athlete.getLosses());
+        model.addAttribute("ties", athlete.getTies());
+        model.addAttribute("weight", athlete.getWeight());
+
+        long age = ChronoUnit.YEARS.between(athlete.getBirthDate(), LocalDate.now());
+
+        model.addAttribute("age", age);
+        model.addAttribute("affiliation", athlete.getAffiliation());
+        model.addAttribute("listEvents", athlete.getTournaments());
+
+        if (athlete.getPhotoData() != null && athlete.getPhotoData().length > 0) {
+            String photoDataAsBase64 = athlete.getPhotoDataAsBase64();
+            model.addAttribute("photoData", athlete.getPhotoData()); // raw photo data
+            model.addAttribute("photoDataAsBase64", photoDataAsBase64); // Base64 encoded photo data
+            model.addAttribute("photoContentType", athlete.getPhotoContentType()); // Content type of the photo
+        } else {
+            model.addAttribute("photo", "/backgrounds/no-photo-icon.png");
+        }
+
+
+        return "athlete_view";
     }
 
     /**
