@@ -30,7 +30,7 @@ public class BracketController {
         model.addAttribute("currentRound", currentTournament.getCurrentRoundInfo());
         model.addAttribute("matches", currentBracket.getMatches());
 
-        return "/bracket";
+        return "bracket";
     }
 
     @GetMapping("/startTournament/{tournamentID}")
