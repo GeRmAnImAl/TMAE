@@ -729,17 +729,23 @@ tr{
     background-position: center;
 }
 
-#bracket-columns-container{
-    background-color: #00C4B4;
+#bracket-container{
     width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #00C4B4;
     border-radius: 40px;
-    margin-top: 3%;
     margin-left: auto;
     margin-right: auto;
-    padding: 3%;
     box-shadow: 5px 5px 5px black;
-    display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
+    text-align: center;
+}
+
+#bracket-round-label{
+    font-size: x-large;
+    color: white;
+    text-shadow: 3px 3px 3px black;
 }
 
 .bracket-match{

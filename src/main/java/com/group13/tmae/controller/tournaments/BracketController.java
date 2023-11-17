@@ -22,29 +22,24 @@ public class BracketController {
     public TournamentService tournamentService;
 
     @GetMapping("/{tournamentID}")
-    public String showTournament(@PathVariable(value = "tournamentID") Long tournamentID, Model model){
+    public String showTournament(@PathVariable(value = "tournamentID") Long tournamentID, Model model) {
 
         Tournament currentTournament = this.tournamentService.getTournamentById(tournamentID);
         Bracket currentBracket = currentTournament.getBrackets().get(0);
-        //int totalRounds = this.tournamentService.getRoundInfo(currentTournament)[0];
-        //int currentRound = this.tournamentService.getRoundInfo(currentTournament)[1];
-
+        model.addAttribute("totalRounds", this.tournamentService.calculateTotalRounds(currentTournament));
+        model.addAttribute("currentRound", currentTournament.getCurrentRoundInfo());
         model.addAttribute("matches", currentBracket.getMatches());
-        //model.addAttribute("totalRounds", totalRounds);
-        //model.addAttribute("currentRound", currentRound);
 
         return "/bracket";
     }
 
     @GetMapping("/startTournament/{tournamentID}")
-    public String startTournament(@PathVariable(value = "tournamentID") Long tournamentID){
+    public String startTournament(@PathVariable(value = "tournamentID") Long tournamentID) {
 
         Tournament tournament = this.tournamentService.getTournamentById(tournamentID);
 
-        System.out.println(tournament.isInitialBracketsGenerated());
-        if(!tournament.isInitialBracketsGenerated()){
+        if (!tournament.isInitialBracketsGenerated()) {
             this.tournamentService.generateAndSaveBrackets(tournament);
-            System.out.println("Creating Bracket");
         }
 
         return "redirect:/bracket/" + tournamentID;
