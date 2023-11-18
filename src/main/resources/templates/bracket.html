@@ -21,12 +21,21 @@
         <div th:each="round : ${bracket}" class="round">
             <h5 th:text="'Round ' + ${round.get(0).get(0)}" id="bracket-round-label"></h5>
             <div class="bracket-matches" th:each="matchup : ${round}">
-                <a th:if="${matchup[0] == round[0][0]}">
-                    <p th:text="${matchup[2]}"></p>
-                    <p th:text="${matchup[4]}"></p>
-                    <p th:text="${matchup[3]}"></p>
-                    <p th:text="${matchup[5]}"></p>
-                </a>
+                <div th:if="${matchup[0] == round[0][0]}">
+                    <a th:if="${matchup[1] != null}" th:href="@{'/matches/' + ${matchup[1]}}">
+                        <p th:text="${matchup[2]}"></p>
+                        <p th:text="${matchup[4]}"></p>
+                        <p th:text="${matchup[3]}"></p>
+                        <p th:text="${matchup[5]}"></p>
+                    </a>
+                    <div th:unless="${matchup[1] != null}">
+                        <!-- Render the content without a link -->
+                        <p th:text="${matchup[2]}"></p>
+                        <p th:text="${matchup[4]}"></p>
+                        <p th:text="${matchup[3]}"></p>
+                        <p th:text="${matchup[5]}"></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
