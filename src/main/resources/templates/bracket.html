@@ -18,10 +18,15 @@
 <div class="container">
     <h1 class="page-description">Bracket</h1>
     <div id="bracket-container">
-        <div th:each="round, roundIndex : ${#numbers.sequence(1, totalRounds)}" class="round">
-            <h5 th:text="'Round ' + ${round}" id="bracket-round-label"></h5>
-            <div>
-
+        <div th:each="round : ${bracket}" class="round">
+            <h5 th:text="'Round ' + ${round.get(0).get(0)}" id="bracket-round-label"></h5>
+            <div class="bracket-matches" th:each="matchup : ${round}">
+                <a th:if="${matchup.get(0) == round.get(0).get(0)}">
+                    <p th:text="${matchup.get(2)}"></p>
+                    <p th:text="${matchup.get(4)}"></p>
+                    <p th:text="${matchup.get(3)}"></p>
+                    <p th:text="${matchup.get(5)}"></p>
+                </a>
             </div>
         </div>
     </div>
