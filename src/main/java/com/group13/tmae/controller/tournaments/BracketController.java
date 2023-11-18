@@ -42,7 +42,7 @@ public class BracketController {
         List<List<List<Object>>> bracketInfo = new ArrayList<>();
 
         // Iterate over each round of the tournament
-        for (int roundNum = 1; roundNum <= this.tournamentService.calculateTotalRounds(currentTournament); roundNum++){
+        for (int roundNum = 1; roundNum <= this.tournamentService.calculateTotalRounds(currentTournament) +1; roundNum++){
 
             List<List<Object>> roundInfo = new ArrayList<>();
 
@@ -60,7 +60,7 @@ public class BracketController {
                     Integer secondAthleteScore = match.getAthlete2Score();
 
                     // Add match information to the round
-                    matchInfo.add(currentTournament.getCurrentRoundInfo());
+                    matchInfo.add(match.getRoundNumber());
                     matchInfo.add(match.getMatchID());
                     matchInfo.add(firstAthlete);
                     matchInfo.add(secondAthlete);
@@ -115,13 +115,13 @@ public class BracketController {
         int makeParticipantsEven = (allParticipants % 2 == 0) ? allParticipants : allParticipants + 1;
 
         // Calculate the number of matches in each round
-        for (int roundCalc = 1; roundCalc < roundNum; roundCalc++) {
-            makeParticipantsEven /= 2;
+        for (int roundCalc = 1; roundCalc <= roundNum; roundCalc++) {
+            makeParticipantsEven = (makeParticipantsEven % 2 == 0) ? makeParticipantsEven / 2 : (makeParticipantsEven / 2) + 1;
         }
 
-        // Divide by two since half are eliminated
-        return makeParticipantsEven / 2;
+        return makeParticipantsEven;
     }
+
 
     /**
      * Starts the tournament by generating and saving initial brackets if not already done.
