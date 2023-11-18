@@ -755,13 +755,25 @@ tr{
     padding: 1%;
     width: 95%;
     box-shadow: 2px 2px 2px black;
-    display: table;
     font-size: x-large;
-
+    display: block;
 }
 
 .bracket-match-link{
     text-decoration: none;
     color: white;
     text-shadow: 3px 3px 3px black;
+    align-items: center;
+    margin-bottom: 10px;
+    display: grid;
+}
+
+.match-participant {
+    text-align: center;
+    display: inline-flex;
+}
+
+.participant-score {
+    font-weight: bold;
+    margin-left: 10px;
 }

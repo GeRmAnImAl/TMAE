@@ -20,20 +20,29 @@
     <div id="bracket-container">
         <div th:each="round : ${bracket}" class="round">
             <h5 th:text="'Round ' + ${round.get(0).get(0)}" id="bracket-round-label"></h5>
-            <div th:each="matchup : ${round}">
-                <div th:if="${matchup[0] == round[0][0]}" class="bracket-matches">
-                    <a th:if="${matchup[1] != null}" th:href="@{'/matches/' + ${matchup[1]}}" class="bracket-match-link">
-                        <p th:text="${matchup[2]}"></p>
-                        <p th:text="${matchup[4]}"></p>
-                        <p th:text="${matchup[3]}"></p>
-                        <p th:text="${matchup[5]}"></p>
+            <div th:each="matchup : ${round}" class="bracket-matches">
+                <div th:if="${matchup[0] == round[0][0]}">
+                    <a th:if="${matchup[1] != null}" th:href="@{'/matches/' + ${matchup[1]}}"
+                       class="bracket-match-link">
+                        <div class="match-participant">
+                            <p class="participant-name" th:text="${matchup[2]}"></p>
+                            <p class="participant-score" th:text="${matchup[4]}"></p>
+                        </div>
+                        <div class="match-participant">
+                            <p class="participant-name" th:text="${matchup[3]}"></p>
+                            <p class="participant-score" th:text="${matchup[5]}"></p>
+                        </div>
                     </a>
-                    <div th:unless="${matchup[1] != null}">
+                    <div th:unless="${matchup[1] != null}" class="bracket-match-link">
                         <!-- Render the content without a link -->
-                        <p th:text="${matchup[2]}"></p>
-                        <p th:text="${matchup[4]}"></p>
-                        <p th:text="${matchup[3]}"></p>
-                        <p th:text="${matchup[5]}"></p>
+                        <div class="match-participant">
+                            <p class="participant-name" th:text="${matchup[2]}"></p>
+                            <p class="participant-score" th:text="${matchup[4]}"></p>
+                        </div>
+                        <div class="match-participant">
+                            <p class="participant-name" th:text="${matchup[3]}"></p>
+                            <p class="participant-score" th:text="${matchup[5]}"></p>
+                        </div>
                     </div>
                 </div>
             </div>
