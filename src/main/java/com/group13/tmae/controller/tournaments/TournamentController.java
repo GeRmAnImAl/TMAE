@@ -168,6 +168,9 @@ public class TournamentController {
         /* Do the same for admins */
         tournamentInput.setAdmins(savedTournament.getAdmins());
 
+        /* Do the same for allRegistered athletes */
+        tournamentInput.setAllParticipants(savedTournament.getAllParticipants());
+
         this.tournamentService.updateTournament(tournamentInput);
 
         return "redirect:/tournament/" + tournamentInput.getTournamentID();
