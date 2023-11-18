@@ -33,7 +33,7 @@ public class BracketController {
 
         List<List<List<Object>>> bracketInfo = new ArrayList<>();
 
-        for (int i = 1; i <= this.tournamentService.calculateTotalRounds(currentTournament); i++){
+        for (int roundNum = 1; roundNum <= this.tournamentService.calculateTotalRounds(currentTournament); roundNum++){
 
             List<List<Object>> roundInfo = new ArrayList<>();
 
@@ -41,7 +41,7 @@ public class BracketController {
 
                 List<Object> matchInfo = new ArrayList<>();
 
-                if(match.getRoundNumber() == i){
+                if(match.getRoundNumber() == roundNum){
 
                     String firstAthlete = match.getAthlete1().getFirstName() + " " + match.getAthlete1().getLastName();
                     String secondAthlete = match.getAthlete2().getFirstName() + " " + match.getAthlete2().getLastName();
@@ -60,17 +60,32 @@ public class BracketController {
             }
 
             if(roundInfo.isEmpty()){
-                System.out.println("making empty");
-                List<Object> placeholder = new ArrayList<>();
 
-                placeholder.add(i);
-                placeholder.add(null);
-                placeholder.add("To Be Determined");
-                placeholder.add("To Be Determined");
-                placeholder.add("-");
-                placeholder.add("-");
+                int allParticipants = currentTournament.getAllParticipants().size();
 
-                roundInfo.add(placeholder);
+                // Make value of all the participants even.
+                int makeParticpantsEven = (allParticipants % 2 == 0) ? allParticipants : allParticipants + 1;
+
+                // Calculate the number of matches in each round
+                for (int roundCalc = 1; roundCalc < roundNum; roundCalc++) {
+                    makeParticpantsEven /= 2;
+                }
+
+                // Divide by two since half are eliminated
+                int matchesPerRound = makeParticpantsEven / 2;
+
+                for(int futureMatches = 0; futureMatches < matchesPerRound; futureMatches++){
+                    List<Object> placeholder = new ArrayList<>();
+
+                    placeholder.add(roundNum);
+                    placeholder.add(null);
+                    placeholder.add("To Be Determined");
+                    placeholder.add("To Be Determined");
+                    placeholder.add("-");
+                    placeholder.add("-");
+
+                    roundInfo.add(placeholder);
+                }
             }
 
             bracketInfo.add(roundInfo);
