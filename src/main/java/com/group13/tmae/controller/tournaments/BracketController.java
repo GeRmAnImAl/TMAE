@@ -54,11 +54,13 @@ public class BracketController {
                     matchInfo.add(secondAthlete);
                     matchInfo.add(firstAthleteScore);
                     matchInfo.add(secondAthleteScore);
+
+                    roundInfo.add(matchInfo);
                 }
-                roundInfo.add(matchInfo);
             }
 
             if(roundInfo.isEmpty()){
+                System.out.println("making empty");
                 List<Object> placeholder = new ArrayList<>();
 
                 placeholder.add(i);
