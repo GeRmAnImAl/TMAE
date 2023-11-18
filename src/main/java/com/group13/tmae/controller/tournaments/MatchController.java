@@ -71,7 +71,11 @@ public class MatchController {
      * @return Redirects to the tournament view after recording the match result.
      */
     @PostMapping("/completeMatch")
-    public String completeMatch(@RequestParam("matchID") Long matchID, @RequestParam("winner") Long winnerID, RedirectAttributes redirectAttributes){
+    public String completeMatch(@RequestParam("matchID") Long matchID,
+                                @RequestParam("winner") Long winnerID,
+                                @RequestParam("athlete1Score") Integer athlete1Score,
+                                @RequestParam("athlete2Score") Integer athlete2Score,
+                                RedirectAttributes redirectAttributes){
         if (winnerID == null){
             redirectAttributes.addFlashAttribute("error", "A winner must be selected to complete the match.");
             return "redirect:/matches/" + matchID;
@@ -85,6 +89,7 @@ public class MatchController {
             loserID = match.getAthlete1().getAthleteID();
         }
 
+        this.tournamentService.updateMatch(matchID, athlete1Score, athlete2Score);
         tournamentService.recordMatchResult(matchID, winnerID, loserID);
 
         return "redirect:/bracket/" + match.getTournament().getTournamentID();

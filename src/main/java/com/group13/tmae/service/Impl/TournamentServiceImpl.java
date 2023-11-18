@@ -347,7 +347,7 @@ public class TournamentServiceImpl implements TournamentService {
     public int calculateTotalRounds(Tournament tournament) {
         int rounds = 0;
         int maxBracketSize = 32;
-        int totalParticipants = tournament.getParticipants().size();
+        int totalParticipants = tournament.getAllParticipants().size();
         if (totalParticipants % 2 != 0) {
             totalParticipants++;
         }

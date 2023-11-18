@@ -40,6 +40,7 @@ public class BracketController {
 
         ArrayList<Match> matches = new ArrayList<>();
 
+        int roundCount = this.tournamentService.calculateTotalRounds(currentTournament);
         for(Bracket bracket : currentTournament.getBrackets()){
             matches.addAll(bracket.getMatches());
         }
@@ -47,7 +48,7 @@ public class BracketController {
         List<List<List<Object>>> bracketInfo = new ArrayList<>();
 
         // Iterate over each round of the tournament
-        for (int roundNum = 1; roundNum <= this.tournamentService.calculateTotalRounds(currentTournament) +1; roundNum++){
+        for (int roundNum = 1; roundNum <= this.tournamentService.calculateTotalRounds(currentTournament); roundNum++){
 
             List<List<Object>> roundInfo = new ArrayList<>();
 
