@@ -19,35 +19,41 @@
             <input type="hidden" name="matchID" th:value="${match.matchID}"/>
 
             <label for="athlete1Name">Athlete 1:</label>
-            <input type="text" id="athlete1Name" name="athlete1Name" th:value="${match.athlete1.firstName} + ' ' + ${match.athlete1.lastName}" readonly>
+            <input type="text" id="athlete1Name" name="athlete1Name"
+                   th:value="${match.athlete1.firstName} + ' ' + ${match.athlete1.lastName}" readonly>
 
             <label for="athlete1Score">Score:</label>
             <input type="number" id="athlete1Score" name="athlete1Score" th:value="${match.athlete1Score}">
 
             <label for="athlete2Name">Athlete 2:</label>
-            <input type="text" id="athlete2Name" name="athlete2Name" th:value="${match.athlete2.firstName} + ' ' + ${match.athlete2.lastName}" readonly>
+            <input type="text" id="athlete2Name" name="athlete2Name"
+                   th:value="${match.athlete2.firstName} + ' ' + ${match.athlete2.lastName}" readonly>
 
             <label for="athlete2Score">Score:</label>
             <input type="number" id="athlete2Score" name="athlete2Score" th:value="${match.athlete2Score}">
 
-            <button class="button" id="updateMatchButton" type="submit">Update Match</button>
-            <button class="button" formaction="/matches/completeMatch" formmethod="POST" type="submit">Complete Match</button>
+            <button class="button" id="updateMatchButton" type="submit" th:if="${showButton}">Update Match</button>
+            <button class="button" formaction="/matches/completeMatch" formmethod="POST" type="submit" th:if="${showButton}">Complete Match
+            </button>
 
-            <label for="winner">Winner:</label>
-            <select id="winner" name="winner">
+            <label for="winner" th:if="${showButton}">Winner:</label>
+            <select id="winner" name="winner" th:if="${showButton}">
                 <option value="" disabled selected>Select a Winner</option>
-                <option th:value="${match.athlete1.athleteID}" th:text="${match.athlete1.firstName + ' ' + match.athlete1.lastName}"></option>
-                <option th:value="${match.athlete2.athleteID}" th:text="${match.athlete2.firstName + ' ' + match.athlete2.lastName}"></option>
+                <option th:value="${match.athlete1.athleteID}"
+                        th:text="${match.athlete1.firstName + ' ' + match.athlete1.lastName}"></option>
+                <option th:value="${match.athlete2.athleteID}"
+                        th:text="${match.athlete2.firstName + ' ' + match.athlete2.lastName}"></option>
             </select>
+            <div th:if="${showWinner}" id="scoreboard-winner-div">
+                <h3 id="scoreboard-winner-label">Winner: </h3>
+                <p id="scoreboard-winner-text" th:text="${match.getWinner().getFirstName()} + ' ' + ${match.getWinner().getLastName()}"></p>
+            </div>
             <div th:if="${error}" class="flash-message">
                 <p th:text="${error}"></p>
             </div>
             <div th:if="${success}" class="flash-message">
                 <p th:text="${success}"></p>
             </div>
-
-
-
         </form>
     </div>
 </div>

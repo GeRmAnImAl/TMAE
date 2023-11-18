@@ -1,7 +1,9 @@
 package com.group13.tmae.controller.tournaments;
 
+import com.group13.tmae.model.Athlete;
 import com.group13.tmae.model.Match;
 import com.group13.tmae.repository.MatchRepository;
+import com.group13.tmae.service.Impl.CustomUserDetailsService;
 import com.group13.tmae.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,9 @@ public class MatchController {
     @Autowired
     private TournamentService tournamentService;
 
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService;
+
     /**
      * Displays the scoreboard for a specific match.
      *
@@ -39,8 +44,25 @@ public class MatchController {
     @GetMapping("/{matchID}")
     public String showScoreboard(@PathVariable Long matchID, Model model){
         Match match = matchRepository.findById(matchID).orElseThrow(() -> new RuntimeException("Match not found with ID: " + matchID));
+        Athlete user = this.customUserDetailsService.getLoggedInUser();
+
+        // Show buttons if user is an admin of tournament.
+        // Hide buttons is match is over.
+        // Show Winner
+        boolean showButton = false;
+        boolean showWinner = false;
+        if(match.getTournament().getAdmins().contains(user)){
+            showButton = true;
+        }
+        if(match.getWinner() != null){
+            showButton = false;
+            showWinner = true;
+        }
+
         System.out.println("*HERE* showScoreboard MatchID: " + match.getMatchID());
         model.addAttribute("match", match);
+        model.addAttribute("showButton", showButton);
+        model.addAttribute("showWinner", showWinner);
         return "scoreboard";
     }
 
