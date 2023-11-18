@@ -37,7 +37,12 @@ public class BracketController {
     public String showTournament(@PathVariable(value = "tournamentID") Long tournamentID, Model model) {
 
         Tournament currentTournament = this.tournamentService.getTournamentById(tournamentID);
-        Bracket currentBracket = currentTournament.getBrackets().get(0);
+
+        ArrayList<Match> matches = new ArrayList<>();
+
+        for(Bracket bracket : currentTournament.getBrackets()){
+            matches.addAll(bracket.getMatches());
+        }
 
         List<List<List<Object>>> bracketInfo = new ArrayList<>();
 
@@ -47,7 +52,7 @@ public class BracketController {
             List<List<Object>> roundInfo = new ArrayList<>();
 
             // Iterate over each match in the current round
-            for(Match match : currentBracket.getMatches()){
+            for(Match match : matches){
 
                 List<Object> matchInfo = new ArrayList<>();
 
