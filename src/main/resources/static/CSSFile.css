@@ -757,6 +757,11 @@ tr{
     box-shadow: 2px 2px 2px black;
     display: table;
     font-size: x-large;
+
+}
+
+.bracket-match-link{
+    text-decoration: none;
     color: white;
     text-shadow: 3px 3px 3px black;
 }

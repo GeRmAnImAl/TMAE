@@ -19,13 +19,13 @@
             <input type="hidden" name="matchID" th:value="${match.matchID}"/>
 
             <label for="athlete1Name">Athlete 1:</label>
-            <input type="text" id="athlete1Name" name="athlete1Name" th:value="${match.athlete1.lastName}" readonly>
+            <input type="text" id="athlete1Name" name="athlete1Name" th:value="${match.athlete1.firstName} + ' ' + ${match.athlete1.lastName}" readonly>
 
             <label for="athlete1Score">Score:</label>
             <input type="number" id="athlete1Score" name="athlete1Score" th:value="${match.athlete1Score}">
 
             <label for="athlete2Name">Athlete 2:</label>
-            <input type="text" id="athlete2Name" name="athlete2Name" th:value="${match.athlete2.lastName}" readonly>
+            <input type="text" id="athlete2Name" name="athlete2Name" th:value="${match.athlete2.firstName} + ' ' + ${match.athlete2.lastName}" readonly>
 
             <label for="athlete2Score">Score:</label>
             <input type="number" id="athlete2Score" name="athlete2Score" th:value="${match.athlete2Score}">

@@ -20,9 +20,9 @@
     <div id="bracket-container">
         <div th:each="round : ${bracket}" class="round">
             <h5 th:text="'Round ' + ${round.get(0).get(0)}" id="bracket-round-label"></h5>
-            <div class="bracket-matches" th:each="matchup : ${round}">
-                <div th:if="${matchup[0] == round[0][0]}">
-                    <a th:if="${matchup[1] != null}" th:href="@{'/matches/' + ${matchup[1]}}">
+            <div th:each="matchup : ${round}">
+                <div th:if="${matchup[0] == round[0][0]}" class="bracket-matches">
+                    <a th:if="${matchup[1] != null}" th:href="@{'/matches/' + ${matchup[1]}}" class="bracket-match-link">
                         <p th:text="${matchup[2]}"></p>
                         <p th:text="${matchup[4]}"></p>
                         <p th:text="${matchup[3]}"></p>
