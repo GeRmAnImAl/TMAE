@@ -130,7 +130,8 @@ public class TournamentServiceImpl implements TournamentService {
     @Override
     public void joinTournament(Athlete athlete, Tournament tournament) {
 
-        if(!tournament.getParticipants().contains(athlete)){
+        if(!tournament.getAllParticipants().contains(athlete)){
+            tournament.getAllParticipants().add(athlete);
             tournament.getParticipants().add(athlete);
             updateTournament(tournament);
         }
@@ -149,7 +150,8 @@ public class TournamentServiceImpl implements TournamentService {
     @Override
     public void leaveTournament(Athlete athlete, Tournament tournament) {
 
-        if(tournament.getParticipants().contains(athlete)){
+        if(tournament.getAllParticipants().contains(athlete)){
+            tournament.getAllParticipants().remove(athlete);
             tournament.getParticipants().remove(athlete);
             updateTournament(tournament);
         }

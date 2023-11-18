@@ -83,7 +83,7 @@ public class TournamentController {
         model.addAttribute("startDate", tournament.getStartDate());
         model.addAttribute("endDate", tournament.getEndDate());
         model.addAttribute("registerBy", tournament.getRegistrationDeadline());
-        model.addAttribute("participants", tournament.getParticipants());
+        model.addAttribute("participants", tournament.getAllParticipants());
         model.addAttribute("participantsNumber", tournament.getParticipants().size());
         model.addAttribute("readOnly", "readonly");
         model.addAttribute("tournamentID", tournament.getTournamentID());

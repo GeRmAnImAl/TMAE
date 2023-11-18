@@ -86,10 +86,10 @@ public class DeveloperPageController {
 
             // Update the tournament with the new list of participants
             selectedTournament.setParticipants(updateTournamentAthletes);
+            selectedTournament.setAllParticipants(updateTournamentAthletes);
 
             // Save the updated tournament
             this.tournamentService.updateTournament(selectedTournament);
-            //this.tournamentService.generateAndSaveBrackets(selectedTournament);
         }
 
 
@@ -122,7 +122,7 @@ public class DeveloperPageController {
             List<Object> athleteInTournament = new ArrayList<>();
             athleteInTournament.add(athlete);
 
-            if (tournament.getParticipants().contains(athlete)) {
+            if (tournament.getAllParticipants().contains(athlete)) {
                 athleteInTournament.add(true);
             } else {
                 athleteInTournament.add(false);

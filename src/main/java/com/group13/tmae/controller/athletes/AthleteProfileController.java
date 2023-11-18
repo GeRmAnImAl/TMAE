@@ -135,7 +135,7 @@ public class AthleteProfileController {
 
         model.addAttribute("age", age);
         model.addAttribute("affiliation", athlete.getAffiliation());
-        model.addAttribute("listEvents", athlete.getTournaments());
+        model.addAttribute("listEvents", athlete.getRegisteredTournaments());
 
         if (athlete.getPhotoData() != null && athlete.getPhotoData().length > 0) {
             String photoDataAsBase64 = athlete.getPhotoDataAsBase64();

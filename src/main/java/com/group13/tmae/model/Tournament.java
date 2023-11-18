@@ -68,7 +68,7 @@ public class  Tournament {
     private LocalDate registrationDeadline;
 
     /**
-     * The athletes registered for the tournament.
+     * The athletes registered for the tournament and adjusted each round.
      */
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
@@ -77,6 +77,15 @@ public class  Tournament {
             inverseJoinColumns = @JoinColumn(name = "athleteid")
     )
     private List<Athlete> participants;
+
+    /**
+     * All athletes registered for the tournament.
+     */
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "all_tournament_participants",
+    joinColumns = @JoinColumn(name = "tournamentid"),
+    inverseJoinColumns = @JoinColumn(name = "athleteid"))
+    private List<Athlete> allParticipants;
 
     /**
      * Athletes with admin privileges.
@@ -135,6 +144,7 @@ public class  Tournament {
         this.maxNumParticipants = maxNumParticipants;
         this.registrationDeadline = registrationDeadline;
         this.participants = new ArrayList<>();
+        this.allParticipants = new ArrayList<>();
         this.admins = new ArrayList<>();
         this.athleteWithBye = null;
         this.currentRoundInfo = 0;
@@ -145,6 +155,7 @@ public class  Tournament {
      */
     public Tournament() {
         this.participants = new ArrayList<>();
+        this.allParticipants = new ArrayList<>();
         this.admins = new ArrayList<>();
         this.athleteWithBye = null;
         this.currentRoundInfo = 0;
@@ -395,5 +406,13 @@ public class  Tournament {
 
     public void setTournamentID(Long tournamentID) {
         this.tournamentID = tournamentID;
+    }
+
+    public List<Athlete> getAllParticipants() {
+        return allParticipants;
+    }
+
+    public void setAllParticipants(List<Athlete> allParticipants) {
+        this.allParticipants = allParticipants;
     }
 }

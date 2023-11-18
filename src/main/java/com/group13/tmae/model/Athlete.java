@@ -128,10 +128,13 @@ public class Athlete implements Serializable {
     private String photoContentType;
 
     /**
-     * Tournaments the athlete is registered for.
+     * Tournaments the athlete is registered for and currently still in.
      */
     @ManyToMany(mappedBy = "participants")
     private List<Tournament> tournaments;
+
+    @ManyToMany(mappedBy = "allParticipants")
+    private List<Tournament> registeredTournaments;
 
     /**
      * Tournaments the athlete is an admin for.
@@ -162,6 +165,7 @@ public class Athlete implements Serializable {
         this.phoneNumber = phoneNumber;
         this.photoData = photoData;
         this.tournaments = new ArrayList<>();
+        this.registeredTournaments = new ArrayList<>();
         this.adminInTournament = new ArrayList<>();
     }
 
@@ -183,6 +187,7 @@ public class Athlete implements Serializable {
         this.email = "";
         this.phoneNumber = "";
         this.tournaments = new ArrayList<>();
+        this.registeredTournaments = new ArrayList<>();
         this.adminInTournament = new ArrayList<>();
     }
 
@@ -518,6 +523,22 @@ public class Athlete implements Serializable {
      */
     public void setTournaments(List<Tournament> tournaments) {
         this.tournaments = tournaments;
+    }
+
+    public List<Tournament> getRegisteredTournaments() {
+        return registeredTournaments;
+    }
+
+    public void setRegisteredTournaments(List<Tournament> registeredTournaments) {
+        this.registeredTournaments = registeredTournaments;
+    }
+
+    public List<Tournament> getAdminInTournament() {
+        return adminInTournament;
+    }
+
+    public void setAdminInTournament(List<Tournament> adminInTournament) {
+        this.adminInTournament = adminInTournament;
     }
 }
 
