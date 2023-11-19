@@ -73,6 +73,7 @@ tr{
     text-shadow: 2px 2px 4px black;
     text-align: center;
     transition-duration: 0.2s;
+    cursor: pointer;
 }
 
 .button:hover {
@@ -94,12 +95,50 @@ tr{
     transition-duration: 0.2s;
 }
 
+.button-red{
+    background-color: indianred;
+    text-decoration: none;
+    color: white;
+    box-shadow: 3px 3px 5px black;
+    text-shadow: 2px 2px 4px black;
+    text-align: center;
+    transition-duration: 0.2s;
+}
+
+.button-blue{
+    background-color: cornflowerblue;
+    text-decoration: none;
+    color: white;
+    box-shadow: 3px 3px 5px black;
+    text-shadow: 2px 2px 4px black;
+    text-align: center;
+    transition-duration: 0.2s;
+}
+
 .button-green:hover {
     background-color: #b1eee0;
 }
 
 .button-green:active {
     background-color: #3b9872;
+    box-shadow: inset 2px 2px 4px black;
+}
+
+.button-red:hover {
+    background-color: lightcoral;
+}
+
+.button-red:active {
+    background-color: crimson;
+    box-shadow: inset 2px 2px 4px black;
+}
+
+.button-blue:hover {
+    background-color: lightblue;
+}
+
+.button-blue:active {
+    background-color: royalblue;
     box-shadow: inset 2px 2px 4px black;
 }
 
@@ -296,6 +335,13 @@ tr{
     margin-top: 0;
 }
 
+#athlete-view-button{
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 25px;
+    border-width: 2px;
+}
+
 /* ---------- Sign Up Page Elements ---------- */
 
 #sign-up {
@@ -460,6 +506,7 @@ tr{
     margin-right: auto;
     margin-left: auto;
     padding: 15px;
+    text-shadow: none;
 }
 
 #athlete-page-athlete-info-box {
@@ -528,7 +575,7 @@ tr{
     margin-top: 0;
 }
 
-#user-tournament-info-button, #user-tournament-leave-button{
+#user-tournament-info-button, #user-tournament-leave-button, #user-tournament-bracket-button{
     padding: 5px 10px;
     margin: 5px;
     border-radius: 25px;
@@ -618,7 +665,7 @@ tr{
     box-shadow: 5px 5px 5px black;
 }
 
-#tournament-list-info-button, #tournament-list-join-button{
+#tournament-list-info-button, .tournament-list-joinleave-button{
     padding: 5px 10px;
     margin: 5px 10px;
     border-radius: 25px;

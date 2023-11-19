@@ -101,9 +101,12 @@
                     <td th:text="${event.getLocation()}"></td>
                     <td><a id="user-tournament-info-button" class="button-green"
                            th:href="@{'/tournament/' + ${event.getTournamentID()}}">Info</a></td>
-                    <td><a id="user-tournament-leave-button" class="button-green"
+                    <td><a id="user-tournament-leave-button" class="button-red"
                            th:href="@{'/tournament/leaveTournament/' + ${event.getTournamentID()}}"
-                           th:if="${event.isInitialBracketsGenerated() == false}">Leave</a></td>
+                           th:if="${not event.isInitialBracketsGenerated()}">Leave</a>
+                        <a id="user-tournament-bracket-button" class="button-blue" th:href="@{'/bracket/'
+                            + ${event.getTournamentID()}}" th:if="${event.isInitialBracketsGenerated()}">Bracket</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

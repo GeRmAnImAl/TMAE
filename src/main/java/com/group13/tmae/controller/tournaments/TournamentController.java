@@ -129,7 +129,10 @@ public class TournamentController {
      */
     @GetMapping("/listAllTournaments")
     public String showAllTournaments(Model model){
+        Athlete user = this.customUserDetailsService.getLoggedInUser();
+
         model.addAttribute("listAllTournaments", this.tournamentService.getAllTournaments());
+        model.addAttribute("user", user);
 
         return "/tournament_list";
     }
@@ -150,7 +153,7 @@ public class TournamentController {
 
         model.addAttribute("listAllTournaments", this.tournamentService.getAllTournaments());
 
-        return "/tournament_list";
+        return "redirect:/athlete_profile/userInfo";
     }
 
     /**

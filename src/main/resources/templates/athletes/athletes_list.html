@@ -49,7 +49,8 @@
                 <td th:text="${athlete.getWins()}"></td>
                 <td th:text="${athlete.getLosses()}"></td>
                 <td th:text="${athlete.getTies()}"></td>
-                <td><a id="athlete-view-button" class="button-green" th:href="@{'/athlete_profile/athlete/' + ${athlete.getAthleteID()}}">Profile</a></td>
+                <td><a id="athlete-view-button" class="button-green" th:href="@{'/athlete_profile/athlete/'
+                    + ${athlete.getAthleteID()}}">Profile</a></td>
             </tr>
             </tbody>
         </table>

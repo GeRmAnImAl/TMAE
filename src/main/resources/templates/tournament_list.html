@@ -45,8 +45,18 @@
                 <td th:text="${#temporals.format(tournament.getStartDate(), 'MM/dd/yyyy')}"></td>
                 <td th:text="${#temporals.format(tournament.getEndDate(), 'MM/dd/yyyy')}"></td>
                 <td th:text="${#temporals.format(tournament.getRegistrationDeadline(), 'MM/dd/yyyy')}"></td>
-                <td><a id="tournament-list-info-button" class="button-green" th:href="@{'/tournament/' + ${tournament.getTournamentID()}}">Info</a></td>
-                <td><a id="tournament-list-join-button" class="button-green" th:href="@{'/tournament/joinTournament/' + ${tournament.getTournamentID()}}">Join</a></td>
+                <td><a id="tournament-list-info-button" class="button-green" th:href="@{'/tournament/'
+                    + ${tournament.getTournamentID()}}">Info</a></td>
+                <td>
+                    <a class="button-green tournament-list-joinleave-button" th:href="@{'/tournament/joinTournament/'
+                    + ${tournament.getTournamentID()}}" th:if="${!tournament.getAllParticipants().contains(user) &&
+                    !tournament.isInitialBracketsGenerated()}">Join</a>
+                    <a class="button-red tournament-list-joinleave-button" th:href="@{'/tournament/leaveTournament/'
+                    + ${tournament.getTournamentID()}}" th:if="${tournament.getAllParticipants().contains(user) &&
+                    !tournament.isInitialBracketsGenerated()}">Leave</a>
+                    <a class="button-blue tournament-list-joinleave-button" th:href="@{'/bracket/'
+                    + ${tournament.getTournamentID()}}" th:if="${tournament.isInitialBracketsGenerated()}">Bracket</a>
+                </td>
             </tr>
             </tbody>
         </table>
