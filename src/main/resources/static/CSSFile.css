@@ -770,15 +770,13 @@ tr{
 }
 
 #tournament-info-start-show-buttons{
-    height: 60px;
     width: 100%;
-    margin-top: 3%;
+    margin-top: 5%;
     text-align: center;
 }
 
 #start-tournament-info-button, #tournament-show-bracket-button{
-    margin-top: 5%;
-    padding: 2%;
+    padding: 1.5%;
     border-radius: 30px;
     font-size: x-large;
 }
@@ -942,4 +940,26 @@ tr{
     border-style: outset;
     border-color: buttonborder;
     border-image: initial;
+}
+
+#scoreboard-update-buttons{
+    width: 60%;
+    margin: 2% auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: xx-large;
+}
+
+#scoreboard-update-match-Button, #scoreboard-complete-match-button{
+    font-size: x-large;
+    padding: 1%;
+    border-radius: 40px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+}
+
+#scoreboard-update-buttons select{
+    font-size: x-large;
 }

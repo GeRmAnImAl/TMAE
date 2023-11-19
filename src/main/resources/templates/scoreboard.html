@@ -45,19 +45,22 @@
                            class="scoreboard-athlete-score-input">
                 </div>
             </div>
-            <button class="button" id="updateMatchButton" type="submit" th:if="${showButton}">Update Match</button>
-            <button class="button" formaction="/matches/completeMatch" formmethod="POST" type="submit"
-                    th:if="${showButton}">Complete Match
-            </button>
+            <div id="scoreboard-update-buttons" th:if="${showButton}">
+                <button class="button" id="scoreboard-update-match-Button" type="submit">Update Match</button>
+                <button class="button" formaction="/matches/completeMatch" formmethod="POST" type="submit"
+                        id="scoreboard-complete-match-button">Complete Match</button>
 
-            <label for="winner" th:if="${showButton}">Winner:</label>
-            <select id="winner" name="winner" th:if="${showButton}">
-                <option value="" disabled selected>Select a Winner</option>
-                <option th:value="${match.athlete1.athleteID}"
-                        th:text="${match.athlete1.firstName + ' ' + match.athlete1.lastName}"></option>
-                <option th:value="${match.athlete2.athleteID}"
-                        th:text="${match.athlete2.firstName + ' ' + match.athlete2.lastName}"></option>
-            </select>
+                <div id="scoreboard-dropdown">
+                    <label for="winner">Winner:</label>
+                    <select id="winner" name="winner">
+                        <option value="" disabled selected>Select a Winner</option>
+                        <option th:value="${match.athlete1.athleteID}"
+                                th:text="${match.athlete1.firstName + ' ' + match.athlete1.lastName}"></option>
+                        <option th:value="${match.athlete2.athleteID}"
+                                th:text="${match.athlete2.firstName + ' ' + match.athlete2.lastName}"></option>
+                    </select>
+                </div>
+            </div>
             <div th:if="${showWinner}" id="scoreboard-winner-div">
                 <h3 id="scoreboard-winner-label">Winner: </h3>
                 <p id="scoreboard-winner-text"
