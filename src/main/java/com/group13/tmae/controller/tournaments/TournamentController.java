@@ -3,6 +3,8 @@ package com.group13.tmae.controller.tournaments;
 import com.group13.tmae.model.Athlete;
 import com.group13.tmae.model.Tournament;
 import com.group13.tmae.repository.TournamentRepository;
+import com.group13.tmae.service.AthleteService;
+import com.group13.tmae.service.Impl.AthleteServiceImpl;
 import com.group13.tmae.service.Impl.CustomUserDetailsService;
 import com.group13.tmae.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +42,9 @@ public class TournamentController {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
+    @Autowired
+    private AthleteService athleteService;
+
     /**
      * Saves a new tournament to the database and redirects to the tournament list view.
      *
@@ -73,8 +78,19 @@ public class TournamentController {
     public String showTournamentPage(@PathVariable(value = "id") Long id, Model model) {
         Tournament tournament = this.tournamentService.getTournamentById(id);
         Athlete user = this.customUserDetailsService.getLoggedInUser();
+        boolean showAdminButtons = false;
+        boolean showBracketLink = false;
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/YYYY");
+
+        // Check to see if user is an admin and make sure the tournament hasn't started
+        if(tournament.getAdmins().contains(user) && !tournament.isInitialBracketsGenerated()){
+            showAdminButtons = true;
+        }
+        // Check if the tournament has started
+        if(tournament.isInitialBracketsGenerated()){
+            showBracketLink = true;
+        }
 
         model.addAttribute("tournamentName", tournament.getTournamentName());
         model.addAttribute("tournamentLocation", tournament.getLocation());
@@ -87,6 +103,8 @@ public class TournamentController {
         model.addAttribute("participantsNumber", tournament.getParticipants().size());
         model.addAttribute("readOnly", "readonly");
         model.addAttribute("tournamentID", tournament.getTournamentID());
+        model.addAttribute("showAdminButtons", showAdminButtons);
+        model.addAttribute("showBracketLink", showBracketLink);
 
         return "/eventInfo";
     }
@@ -174,6 +192,21 @@ public class TournamentController {
         this.tournamentService.updateTournament(tournamentInput);
 
         return "redirect:/tournament/" + tournamentInput.getTournamentID();
+    }
+
+    @GetMapping("/{tournamentID}/kickathlete/{athleteID}")
+    public String kickAthlete(@PathVariable("athleteID") Long athleteID,
+                              @PathVariable("tournamentID") Long tournamentID){
+        Tournament tournament = this.tournamentService.getTournamentById(tournamentID);
+        Athlete athlete = this.athleteService.getAthleteById(athleteID);
+        Athlete user = this.customUserDetailsService.getLoggedInUser();
+
+        if(tournament.getAdmins().contains(user)){
+            tournament.getAllParticipants().remove(athlete);
+            this.tournamentService.updateTournament(tournament);
+        }
+
+        return "redirect:/tournament/" + tournamentID;
     }
 
     @GetMapping("/tournament{tournamentID}/bracket")

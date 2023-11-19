@@ -52,9 +52,14 @@
                    th:value="${registerBy}" name="registrationDeadline"
                    required>
             <div id="tournament-info-form-buttons">
-                <button class="button both" id="submit-tournament-info-button" type="submit">Update Tournament</button>
-                <button class="button both" id="cancel-tournament-info-button" type="reset">Cancel</button>
-                <a class="button both" id="start-tournament-info-button" th:href="@{'/bracket/startTournament/' + ${tournamentID}}">Start Tournament</a>
+                <button class="button both" id="submit-tournament-info-button" type="submit"
+                        th:if="${showAdminButtons}">Update Tournament</button>
+                <button class="button both" id="cancel-tournament-info-button" type="reset"
+                        th:if="${showAdminButtons}">Cancel</button>
+                <a class="button both" id="start-tournament-info-button" th:href="@{'/bracket/startTournament/'
+                         + ${tournamentID}}" th:if="${showAdminButtons}">Start Tournament</a>
+                <a class="button both" id="tournament-show-bracket-button" th:href="@{'/bracket/' + ${tournamentID}}"
+                        th:if="${showBracketLink}">Go To Bracket</a>
             </div>
         </form>
     </div>
@@ -76,7 +81,8 @@
                 <td><a id="tournament-info-athlete-info-button" class="button-green"
                        th:href="@{'/athlete_profile/athlete/' + ${athlete.getAthleteID()}}">Info</a></td>
                 <td><a id="tournament-info-athlete-kick-button" class="button-green"
-                       th:href="@{'/tournament/leaveTournament/' + ${tournamentID}}">Kick</a></td>
+                       th:href="@{'/tournament/' + ${tournamentID} + '/kickathlete/' + ${athlete.getAthleteID()}}"
+                        th:if="${showAdminButtons}">Kick</a></td>
             </tr>
             </tbody>
         </table>
