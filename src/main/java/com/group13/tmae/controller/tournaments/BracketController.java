@@ -118,6 +118,7 @@ public class BracketController {
         model.addAttribute("bracket", bracketInfo);
         model.addAttribute("totalRounds", this.tournamentService.calculateTotalRounds(currentTournament));
         model.addAttribute("currentRound", currentTournament.getCurrentRoundInfo());
+        model.addAttribute("tournamentName", currentTournament.getTournamentName());
 
         return "bracket";
     }

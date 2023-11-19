@@ -16,7 +16,7 @@
 </div>
 <div th:include="/navbar :: navbar"></div>
 <div class="container">
-    <h1 class="page-description">Bracket</h1>
+    <h1 class="page-description" th:text="${tournamentName} + ' Bracket'"></h1>
     <div id="bracket-container">
         <div th:each="round : ${bracket}" class="round">
             <h5 th:text="'Round ' + ${round.get(0).get(0)}" id="bracket-round-label"></h5>

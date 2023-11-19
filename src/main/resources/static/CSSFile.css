@@ -830,3 +830,72 @@ tr{
     text-decoration: line-through;
     text-decoration-color: black;
 }
+
+/* ---------- Match Page ---------- */
+
+#scoreboard{
+    background-image: url("backgrounds/SportsBG2.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#scoreboard-box{
+    padding: 5%;
+    align-items: center;
+    background-color: #00C4B4;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 5px 5px 5px black;
+    text-align: center;
+    width: 70%;
+}
+
+#scoreboard-box-title{
+    font-size: xxx-large;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 0%;
+}
+
+.scoreboard-athlete{
+    background-color: #7F39FB;
+    padding: 3%;
+    font-size: xxx-large;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    font-weight: bold;
+    display: table;
+    margin: 1.5% auto;
+    border-radius: 40px;
+    box-shadow: 5px 5px 5px black;
+    width: 50%;
+}
+
+.scoreboard-athlete-name, .scoreboard-athlete-score{
+    margin: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.scoreboard-input-label{
+    text-align: left;
+}
+
+.scoreboard-athlete-name-input{
+    text-align: right;
+    font-size: xx-large;
+    width: auto;
+    border-radius: 40px;
+    padding: 1%;
+}
+
+.scoreboard-athlete-score-input{
+    font-size: xx-large;
+    width: 10%;
+    border-radius: 40px;
+    padding: 1%;
+    text-align: center;
+}
