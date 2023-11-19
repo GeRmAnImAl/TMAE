@@ -164,7 +164,9 @@ public class TournamentController {
         Athlete user = this.customUserDetailsService.getLoggedInUser();
         Tournament tournament = this.tournamentService.getTournamentById(tournamentID);
 
-        this.tournamentService.leaveTournament(user, tournament);
+        if(!tournament.isInitialBracketsGenerated()){
+            this.tournamentService.leaveTournament(user, tournament);
+        }
 
         return "redirect:/athlete_profile/userInfo";
     }
