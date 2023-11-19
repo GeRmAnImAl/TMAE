@@ -25,11 +25,11 @@
                     <a th:if="${matchup[1] != null}" th:href="@{'/matches/' + ${matchup[1]}}"
                        class="bracket-match-link">
                         <div class="match-participant">
-                            <p class="participant-name" th:text="${matchup[2]}"></p>
+                            <p th:class="${matchup[6]} ? 'bracket-match-loser' : 'participant-name'" th:text="${matchup[2]}"></p>
                             <p class="participant-score" th:text="${matchup[4]}"></p>
                         </div>
                         <div class="match-participant">
-                            <p class="participant-name" th:text="${matchup[3]}"></p>
+                            <p th:class="${matchup[7]} ? 'bracket-match-loser' : 'participant-name'" th:text="${matchup[3]}"></p>
                             <p class="participant-score" th:text="${matchup[5]}"></p>
                         </div>
                     </a>

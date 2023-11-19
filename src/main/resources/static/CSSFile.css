@@ -777,3 +777,9 @@ tr{
     font-weight: bold;
     margin-left: 10px;
 }
+
+.bracket-match-loser{
+    color: red;
+    text-decoration: line-through;
+    text-decoration-color: black;
+}

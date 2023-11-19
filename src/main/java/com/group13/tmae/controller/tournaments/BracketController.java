@@ -64,6 +64,8 @@ public class BracketController {
                     String secondAthlete = match.getAthlete2().getFirstName() + " " + match.getAthlete2().getLastName();
                     Integer firstAthleteScore = match.getAthlete1Score();
                     Integer secondAthleteScore = match.getAthlete2Score();
+                    boolean loserAthlete1 = false;
+                    boolean loserAthlete2 = false;
 
                     // Add match information to the round
                     matchInfo.add(match.getRoundNumber());
@@ -72,6 +74,19 @@ public class BracketController {
                     matchInfo.add(secondAthlete);
                     matchInfo.add(firstAthleteScore);
                     matchInfo.add(secondAthleteScore);
+
+                    // Check to see if there is a winner and loser
+                    if(match.getLoser() != null){
+                        if(match.getLoser().equals(match.getAthlete1())){
+                            loserAthlete1 = true;
+                        }
+                        if (match.getLoser().equals(match.getAthlete2())){
+                            loserAthlete2 = true;
+                        }
+                    }
+
+                    matchInfo.add(loserAthlete1);
+                    matchInfo.add(loserAthlete2);
 
                     roundInfo.add(matchInfo);
                 }
