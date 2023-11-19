@@ -74,6 +74,10 @@ tr{
     text-align: center;
     transition-duration: 0.2s;
     cursor: pointer;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
 }
 
 .button:hover {
@@ -165,10 +169,7 @@ tr{
 
 #navbar-nav {
     background-color: #00C4B4;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: .1%;
-    padding-bottom: .2%;
+    padding: .1% 10% .2%;
     display: flex;
     justify-content: space-between;
     font-size: x-large;
@@ -176,7 +177,7 @@ tr{
 
 #navbar-nav-logout-button{
     font-size: x-large;
-    font-family: "Times New Roman";
+    font-family: "Times New Roman", serif;
     height: 99.9%;
     padding: 10%;
     cursor: pointer;
@@ -768,6 +769,20 @@ tr{
     border-width: 2px;
 }
 
+#tournament-info-start-show-buttons{
+    height: 60px;
+    width: 100%;
+    margin-top: 3%;
+    text-align: center;
+}
+
+#start-tournament-info-button, #tournament-show-bracket-button{
+    margin-top: 5%;
+    padding: 2%;
+    border-radius: 30px;
+    font-size: x-large;
+}
+
 /* ---------- Bracket Page ---------- */
 
 #bracket-page{
@@ -840,7 +855,7 @@ tr{
 }
 
 #scoreboard-box{
-    padding: 5%;
+    padding: 1%;
     align-items: center;
     background-color: #00C4B4;
     border-radius: 40px;
@@ -898,4 +913,33 @@ tr{
     border-radius: 40px;
     padding: 1%;
     text-align: center;
+}
+
+#scoreboard-winner-div{
+    background-color: #7F39FB;
+    padding: 1%;
+    font-size: xx-large;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    font-weight: bold;
+    display: table;
+    margin: 1.5% auto;
+    border-radius: 40px;
+    box-shadow: 5px 5px 5px black;
+}
+
+#scoreboard-winner-label, #scoreboard-winner-text{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#scoreboard-back-button{
+    font-size: x-large;
+    padding: 0.5%;
+    border-radius: 40px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
 }

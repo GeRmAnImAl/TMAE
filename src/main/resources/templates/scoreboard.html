@@ -70,6 +70,8 @@
                 <p th:text="${success}"></p>
             </div>
         </form>
+        <a class="button" id="scoreboard-back-button" th:href="@{'/bracket/'
+            + ${match.getTournament().getTournamentID()}}">Back to Tournament</a>
     </div>
 </div>
 </body>

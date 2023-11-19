@@ -56,10 +56,12 @@
                         th:if="${showAdminButtons}">Update Tournament</button>
                 <button class="button both" id="cancel-tournament-info-button" type="reset"
                         th:if="${showAdminButtons}">Cancel</button>
+            </div>
+            <div id="tournament-info-start-show-buttons">
                 <a class="button both" id="start-tournament-info-button" th:href="@{'/bracket/startTournament/'
                          + ${tournamentID}}" th:if="${showAdminButtons}">Start Tournament</a>
                 <a class="button both" id="tournament-show-bracket-button" th:href="@{'/bracket/' + ${tournamentID}}"
-                        th:if="${showBracketLink}">Go To Bracket</a>
+                   th:if="${showBracketLink}">Go To Bracket</a>
             </div>
         </form>
     </div>
