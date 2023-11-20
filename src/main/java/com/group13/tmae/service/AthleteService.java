@@ -39,6 +39,8 @@ public interface AthleteService {
      */
     void updateAthlete(Athlete athlete);
 
+    void updateAthletePhoto(Athlete athlete);
+
     /**
      * Deletes an athlete by their unique identifier.
      *

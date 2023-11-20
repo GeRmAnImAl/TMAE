@@ -103,7 +103,7 @@ public class AthleteProfileController {
                 athlete.setPhotoData(photoFile.getBytes());
                 athlete.setPhotoContentType(photoFile.getContentType());
             }
-            athleteService.updateAthlete(athlete);
+            athleteService.updateAthletePhoto(athlete);
         } catch (IOException e) {
             e.printStackTrace();
             redirectAttributes.addFlashAttribute("error", "An error occurred while saving the athlete.");
