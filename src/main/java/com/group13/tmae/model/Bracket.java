@@ -38,6 +38,8 @@ public class Bracket {
     @OneToMany(mappedBy = "bracket", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Match> matches = new ArrayList<>();
 
+    private Long byeAthleteID;
+
     /**
      * Constructs a new Bracket with a reference to its tournament and a list of participating athletes.
      *
@@ -117,5 +119,13 @@ public class Bracket {
      */
     public void setMatches(List<Match> matches) {
         this.matches = matches;
+    }
+
+    public Long getByeAthleteID() {
+        return byeAthleteID;
+    }
+
+    public void setByeAthleteID(Long byeAthleteID) {
+        this.byeAthleteID = byeAthleteID;
     }
 }

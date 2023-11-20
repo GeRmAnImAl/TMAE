@@ -791,6 +791,7 @@ tr{
 
 #bracket-container{
     width: 95%;
+    padding: 0% 3% 3%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -802,6 +803,10 @@ tr{
     text-align: center;
 }
 
+.round{
+    width: 25%;
+}
+
 #bracket-round-label{
     font-size: x-large;
     color: white;
@@ -811,7 +816,7 @@ tr{
 .bracket-matches{
     background-color: #7F39FB;
     border-radius: 40px;
-    margin-top: 1%;
+    margin: 2.5% 0;
     padding: 1%;
     width: 95%;
     box-shadow: 2px 2px 2px black;
@@ -828,9 +833,15 @@ tr{
     display: grid;
 }
 
+.bracket-match-loser, .participant-name, .participant-score{
+    margin: 2%;
+    padding: 2% 4%;
+}
+
 .match-participant {
     text-align: center;
-    display: inline-flex;
+    display: flex;
+    justify-content: space-between;
 }
 
 .participant-score {
@@ -844,6 +855,9 @@ tr{
     text-decoration-color: black;
 }
 
+.child-column .bracket-matches:not(:last-child){
+
+}
 /* ---------- Match Page ---------- */
 
 #scoreboard{

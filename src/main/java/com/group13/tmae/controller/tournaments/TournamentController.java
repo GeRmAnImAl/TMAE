@@ -214,9 +214,4 @@ public class TournamentController {
         return "redirect:/tournament/" + tournamentID;
     }
 
-    @GetMapping("/tournament{tournamentID}/bracket")
-    public String showTournamentBracket(){
-        return "";
-    }
-
 }

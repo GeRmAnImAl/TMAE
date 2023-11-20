@@ -18,7 +18,7 @@
 <div class="container">
     <h1 class="page-description" th:text="${tournamentName} + ' Bracket'"></h1>
     <div id="bracket-container">
-        <div th:each="round : ${bracket}" class="round">
+        <div th:each="round : ${bracket}" th:class="'round ' + (${round[0][0] != 1} ? 'child-column' : '')">
             <h5 th:text="'Round ' + ${round.get(0).get(0)}" id="bracket-round-label"></h5>
             <div th:each="matchup : ${round}" class="bracket-matches">
                 <div th:if="${matchup[0] == round[0][0]}">
@@ -49,5 +49,32 @@
         </div>
     </div>
 </div>
+<script>
+    // JavaScript code goes here
+    // Get all elements with the class 'child-column .bracket-matches:not(:last-child)'
+    var columns = document.querySelectorAll('.child-column');
+
+    columns.forEach(function(column, index) {
+        // Get all elements within the current column
+        var elements = column.querySelectorAll('.bracket-matches:not(:last-child)');
+
+        // Define a margin multiplier (e.g., doubling for each column)
+        var marginMultiplier = Math.pow(2, index);
+
+        // Loop through each element in the current column
+        elements.forEach(function(element) {
+            // Get the computed style of the element
+            var computedStyle = window.getComputedStyle(element);
+
+            // Calculate the rendering height of the element (including padding, border, and margin)
+            var height = element.offsetHeight +
+                parseFloat(computedStyle.marginTop) +
+                parseFloat(computedStyle.marginBottom);
+
+            // Set the bottom margin to be the same height as the element multiplied by the marginMultiplier
+            element.style.marginBottom = height * marginMultiplier + 'px';
+        });
+    });
+</script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.group13.tmae.controller.tournaments;
 
+import com.group13.tmae.model.Athlete;
 import com.group13.tmae.model.Bracket;
 import com.group13.tmae.model.Match;
 import com.group13.tmae.model.Tournament;
@@ -10,8 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Controller class for handling requests related to tournament brackets.
@@ -37,20 +37,41 @@ public class BracketController {
     public String showTournament(@PathVariable(value = "tournamentID") Long tournamentID, Model model) {
 
         Tournament currentTournament = this.tournamentService.getTournamentById(tournamentID);
-
         ArrayList<Match> matches = new ArrayList<>();
-
+        Map<Integer, Long> byes = new HashMap<>();
         int roundCount = this.tournamentService.calculateTotalRounds(currentTournament);
+        int totalRounds = this.tournamentService.calculateTotalRounds(currentTournament);
+
         for(Bracket bracket : currentTournament.getBrackets()){
             matches.addAll(bracket.getMatches());
+            // Get the athlete that had a bye for each bracket in a tournament
+            if(bracket.getByeAthleteID() != null){
+                byes.put(bracket.getMatches().get(0).getRoundNumber(), bracket.getByeAthleteID());
+            }
         }
 
         List<List<List<Object>>> bracketInfo = new ArrayList<>();
 
         // Iterate over each round of the tournament
-        for (int roundNum = 1; roundNum <= this.tournamentService.calculateTotalRounds(currentTournament); roundNum++){
+        for (Integer roundNum = 1; roundNum <= totalRounds; roundNum++){
 
             List<List<Object>> roundInfo = new ArrayList<>();
+
+            // If there is a bye this round
+            if(byes.containsKey(roundNum)){
+                List<Object> byePlaceholder = new ArrayList<>();
+                Long byeAthleteID = byes.get(roundNum);
+                Athlete byeAthlete = this.athleteService.getAthleteById(byeAthleteID);
+
+                byePlaceholder.add(roundNum);
+                byePlaceholder.add(null);
+                byePlaceholder.add(byeAthlete.getFirstName() + " " + byeAthlete.getLastName());
+                byePlaceholder.add("-----BYE-----");
+                byePlaceholder.add("-");
+                byePlaceholder.add("-");
+
+                roundInfo.add(byePlaceholder);
+            }
 
             // Iterate over each match in the current round
             for(Match match : matches){
@@ -58,7 +79,7 @@ public class BracketController {
                 List<Object> matchInfo = new ArrayList<>();
 
                 // Check if the match is part of the current round
-                if(match.getRoundNumber() == roundNum){
+                if(Objects.equals(match.getRoundNumber(), roundNum)){
 
                     String firstAthlete = match.getAthlete1().getFirstName() + " " + match.getAthlete1().getLastName();
                     String secondAthlete = match.getAthlete2().getFirstName() + " " + match.getAthlete2().getLastName();
@@ -90,6 +111,7 @@ public class BracketController {
 
                     roundInfo.add(matchInfo);
                 }
+
             }
 
             // If no matches found for the round, add placeholder entries
@@ -116,7 +138,7 @@ public class BracketController {
 
         // Add bracket information to the model for rendering in the view
         model.addAttribute("bracket", bracketInfo);
-        model.addAttribute("totalRounds", this.tournamentService.calculateTotalRounds(currentTournament));
+        model.addAttribute("totalRounds", roundCount);
         model.addAttribute("currentRound", currentTournament.getCurrentRoundInfo());
         model.addAttribute("tournamentName", currentTournament.getTournamentName());
 

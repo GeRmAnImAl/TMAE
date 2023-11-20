@@ -223,8 +223,11 @@ public class TournamentServiceImpl implements TournamentService {
         Set<Athlete> athleteWithBye = null;
 
         if(isByeNeeded(athletes)){
+            // Added code to save athlete that had the bye when bracket was created
+            Athlete athleteToRemove = athletes.remove(0);
             athleteWithBye = new HashSet<>();
-            athleteWithBye.add(athletes.remove(0));
+            athleteWithBye.add(athleteToRemove);
+            bracket.setByeAthleteID(athleteToRemove.getAthleteID());
         }
 
         for(int i = 0; i < athletes.size(); i += 2){
