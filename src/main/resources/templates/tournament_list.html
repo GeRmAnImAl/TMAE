@@ -28,6 +28,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Location</th>
                 <th scope="col">Max Participants</th>
+                <th scope="col">Total Participants</th>
                 <th scope="col">Link</th>
                 <th scope="col">Start Date</th>
                 <th scope="col">End Date</th>
@@ -41,6 +42,7 @@
                 <td th:text="${tournament.getTournamentName()}"></td>
                 <td th:text="${tournament.getLocation()}"></td>
                 <td th:text="${tournament.getMaxNumParticipants()}"></td>
+                <td th:text="${tournament.getAllParticipants().size()}"></td>
                 <td th:text="${tournament.getWebsiteLink()}"></td>
                 <td th:text="${#temporals.format(tournament.getStartDate(), 'MM/dd/yyyy')}"></td>
                 <td th:text="${#temporals.format(tournament.getEndDate(), 'MM/dd/yyyy')}"></td>

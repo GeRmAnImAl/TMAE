@@ -60,7 +60,6 @@ th{
 tr{
     height: 50px;
 }
-
 .striped-table:nth-child(even) {
     background-color: #E1C8FF;
 }
@@ -808,9 +807,10 @@ tr{
 }
 
 #bracket-round-label{
-    font-size: x-large;
+    font-size: xxx-large;
     color: white;
     text-shadow: 3px 3px 3px black;
+    margin: 3%;
 }
 
 .bracket-matches{
