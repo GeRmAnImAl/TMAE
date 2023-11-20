@@ -39,6 +39,10 @@ public interface AthleteService {
      */
     void updateAthlete(Athlete athlete);
 
+    /**
+     * TODO
+     * @param athlete
+     */
     void updateAthletePhoto(Athlete athlete);
 
     /**

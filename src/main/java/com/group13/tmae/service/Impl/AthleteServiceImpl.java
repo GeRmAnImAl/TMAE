@@ -78,7 +78,7 @@ public class AthleteServiceImpl implements AthleteService {
     }
 
     /**
-     * TODO 
+     * TODO
      * @param athlete
      */
     @Override

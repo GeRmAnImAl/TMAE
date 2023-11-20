@@ -121,10 +121,18 @@ public class Bracket {
         this.matches = matches;
     }
 
+    /**
+     * todo
+     * @return
+     */
     public Long getByeAthleteID() {
         return byeAthleteID;
     }
 
+    /**
+     * todo
+     * @param byeAthleteID
+     */
     public void setByeAthleteID(Long byeAthleteID) {
         this.byeAthleteID = byeAthleteID;
     }

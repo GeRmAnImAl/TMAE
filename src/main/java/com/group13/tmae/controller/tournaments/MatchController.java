@@ -47,7 +47,7 @@ public class MatchController {
         Athlete user = this.customUserDetailsService.getLoggedInUser();
 
         // Show buttons if user is an admin of tournament.
-        // Hide buttons is match is over.
+        // Hide buttons if match is over.
         // Show Winner
         boolean showButton = false;
         boolean showWinner = false;

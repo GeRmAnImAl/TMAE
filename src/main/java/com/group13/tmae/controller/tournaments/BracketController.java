@@ -20,9 +20,15 @@ import java.util.*;
 @RequestMapping("/bracket")
 public class BracketController {
 
+    /**
+     * todo
+     */
     @Autowired
     public AthleteService athleteService;
 
+    /**
+     * todo
+     */
     @Autowired
     public TournamentService tournamentService;
 
