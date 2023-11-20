@@ -28,9 +28,11 @@
 
             <!-- Form to update photo -->
             <form th:action="@{/athlete_profile/updatePhoto}" method="post" enctype="multipart/form-data">
-                <input type="file" name="photoFile" />
+                <div id="profile-photo-form">
+                <input type="file" name="photoFile" id="profile-photo-file-selector"/>
                 <input type="hidden" name="athleteID" th:value="${athleteID}" />
                 <button class="button" id="user-photo-update-button" type="submit">Upload Photo</button>
+                </div>
             </form>
             <div th:if="${error}">
                 <p th:text="${error}"></p>
