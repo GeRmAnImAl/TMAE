@@ -851,6 +851,7 @@ tr{
     text-align: center;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1em;
 }
 
 .participant-score {
@@ -865,7 +866,7 @@ tr{
 }
 
 .child-column .bracket-matches:not(:last-child){
-
+    margin-bottom: 2em;
 }
 /* ---------- Match Page ---------- */
 
