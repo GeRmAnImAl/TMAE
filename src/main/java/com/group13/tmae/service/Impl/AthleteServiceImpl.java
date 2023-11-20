@@ -73,7 +73,10 @@ public class AthleteServiceImpl implements AthleteService {
      */
     @Override
     public void updateAthlete(Athlete athlete) {
-        athlete.setPassword(passwordEncoder.encode(athlete.getPassword()));
+        Athlete existingAthlete = this.athleteRepository.findById(athlete.getAthleteID()).orElseThrow(null);
+        if(existingAthlete != null && !existingAthlete.getPassword().equals(athlete.getPassword())) {
+            athlete.setPassword(passwordEncoder.encode(athlete.getPassword()));
+        }
         this.athleteRepository.save(athlete);
     }
 
