@@ -49,32 +49,5 @@
         </div>
     </div>
 </div>
-<script>
-    // JavaScript code goes here
-    // Get all elements with the class 'child-column .bracket-matches:not(:last-child)'
-    var columns = document.querySelectorAll('.child-column');
-
-    columns.forEach(function(column, index) {
-        // Get all elements within the current column
-        var elements = column.querySelectorAll('.bracket-matches:not(:last-child)');
-
-        // Define a margin multiplier (e.g., doubling for each column)
-        var marginMultiplier = Math.pow(2, index);
-
-        // Loop through each element in the current column
-        elements.forEach(function(element) {
-            // Get the computed style of the element
-            var computedStyle = window.getComputedStyle(element);
-
-            // Calculate the rendering height of the element (including padding, border, and margin)
-            var height = element.offsetHeight +
-                parseFloat(computedStyle.marginTop) +
-                parseFloat(computedStyle.marginBottom);
-
-            // Set the bottom margin to be the same height as the element multiplied by the marginMultiplier
-            element.style.marginBottom = height * marginMultiplier + 'px';
-        });
-    });
-</script>
 </body>
 </html>

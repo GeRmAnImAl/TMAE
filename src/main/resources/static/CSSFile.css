@@ -800,6 +800,7 @@ tr{
     margin-right: auto;
     box-shadow: 5px 5px 5px black;
     text-align: center;
+    height: auto;
 }
 
 .round{
