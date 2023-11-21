@@ -1,0 +1,9 @@
+com.group13.tmae
+com.group13.tmae.controller
+com.group13.tmae.controller.athletes
+com.group13.tmae.controller.tournaments
+com.group13.tmae.model
+com.group13.tmae.repository
+com.group13.tmae.Security
+com.group13.tmae.service
+com.group13.tmae.service.Impl
