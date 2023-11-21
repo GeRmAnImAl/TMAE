@@ -37,7 +37,6 @@ public class AthleteServiceImpl implements AthleteService {
      * Creates a new athlete in the database.
      *
      * @param athlete The Athlete object to be created.
-     * @return The created Athlete object.
      */
     @Override
     public void createAthlete(Athlete athlete) {

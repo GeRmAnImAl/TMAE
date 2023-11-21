@@ -89,6 +89,8 @@ public class MatchController {
      *
      * @param matchID The ID of the match to complete.
      * @param winnerID The ID of the winning athlete.
+     * @param athlete1Score The score of the first athlete assigned to this match.
+     * @param athlete2Score The score of the second athlete assigned to this match.
      * @param redirectAttributes Attributes for redirect scenarios.
      * @return Redirects to the tournament view after recording the match result.
      */

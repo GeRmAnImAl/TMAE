@@ -56,6 +56,11 @@ public class AthleteProfileController {
         return "redirect:/athlete_profile/userInfo";
     }
 
+    /**
+     * Processes the form to update an Athlete object based on provided information.
+     * @param athlete The Athlete object to be updated.
+     * @return A string indicating the view to redirect to after processing the form submission.
+     */
     @PostMapping("/updateAthlete")
     public String updateAthlete(@ModelAttribute("athlete") Athlete athlete){
         Athlete athleteToUpdate = athleteService.getAthleteById(athlete.getAthleteID());
@@ -87,6 +92,7 @@ public class AthleteProfileController {
      *
      * @param photoFile The photo file uploaded by the athlete.
      * @param athleteID The unique identifier of the athlete whose profile photo is being updated.
+     * @param redirectAttributes The message to be displayed upon redirecting to the desired view.
      * @return A string indicating the view to redirect to after processing the form submission.
      */
     @PostMapping("/updatePhoto")

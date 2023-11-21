@@ -78,6 +78,7 @@ public class Match {
      * @param tournament The tournament in which this match takes place.
      * @param athlete1   The first athlete participating in this match.
      * @param athlete2   The second athlete participating in this match.
+     * @param roundNumber The integer represening what round of the tournament this match has been created for.
      */
     public Match(Bracket bracket, Tournament tournament, Athlete athlete1, Athlete athlete2, Integer roundNumber) {
         this.bracket = bracket;

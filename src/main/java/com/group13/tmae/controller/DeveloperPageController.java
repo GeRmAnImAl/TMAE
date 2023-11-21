@@ -21,9 +21,15 @@ import java.util.List;
 @RequestMapping("/developer")
 public class DeveloperPageController {
 
+    /**
+     *
+     */
     @Autowired
     public AthleteService athleteService;
 
+    /**
+     *
+     */
     @Autowired
     public TournamentService tournamentService;
 

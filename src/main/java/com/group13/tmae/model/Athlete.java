@@ -145,10 +145,19 @@ public class Athlete implements Serializable {
     private List<Tournament> adminInTournament;
 
     /**
-     * Constructs an athlete with specified details.
+     * Constructs and Athlete object with the specified information.
      *
+     * @param userName The username of the athlete.
+     * @param password The unhashed password of the athlete.
      * @param firstName The first name of the athlete.
-     * @param lastName  The last name of the athlete.
+     * @param lastName The last name of the athlete.
+     * @param affiliation The affiliation of the athlete.
+     * @param birthDate The birthdate of the athlete.
+     * @param weight The weight of the athlete.
+     * @param address The address of the athlete.
+     * @param email The email of the athlete.
+     * @param phoneNumber The phone number of the athlete.
+     * @param photoData The photo data associated with the profile photo of the athlete.
      */
     public Athlete(String userName, String password, String firstName, String lastName, String affiliation, LocalDate birthDate,
                    Double weight, String address, String email, String phoneNumber, byte[] photoData) {
