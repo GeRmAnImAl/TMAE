@@ -117,7 +117,7 @@ public class  Tournament {
     private boolean initialBracketsGenerated = false;
 
     /**
-     * TODO
+     * The current round number of the tournament.
      */
     private Integer currentRoundInfo;
 
@@ -388,30 +388,65 @@ public class  Tournament {
         this.initialBracketsGenerated = initialBracketsGenerated;
     }
 
+    /**
+     * Retrieves the current round information of the tournament.
+     *
+     * @return An Integer representing the current round number in the tournament.
+     */
     public Integer getCurrentRoundInfo() {
         return currentRoundInfo;
     }
 
+    /**
+     * Sets the current round information of the tournament.
+     *
+     * @param currentRoundInfo An Integer representing the new current round number to be set for the tournament.
+     */
     public void setCurrentRoundInfo(Integer currentRoundInfo) {
         this.currentRoundInfo = currentRoundInfo;
     }
 
+    /**
+     * Retrieves the list of athletes who have admin privileges in the tournament.
+     *
+     * @return A list of Athlete objects representing the admins of the tournament.
+     */
     public List<Athlete> getAdmins() {
         return admins;
     }
 
+    /**
+     * Sets the list of athletes who have admin privileges in the tournament.
+     *
+     * @param admins A list of Athlete objects to be set as the admins of the tournament.
+     */
     public void setAdmins(List<Athlete> admins) {
         this.admins = admins;
     }
 
+    /**
+     * Sets the unique identifier of the tournament.
+     *
+     * @param tournamentID A Long value representing the unique ID to be set for the tournament.
+     */
     public void setTournamentID(Long tournamentID) {
         this.tournamentID = tournamentID;
     }
 
+    /**
+     * Retrieves the list of all athletes registered in the tournament.
+     *
+     * @return A list of Athlete objects representing all participants registered in the tournament.
+     */
     public List<Athlete> getAllParticipants() {
         return allParticipants;
     }
 
+    /**
+     * Sets the list of all athletes registered in the tournament.
+     *
+     * @param allParticipants A list of Athlete objects to be set as all participants registered in the tournament.
+     */
     public void setAllParticipants(List<Athlete> allParticipants) {
         this.allParticipants = allParticipants;
     }

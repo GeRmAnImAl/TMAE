@@ -122,16 +122,18 @@ public class Bracket {
     }
 
     /**
-     * todo
-     * @return
+     * Retrieves the ID of the athlete who received a bye in this bracket.
+     *
+     * @return The ID of the athlete who received a bye, or null if no bye was granted.
      */
     public Long getByeAthleteID() {
         return byeAthleteID;
     }
 
     /**
-     * todo
-     * @param byeAthleteID
+     * Sets the ID of the athlete who received a bye in this bracket.
+     *
+     * @param byeAthleteID The ID of the athlete to be granted a bye.
      */
     public void setByeAthleteID(Long byeAthleteID) {
         this.byeAthleteID = byeAthleteID;

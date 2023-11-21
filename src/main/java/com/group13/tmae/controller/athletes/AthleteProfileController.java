@@ -191,6 +191,15 @@ public class AthleteProfileController {
         return "user-profile-page";
     }
 
+    /**
+     * Displays a form for updating an athlete's personal information.
+     * This method ensures that the logged-in user can only update their own information.
+     *
+     * @param id The unique identifier of the athlete whose information is to be updated.
+     * @param model The model object to which the athlete's current information is added.
+     * @param redirectAttributes Attributes for displaying messages on the redirect page.
+     * @return The name of the view for the athlete information update form.
+     */
     @GetMapping("/updateUserInfo/{id}")
     public String showUpdateForm(@PathVariable(value = "id") Long id, Model model, RedirectAttributes redirectAttributes){
         Athlete user = this.customUserDetailsService.getLoggedInUser();

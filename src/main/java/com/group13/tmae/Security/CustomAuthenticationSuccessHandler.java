@@ -18,7 +18,8 @@ import java.io.IOException;
 @Component
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     /**
-     *
+     * Repository for accessing athlete data from the database.
+     * Used to fetch athlete details in the context of authentication processes.
      */
     private final AthleteRepository athleteRepository;
 

@@ -141,7 +141,7 @@ public class TournamentController {
      * Registers the currently logged-in athlete to the specified tournament and redirects to the tournament list view.
      *
      * @param tournamentID The unique identifier of the tournament to join.
-     * @param model        The view model to pass to the front end.
+     * @param model The view model to pass to the front end.
      * @return The name of the view to render after joining the tournament.
      */
     @GetMapping("/joinTournament/{id}")
@@ -199,6 +199,13 @@ public class TournamentController {
         return "redirect:/tournament/" + tournamentInput.getTournamentID();
     }
 
+    /**
+     * Handles the removal of an athlete from a tournament.
+     *
+     * @param athleteID The unique identifier of the athlete to be removed from the tournament.
+     * @param tournamentID The unique identifier of the tournament from which the athlete is being removed.
+     * @return A redirection to the tournament's information page after performing the removal.
+     */
     @GetMapping("/{tournamentID}/kickathlete/{athleteID}")
     public String kickAthlete(@PathVariable("athleteID") Long athleteID,
                               @PathVariable("tournamentID") Long tournamentID){

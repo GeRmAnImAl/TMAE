@@ -250,10 +250,20 @@ public class Match {
         this.loser = loser;
     }
 
+    /**
+     * Retrieves the round number in which this match takes place.
+     *
+     * @return The round number of the match.
+     */
     public Integer getRoundNumber() {
         return roundNumber;
     }
 
+    /**
+     * Sets the round number in which this match takes place.
+     *
+     * @param roundNumber The round number to set for this match.
+     */
     public void setRoundNumber(Integer roundNumber) {
         this.roundNumber = roundNumber;
     }

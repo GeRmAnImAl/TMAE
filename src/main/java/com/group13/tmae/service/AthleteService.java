@@ -40,8 +40,9 @@ public interface AthleteService {
     void updateAthlete(Athlete athlete);
 
     /**
-     * TODO
-     * @param athlete
+     * Updates the photo of an existing athlete.
+     *
+     * @param athlete The Athlete object whose photo is to be updated.
      */
     void updateAthletePhoto(Athlete athlete);
 

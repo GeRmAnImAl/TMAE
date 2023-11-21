@@ -78,8 +78,9 @@ public class AthleteServiceImpl implements AthleteService {
     }
 
     /**
-     * TODO
-     * @param athlete
+     * Updates the photo of an existing athlete.
+     *
+     * @param athlete The Athlete object whose photo is to be updated.
      */
     @Override
     public void updateAthletePhoto(Athlete athlete){

@@ -14,7 +14,6 @@ import java.util.List;
 
 /**
  * Represents an athlete participating in a sports event.
- * <p>
  * This entity class is annotated with JPA annotations to define its mapping
  * to the underlying database table "athletes". It includes fields for athlete
  * details such as name, wins, losses, and ties.
@@ -133,6 +132,9 @@ public class Athlete implements Serializable {
     @ManyToMany(mappedBy = "participants")
     private List<Tournament> tournaments;
 
+    /**
+     * Tournaments the athlete has registered for.
+     */
     @ManyToMany(mappedBy = "allParticipants")
     private List<Tournament> registeredTournaments;
 
@@ -192,7 +194,7 @@ public class Athlete implements Serializable {
     }
 
     /**
-     * Gets the unique identifier of the athlete.
+     * Retrieves the unique identifier of the athlete.
      *
      * @return The athlete's unique identifier.
      */
@@ -525,18 +527,38 @@ public class Athlete implements Serializable {
         this.tournaments = tournaments;
     }
 
+    /**
+     * Retrieves the list of tournaments the athlete has registered for.
+     *
+     * @return A list of Tournament objects representing the tournaments the athlete has registered for.
+     */
     public List<Tournament> getRegisteredTournaments() {
         return registeredTournaments;
     }
 
+    /**
+     * Sets the list of tournaments the athlete has registered for.
+     *
+     * @param registeredTournaments The new list of Tournament objects representing the tournaments the athlete has registered for.
+     */
     public void setRegisteredTournaments(List<Tournament> registeredTournaments) {
         this.registeredTournaments = registeredTournaments;
     }
 
+    /**
+     * Retrieves the list of tournaments where the athlete acts as an administrator.
+     *
+     * @return A list of Tournament objects representing the tournaments where the athlete is an administrator.
+     */
     public List<Tournament> getAdminInTournament() {
         return adminInTournament;
     }
 
+    /**
+     * Sets the list of tournaments where the athlete acts as an administrator.
+     *
+     * @param adminInTournament The new list of Tournament objects representing the tournaments where the athlete is an administrator.
+     */
     public void setAdminInTournament(List<Tournament> adminInTournament) {
         this.adminInTournament = adminInTournament;
     }
