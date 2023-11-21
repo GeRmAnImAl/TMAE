@@ -412,7 +412,7 @@ public class  Tournament {
      * @return A list of Athlete objects representing the admins of the tournament.
      */
     public List<Athlete> getAdmins() {
-        return admins;
+        return this.admins;
     }
 
     /**
