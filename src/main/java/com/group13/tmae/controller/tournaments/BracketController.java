@@ -47,11 +47,12 @@ public class BracketController {
         Map<Integer, Long> byes = new HashMap<>();
         int roundCount = this.tournamentService.calculateTotalRounds(currentTournament);
         int totalRounds = this.tournamentService.calculateTotalRounds(currentTournament);
+        Athlete winner = null;
 
         for(Bracket bracket : currentTournament.getBrackets()){
             matches.addAll(bracket.getMatches());
             // Get the athlete that had a bye for each bracket in a tournament
-            if(bracket.getByeAthleteID() != null){
+            if(bracket.getByeAthleteID() != null  && !bracket.getMatches().isEmpty()){
                 byes.put(bracket.getMatches().get(0).getRoundNumber(), bracket.getByeAthleteID());
             }
         }
@@ -117,7 +118,10 @@ public class BracketController {
 
                     roundInfo.add(matchInfo);
                 }
-
+                // Code to display tournament champion
+                if((match.getRoundNumber() == totalRounds) && (match.getWinner() != null)){
+                    winner = match.getWinner();
+                }
             }
 
             // If no matches found for the round, add placeholder entries
@@ -147,6 +151,7 @@ public class BracketController {
         model.addAttribute("totalRounds", roundCount);
         model.addAttribute("currentRound", currentTournament.getCurrentRoundInfo());
         model.addAttribute("tournamentName", currentTournament.getTournamentName());
+        model.addAttribute("champion", winner);
 
         return "bracket";
     }

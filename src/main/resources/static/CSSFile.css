@@ -6,6 +6,7 @@
     padding: 0;
     height: 100vh;
     width: 100vw;
+    background-attachment: fixed;
 }
 
 .container {
@@ -15,16 +16,28 @@
     max-height: 1080px;
     margin-right: auto;
     margin-left: auto;
+    padding-top: 5%;
 }
 
 .header {
-    background-color: #0000003E;
+    background-color: indigo;
     background-position: top;
     font-size: xx-large;
     color: white;
     text-align: center;
     margin: 0;
     text-shadow: 4px 4px 4px black;
+}
+
+.top-of-page{
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    width: 100%;
+    border-bottom: black;
+    border-bottom-width: 1px;
+    border-style: solid;
 }
 
 .headerText {
@@ -322,9 +335,10 @@ tr{
     display: table;
     width: 60%;
     border-radius: 40px;
+    margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
-    padding: 3%;
+    padding: 2%;
 }
 
 .athletes-list-container-label {
@@ -701,7 +715,7 @@ tr{
     margin-right: auto;
     padding: 3%;
     box-shadow: 5px 5px 5px black;
-    container-type: size;
+    height: max-content;
 }
 
 #tournament-participants-card{
@@ -712,6 +726,7 @@ tr{
     margin-right: auto;
     box-shadow: 5px 5px 5px black;
     text-align: center;
+    padding: 1%;
 }
 
 #tournament-info-form {
@@ -799,15 +814,26 @@ tr{
 #bracket-container{
     width: 95%;
     padding: 0% 3% 3%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
     background-color: #00C4B4;
     border-radius: 40px;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 5px 5px 5px black;
     text-align: center;
+
+}
+
+#bracket-champion-display{
+    font-size: xxx-large;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    padding-top: 2%;
+}
+
+#bracket-rounds-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     height: auto;
 }
 
@@ -866,7 +892,7 @@ tr{
 }
 
 .child-column .bracket-matches:not(:last-child){
-    margin-bottom: 2em;
+    margin-bottom: 5em;
 }
 /* ---------- Match Page ---------- */
 
